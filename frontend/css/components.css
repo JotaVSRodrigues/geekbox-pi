@@ -1,0 +1,19 @@
+.button-login {
+    background-color: transparent;
+    border-radius: 30px;
+    padding: 10px 36px;
+    border: 2px solid #A26300;
+    color: #A26300;
+    transition: 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.button-login:hover {
+    background-color: #A26300;
+    color: #FFFFFF;
+    border: 1px solid #A26300;
+}
+
+#icon-image img {
+    height: 140px;
+}
