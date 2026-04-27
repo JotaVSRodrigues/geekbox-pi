@@ -1,0 +1,151 @@
+
+
+.container  {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 40vw;
+    gap: 2px;
+}
+
+.logo-image {
+    display: block;
+    margin-bottom: -40px;
+}
+
+.logo-image img {
+    height: 40%;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    
+    height: fit-content;
+    width: 40vw;
+
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    padding: 30px;
+    gap: 30px;
+}
+
+.header-box {
+    display: flex;
+    flex-direction: row;
+
+    gap: 30px;
+}
+
+.header-box h1 {
+    display: block;
+    line-height: 1.0;
+
+    font-family: 'DM_Serif_Display', sans-serif;
+}
+
+.header-box p {
+    text-align: right;
+    font-size: 1.05em;
+    line-height: 1.2;
+}
+
+#highlight-span {
+    font-style: italic;
+    /* font-weight: 600; */
+    color: #A26300;
+}
+
+#highlight-span-sub {
+    /* font-style: italic; */
+    font-weight: 500;
+    color: #A26300;
+}
+
+.content-box {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.header-content-box {
+    margin-bottom: 10px;
+}
+
+.label-box input {
+    background-color: transparent;
+    padding: 8px 8px;
+
+    width: 100%;
+    margin-bottom: 14px;
+
+    border: 2px solid white;
+    border-radius: 6px;
+
+    color: #FFFFFF;
+}
+
+::placeholder {
+    color: #707070;
+    font-family: 'Syne', sans-serif;
+}
+
+.name-surname {
+    display: flex;
+    flex-direction: row;
+
+    gap: 20px;
+}
+
+.btn-cadastro-div {
+    display: flex;
+    flex-direction: row;
+
+    margin: 10px 0 20px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-cadastro {
+    background-color: #A26300;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    border-radius: 6px;
+    padding: 10px 36px;
+    cursor: pointer;
+    transition: 0.3s ease, background-color 0.3s ease;
+
+    font-family: 'Syne', sans-serif;
+    font-weight: 750;
+}
+
+.btn-cadastro:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.others {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.others a {
+    /* text-decoration: none; */
+    color: inherit;
+}
