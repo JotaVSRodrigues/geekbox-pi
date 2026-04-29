@@ -57,7 +57,7 @@ fetch("/usuarios/cadastrar", {
         alert("Cadastro realizado com sucesso");
 
         setTimeout(() => {
-            window.location.href = "index.html"
+            window.location.href = "index.html";
         }, "2000");
     } else {
         throw "Houve um erro ao realizar o cadastro!";

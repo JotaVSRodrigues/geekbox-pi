@@ -50,6 +50,7 @@ function loginUser() {
             });
         } else {
             console.log("Houve um erro ao tentar realizar o login!");
+            // colocar mensagem amigavel para o usuario
 
             resposta.text().then(texto => {
                 console.error(texto);
