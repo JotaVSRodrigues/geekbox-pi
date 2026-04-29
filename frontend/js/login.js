@@ -9,88 +9,51 @@ function loginUser() {
 
     if (emailLogin == "" || senhaLogin == "") {
         alert("Há algum campo vazio. Preencha para prosseguir")
-        return
+        return false
     }
 
     if (senhaLogin != senhaTemp || emailLogin != emailTemp) {
         alert("Email ou senha não correspondem")
-        return
-    } else {
-        window.location.href = "index.html";
-    }
-}
+        return false;
+    } 
 
-function registerUser() {
-    let nomeUser = ipt_nome.value
-    let sobrenomeUser = ipt_sobrenome.value
-    let emailUser = ipt_email.value
-    let senhaUser = ipt_senha.value
-    let senhaUserConf = ipt_senha_conf.value
-    let telefoneUser = ipt_telefone.value
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailLogin,
+            senhaServer: senhaLogin
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO loginUser()")
 
-    let erros = []
+        if (resposta.ok) {
+            console.log(resposta);
 
-    if (!nomeUser || 
-        !sobrenomeUser || 
-        !telefoneUser || 
-        nomeUser.trim().length === 0 ||
-        sobrenomeUser.trim().length === 0 ||
-        telefoneUser.trim().length === 0
-    ) {
-        erros.push(" Preencha todos os campos antes de prosseguir")
-    }
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.NOME_USUARIO = json.nome; 
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.TELEFONE_USUARIO = json.telefone;
 
-    if (!validarEmail(emailUser)) {
-        erros.push(" Email inválido ")
-    }
+                setTimeout(function() {
+                    window.location.href = "index.html";
+                }, 1000); // apenas para exibir o loading
+            });
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
 
-    if (validarSenha(senhaUser, senhaUserConf).length != 0) {
-        validarSenha(senhaUser, senhaUserConf)
-        erros.push(" Senha inválida ")
-    }
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 
-    if (telefoneUser.length != 11) {
-        erros.push(" Telefone inválido")
-    }
-
-    if (erros.length == 0) {
-        alert("Usuário cadastrado com sucesso")
-        window.location.href = "index.html"
-    } else {
-        alert(erros)
-        return
-    }
-}
-
-function validarEmail (email) {
-    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-    return regex.test(email)
-}
-
-function validarSenha (senha, senhaConfirmacao) {
-    let erros = []
-
-    if (senha.length < 8) {
-        erros.push("Mínimo de 8 caracteres")
-    }
-
-    if (!/[A-Z]/.test(senha)) {
-        erros.push("Pelo menos uma letra maiúscula")
-    }
-
-    if (!/[a-z]/.test(senha)) {
-        erros.push("Pelo menos uma letra minúscula");
-    }
-    if (!/[0-9]/.test(senha)) {
-        erros.push("Pelo menos um número");
-    }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(senha)) {
-        erros.push("Pelo menos um caractere especial");
-    }
-
-    if (senha != senhaConfirmacao) {
-        erros.push("As senhas não coincidem")
-    }
-
-    return erros;
+    return false;
 }
