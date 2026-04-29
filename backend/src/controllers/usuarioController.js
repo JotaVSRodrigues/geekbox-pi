@@ -10,7 +10,25 @@ function listar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome = req.body.nome;
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var telefone = req.body.telefoneServer;
 
-    if (nome)
+
+    if (nome == undefined || email == undefined 
+        || senha == undefined || telefone == undefined) {
+        res.status(400).send("Algum dado está undefined!");
+    }
+
+    usuarioModel.cadastrar(nome, email, senha, telefone).then(function(resposta) {
+        res.status(200).send("Usuário criado com sucesso");
+    }).catch(function(erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
+module.exports = {
+    listar, 
+    cadastrar
 }
