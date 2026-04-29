@@ -1,7 +1,7 @@
 
 function loginUser() {
-    let emailTemp = "joao@gmail.com"
-    let senhaTemp = "12345"
+    // let emailTemp = "joao@gmail.com"
+    // let senhaTemp = "12345"
 
     let emailLogin = ipt_email_login.value
     let senhaLogin = ipt_senha_login.value 
@@ -9,13 +9,17 @@ function loginUser() {
 
     if (emailLogin == "" || senhaLogin == "") {
         alert("Há algum campo vazio. Preencha para prosseguir")
+
+        // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
         return false
     }
 
-    if (senhaLogin != senhaTemp || emailLogin != emailTemp) {
-        alert("Email ou senha não correspondem")
-        return false;
-    } 
+    // if (senhaLogin != senhaTemp || emailLogin != emailTemp) {
+    //     alert("Email ou senha não correspondem")
+
+    //     // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    //     return false;
+    // } 
 
     fetch("/usuarios/autenticar", {
         method: "POST",

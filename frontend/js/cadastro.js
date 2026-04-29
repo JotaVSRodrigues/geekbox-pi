@@ -9,8 +9,6 @@ function registerUser() {
     var senhaUserConf = ipt_senha_conf.value
     var telefoneUser = ipt_telefone.value
 
-    var erros = []
-
     if (!nomeUser || 
         !sobrenomeUser || 
         !telefoneUser || 
@@ -19,6 +17,7 @@ function registerUser() {
         telefoneUser.trim().length === 0
     ) {
         alert(" Preencha todos os campos antes de prosseguir");
+        // colocar mensagem amigavel para o usuario (preenchimento de todos os campos)
         return false;
     }
 
