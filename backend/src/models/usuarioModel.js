@@ -1,7 +1,8 @@
-let database = require("../database/config");
+var database = require("../database/config");
 
 function cadastrar(nome, email, senha, telefone) {
     console.log("ACESSEI O USUARIO MODEL - CADASTRAR");
+
     var instrucaoSQL = `
         INSERT INTO usuario (nome, email, senha_hash, telefone) VALUES
         (${nome}, ${email}, ${senha}, ${telefone});

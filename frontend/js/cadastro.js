@@ -1,15 +1,15 @@
 
 function registerUser() {
-    let nomeUser = ipt_nome.value
-    let sobrenomeUser = ipt_sobrenome.value
-    let nomeCompletoUser = nomeUser + " " + sobrenomeUser
+    var nomeUser = ipt_nome.value
+    var sobrenomeUser = ipt_sobrenome.value
+    var nomeCompletoUser = nomeUser + " " + sobrenomeUser
 
-    let emailUser = ipt_email.value
-    let senhaUser = ipt_senha.value
-    let senhaUserConf = ipt_senha_conf.value
-    let telefoneUser = ipt_telefone.value
+    var emailUser = ipt_email.value
+    var senhaUser = ipt_senha.value
+    var senhaUserConf = ipt_senha_conf.value
+    var telefoneUser = ipt_telefone.value
 
-    let erros = []
+    var erros = []
 
     if (!nomeUser || 
         !sobrenomeUser || 
@@ -73,12 +73,12 @@ return false;
 
 
 function validarEmail (email) {
-    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     return regex.test(email)
 }
 
 function validarSenha (senha, senhaConfirmacao) {
-    let erros = []
+    var erros = []
 
     if (senha.length < 8) {
         erros.push("Mínimo de 8 caracteres")

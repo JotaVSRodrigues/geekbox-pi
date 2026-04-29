@@ -5,10 +5,10 @@ function validarSessao() {
     var telefone = sessionStorage.TELEFONE_USUARIO;
 
     // mostrar nome do usuário na tela
-    var b_usuario = document.getElementById("b_usuario");
+    // var b_usuario = document.getElementById("b_usuario");
 
     if (email != null && nome != null) {
-        b_usuario.innerHTML = nome; 
+        // b_usuario.innerHTML = nome; 
     } else {
         window.location.href = "../login.html";
     }
