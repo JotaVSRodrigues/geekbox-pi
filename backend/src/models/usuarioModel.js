@@ -5,7 +5,7 @@ function cadastrar(nome, email, senha, telefone) {
 
     var instrucaoSQL = `
         INSERT INTO usuario (nome, email, senha_hash, telefone) VALUES
-        (${nome}, ${email}, ${senha}, ${telefone});
+        ('${nome}', '${email}', '${senha}', '${telefone}');
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);
