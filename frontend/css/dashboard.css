@@ -69,6 +69,7 @@
     display: flex;
     flex-direction: row;
 
+    height: 100%;
     gap: 16px;
 }
 
@@ -82,7 +83,7 @@
     font-weight: 200;
     font-style: italic;
     margin: 0;
-    line-height: 0.7;
+    line-height: 0.9;
 }
 
 .subtitle-card {
@@ -90,7 +91,14 @@
     font-weight: 800;
     font-size: 0.9em;
     color: #4D4D4D;
-    margin-top: 4px;
 
 }
 
+
+/* #metas-do-ano {
+    width: 130vw;
+} */
+
+#consumo-anual {
+    width: 130vw;
+}
