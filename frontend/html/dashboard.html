@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekBox</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hero.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="navbar-div">
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="../assets/images/logo/logo-geekbox.png" alt="Logo Geekie Box">
+            </div>
+            <div>
+                <li><a href="../html/cadastro.html" class="button-login">Login</a></li>
+            </div>
+        </nav>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="header-container">
+
+                <div class="header">
+                    <div id="icon-image">
+                        <img src="../assets/images/icons/spider-man-icon.png" alt="Foto de Perfil">
+                    </div>
+                    <div class="title">
+                        <h1>Bom dia, <span id="h1-span">João!</span></h1>
+                        <h4>Você estava assistindo <span id="h4-span">Devoradores de Estrelas</span>
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Timeline</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Estatísticas</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="content-kpis">
+                    <div class="dash-card kpi">
+                        <div class="card-resume">
+                            <span>CONCLUÍDOS</span>
+                        </div>
+                        <div class="kpi-mensagem">
+                            <h3 class="kpi-main-data">
+                                73
+                            </h3>
+                            <span>itens em 2026</span>
+                        </div>
+                    </div>
+                    <div class="dash-card kpi">
+                        <div class="card-resume">
+                            <span>HORAS TOTAIS</span>
+                        </div>
+                        <div class="kpi-mensagem">
+                            <h3 class="kpi-main-data">
+                                245h
+                            </h3>
+                            <span>horas de entretenimento</span>
+                        </div>
+                    </div>
+                    <div class="dash-card kpi">
+                        <div class="card-resume">
+                            <span>HORAS SEMANAIS</span>
+                        </div>
+                        <div class="kpi-mensagem">
+                            <h3 class="kpi-main-data">
+                                12h
+                            </h3>
+                            <span>de média de consumo semanal</span>
+                        </div>
+                    </div>
+                    <div class="dash-card kpi">
+                        <div class="card-resume">
+                            <span>TAXA DE CONCLUSÃO</span>
+                        </div>
+                        <div class="kpi-mensagem">
+                            <h3 class="kpi-main-data">
+                                89%
+                            </h3>
+                            <span>de itens concluídos</span>
+                        </div>
+                    </div>
+            
+                </div>
+
+
+                <div class="content-graphics">
+
+                    <div class="graphics">
+                        <div class="dash-card kpi" id="metas-do-ano">
+                            <div class="dash-card-header">
+                                <h3 class="dash-main-data">
+                                    Metas do ano
+                                </h3>
+                                <span class="subtitle-card">itens a serem consumidos no ano · por categoria</span>
+                            </div>
+                            <div class="chart">
+                                <canvas id="horizontal-bar-chart">
+
+                                </canvas>
+                            </div>
+                                
+                        </div>
+                        <div class="dash-card kpi" id="horas-por-midia">
+
+                            <div class="chart">
+                                <canvas id="doughnut-chart">
+
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="graphics">
+                        <div class="dash-card kpi" id=consumo-anual">
+                            <div class="chart">
+                                <canvas id="line-chart">
+
+                                </canvas>
+                            </div>
+                        </div>
+                        <div class="dash-card kpi" id=frequencia-consumo">
+                            <div class="chart">
+                                <canvas id="heatmap-chart">
+
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
