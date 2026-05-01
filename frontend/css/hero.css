@@ -115,7 +115,7 @@ a {
     padding: 30px;
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 70px;
     align-items: flex-start;
 }
 
@@ -191,11 +191,28 @@ a {
     display: flex;
     flex-direction: column;
 
-    gap: 80px;
+    gap: 14px;
+    padding: 20px 20px;
+    border: 1px solid #4D4D4D;
+    border-radius: 8px;
+
+    width: 110%;
 }
 
-.content-text p {
-    font-size: 1.3em;
+.content-text textarea {
+    font-size: 1.2em;
+
+    height: 32vh;
+
+    color: white;
+    background-color: transparent;
+    border: none;
+    resize: none;
+}
+
+textarea {
+    font-family: Syne, DM_Mono, sans-serif;
+    outline: none;
 }
 
 .caraceteres-count {
@@ -206,7 +223,7 @@ a {
 }
 
 .content-text span {
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #A26300;
 }
 
