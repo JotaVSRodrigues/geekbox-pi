@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../css/hero.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Script do ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard.js"></script>
 </head>
 <body>
     <div class="navbar-div">
@@ -54,7 +58,7 @@
                         </div>
                         <div class="kpi-mensagem">
                             <h3 class="kpi-main-data">
-                                73
+                                <span class="kpi-title" id="kpi-concluidos">73</span>
                             </h3>
                             <span>itens em 2026</span>
                         </div>
@@ -65,7 +69,7 @@
                         </div>
                         <div class="kpi-mensagem">
                             <h3 class="kpi-main-data">
-                                245h
+                                <span class="kpi-title" id="kpi-horas">245h</span>
                             </h3>
                             <span>horas de entretenimento</span>
                         </div>
@@ -76,7 +80,7 @@
                         </div>
                         <div class="kpi-mensagem">
                             <h3 class="kpi-main-data">
-                                12h
+                                <span class="kpi-title" id="kpi-semanal">12h</span>
                             </h3>
                             <span>de média de consumo semanal</span>
                         </div>
@@ -87,7 +91,7 @@
                         </div>
                         <div class="kpi-mensagem">
                             <h3 class="kpi-main-data">
-                                89%
+                                <span class="kpi-title" id="kpi-conclusao">89%</span>
                             </h3>
                             <span>de itens concluídos</span>
                         </div>
@@ -107,7 +111,7 @@
                                 <span class="subtitle-card">itens concluídos por mês · por categoria</span>
                             </div>
                             <div class="chart">
-                                <canvas id="line-chart">
+                                <canvas id="grafico-linha">
 
                                 </canvas>
                             </div>
@@ -121,7 +125,7 @@
                                 <span class="subtitle-card">distribuição em 2026</span>
                             </div>
                             <div class="chart">
-                                <canvas id="doughnut-chart">
+                                <canvas id="grafico-donut">
 
                                 </canvas>
                             </div>
@@ -138,7 +142,7 @@
                                 <span class="subtitle-card">itens a serem consumidos no ano · por categoria</span>
                             </div>
                             <div class="chart">
-                                <canvas id="horizontal-bar-chart">
+                                <canvas id="grafico-metas">
 
                                 </canvas>
                             </div>
@@ -153,9 +157,11 @@
                                 <span class="subtitle-card">itens por semana</span>
                             </div>
                             <div class="chart">
-                                <canvas id="heatmap-chart">
-
-                                </canvas>
+                                <div id="grafico-heatmap">
+                                    <canvas>
+                                        
+                                    </canvas>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -66,6 +66,10 @@
     
 }
 
+#kpi-concluidos, #kpi-conclusao, #kpi-horas, #kpi-semanal {
+    color: white;
+}
+
 .content-graphics {
     display: flex;
     flex-direction: column;
