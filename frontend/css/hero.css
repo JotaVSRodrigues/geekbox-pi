@@ -10,6 +10,8 @@
     align-itens: center; */
 
     /* justify-content: ; */
+
+    caret-color: transparent;
 }
 
 .navbar {
@@ -25,10 +27,6 @@
     list-style-type: none;
 }
 
-.navbar-logo img {
-    margin-top: 15px;
-    height: 40px;
-}
 
 section {
     height: 92vh;
@@ -49,6 +47,8 @@ section {
     gap: 20px;
 
     height: fit-content;
+
+    caret-color: transparent;
 }
 
 .header {
@@ -63,6 +63,8 @@ section {
 .title {
     display: flex;
     flex-direction: column;
+
+    caret-color: transparent;
 }
 
 h1 {
@@ -74,6 +76,7 @@ h2 {
     font-family: 'DM_Serif_Display', sans-serif;
     font-size: 2.1em;
     font-style: italic;
+    caret-color: transparent;
 }
 
 h4 {
@@ -98,37 +101,6 @@ a {
 #h4-span {
     font-weight: bold;
     color: #A26300;
-}
-
-.navigation-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-    
-}
-
-.navigation-buttons ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-
-    gap: 10px;
-
-    height: fit-content;
-
-    padding: 10px 20px;
-}
-
-.navigation-buttons ul a {
-    border: 2px solid white;
-    border-radius: 6px;
-
-    padding: 10px 20px;
-
-    height: 30px;
-    width: fit-content;
 }
 
 .content-container {
@@ -174,6 +146,8 @@ a {
     flex-direction: column;
     font-size: 1.5em;
     line-height: 1.4;
+
+    caret-color: transparent;
 }
 
 .card-content {
@@ -188,6 +162,7 @@ a {
 
 .content-header {
     margin-bottom: 20px;
+    caret-color: transparent;
 }
 
 .card-categories {
@@ -204,6 +179,8 @@ a {
 
     border: 2px solid white;
     border-radius: 60px;
+
+    
 }
 
 .stars-classification img {

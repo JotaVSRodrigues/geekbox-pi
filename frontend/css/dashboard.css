@@ -1,13 +1,13 @@
 
 .content-kpis {
     width: 100%;
-    /* height: 100px; */
     height: fit-content;
 
     display: flex;
     flex-direction: row;
     gap: 16px;
 }
+
 
 .dash-card {
     padding: 8px 12px;
@@ -17,12 +17,21 @@
 }
 
 .kpi {
-    height: fit-content;
+    /* height: fit-content; */
     width: 100%;
 
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     gap: 0;
+}
+
+.dash-card.kpi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* padding: 14px 18px; */
+  height: fit-content; /* <- isso resolve o vazamento */
 }
 
 .card-resume span {
