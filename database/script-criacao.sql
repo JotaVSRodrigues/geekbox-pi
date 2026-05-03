@@ -2,7 +2,7 @@ CREATE TABLE usuario (
   id         INT PRIMARY KEY AUTO_INCREMENT,
   nome       VARCHAR(100) NOT NULL,
   email      VARCHAR(150) NOT NULL UNIQUE,
-  senha_hash VARCHAR(255) NOT NULL,
+  senha VARCHAR(255) NOT NULL,
   telefone CHAR(11) NOT NULL,
   avatar_url VARCHAR(255),
   criado_em  DATETIME DEFAULT NOW()
@@ -56,14 +56,4 @@ CREATE TABLE item_genero (
   PRIMARY KEY (item_id, genero_id),
   FOREIGN KEY (item_id)   REFERENCES item(id)   ON DELETE CASCADE,
   FOREIGN KEY (genero_id) REFERENCES genero(id) ON DELETE CASCADE
-);
-
-CREATE TABLE evento (
-  id         INT PRIMARY KEY AUTO_INCREMENT,
-  item_id    INT NOT NULL,
-  usuario_id INT NOT NULL,
-  tipo       ENUM('adicionado','iniciado','progresso','concluido','pausado','abandonado','avaliado') NOT NULL,
-  ocorreu_em DATETIME DEFAULT NOW(),
-  FOREIGN KEY (item_id)    REFERENCES item(id),
-  FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );
