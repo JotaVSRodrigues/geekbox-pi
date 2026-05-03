@@ -13,12 +13,35 @@ grafico-heatmap (uma div)
 class .chart
 */
 
-window.onload = function() {
-    carregarLinhas();
-    // buscarHorasPorMidia();
-    // buscarMetasPorAno();
-    // buscarFrequenciaConsumo();
+// window.onload = function() {
+//     carregarLinhas();
+//     // buscarHorasPorMidia();
+//     // buscarMetasPorAno();
+//     // buscarFrequenciaConsumo();
+// }
+
+const usuarioId = sessionStorage.getItem("ID_USUARIO");
+
+console.log("usuarioId:", usuarioId);
+
+if (!usuarioId) {
+    console.error("usuarioId não encontrado!");
+    window.location.href = "../html/login.html";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("usuarioId:", usuarioId); // deve mostrar o id no console
+
+    if (!usuarioId) {
+        window.location.href = "../html/login.html"; // redireciona se não tiver sessão
+        return;
+    }
+
+    // carregarKpis();
+    // carregarDonut();
+    carregarLinhas();
+    // carregarMetas();
+});
 
 const CORES = {
     'jogo':   '#7f77dd',
@@ -39,6 +62,8 @@ function carregarLinhas() {
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
             var series = {};
+            console.log("DATA:", data);
+            console.log("TIPO:", typeof data);
 
             data.forEach(function(row) {
                 if (!series[row.nome_categoria]) {
@@ -58,7 +83,7 @@ function carregarLinhas() {
                     borderWidth: 2,
                     pointRadius: 3,
                     pointHoverRadius: 6,
-                    tension, 0.4,
+                    tension: 0.4,
                     fill: false
                 };
             });
@@ -69,8 +94,8 @@ function carregarLinhas() {
                 }, 
                 options: {
                     responsive: true,
-                    mantainAspectRadio: false,
-                    plugins: { legend: { display: false }
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: true }
                     },
                     scales: {
                         x: {
@@ -89,42 +114,3 @@ function carregarLinhas() {
             console.error("Erro ao carregar consumo anual:", erro)
         });
 }
-
-// function buscarConsumoAnual() {
-//     var idUsuario = 
-//     fetch("/estatisticas/grafico/consumo-anual").then(function (resposta) {
-//         if (resposta.ok) {
-//             if (resposta.status == 204) {
-//                 var graficoLinha = document.getElementById("grafico-linha");
-//                 var mensagem = document.createElement("span");
-//                 mensagem.innerHTML = "Nenhum resultado encontrado para gráfico de linhas";
-//                 graficoLinha.appendChild(mensagem);
-//                 throw "Nenhum resultado encontrado!";
-//             }
-
-//             resposta.json().then(function (resposta) {
-//                 console.log("Dados Recebidos (buscarConsumoAnual()): ", JSON.stringify(resposta));
-
-//                 var graficoLinha = document.getElementById("grafico-linha");
-//                 graficoLinha.innerHTML = "";
-//             });
-//         }
-//     });
-// }
-
-
-// function buscarHorasPorMidia() {
-//     fetch("/estatisticas/grafico/horas-por-midia")
-// }
-
-
-// function buscarMetasPorAno() {
-//     fetch("/estatisticas/grafico/metas-por-ano")
-// }
-
-
-// function buscarFrequenciaConsumo() {
-//     fetch("/estatisticas/grafico/frequencia-consumo")
-// }
-
-// funções fetch das kpis

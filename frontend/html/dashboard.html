@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="../css/hero.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/chart.css">
 
     <!-- Script do ChartJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/estatistica.js"></script>
 </head>
 <body>
@@ -171,7 +172,25 @@
     </section>
 
     <script src="../js/saudacao.js"></script>
-    <script src="../js/chart.js"></script>
-    <script src="../js/estatistica.js"></script>
 </body>
 </html>
+<!-- Gráfico simples para testar -->
+<!-- <script>
+    const ctx = document.getElementById('grafico-linha');
+
+    const grafico = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+        datasets: [{
+          label: 'Vendas',
+          data: [10, 25, 15, 30, 20],
+          borderWidth: 2,
+          tension: 0.3 // deixa a linha mais suave
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+</script> -->

@@ -1,4 +1,13 @@
 
-#horizontal-bar-chart {
-
+.chart {
+    width: 100%;
 }
+
+canvas {
+    /* width: 100%; */
+    /* height: auto; */
+}
+
+/* #horizontal-bar-chart {
+
+} */
