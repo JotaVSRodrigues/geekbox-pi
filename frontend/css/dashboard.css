@@ -28,10 +28,17 @@
 .dash-card.kpi {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
   align-items: flex-start;
   /* padding: 14px 18px; */
-  height: fit-content; /* <- isso resolve o vazamento */
+  /* height: fit-content;  */
+}
+
+.chart {
+    position: relative;
+    width: 100%;
+    height: 240px;
 }
 
 .card-resume span {
@@ -74,8 +81,9 @@
     display: flex;
     flex-direction: column;
 
-    margin: 16px 0;
-    gap: 16px;
+    margin: 16px 0; 
+    gap: 16px; 
+    align-items: stretch; 
 }
 
 .graphics {

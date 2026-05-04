@@ -7,10 +7,13 @@ canvas {
     /* width: 100%; */
     /* height: auto; */
 }
-
-/* #grafico-donut {
-    height: 100px;
+/* 
+.chart-donut {
+    height: 300px;
 } */
+#grafico-donut {
+    height: 200px;
+}
 
 /* #horizontal-bar-chart {
 

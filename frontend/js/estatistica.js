@@ -150,20 +150,19 @@ function carregarDonut() {
                         backgroundColor: cores,
                         borderColor: '#0d0d0f',
                         borderWidth: 3,
-                        hoverOffset: 6
+                        hoverOffset: 6  
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    cutout: '40%',  
+                    cutout: '50%',  
                     plugins: {
                         legend: { display: true, position: 'left' },
                         tooltip: {
                             callbacks: {
                                 label: ctx => ` ${ctx.parsed} horas`
                             }
-                            
                         }
                     }
                 }

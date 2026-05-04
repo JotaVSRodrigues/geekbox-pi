@@ -29,15 +29,19 @@
 
 
 section {
-    height: 92vh;
+    /* height: 92vh; */
+    height: fit-content;
     width: 100vw;
 
     padding: 40px 60px;
+    /* margin-bottom: 20px; */
 }
+
 
 .container {
     height: 100%;
     width: 100%;
+    /* margin-bottom: 20px; */
 }
 
 .header-container {
@@ -70,12 +74,15 @@ section {
 h1 {
     font-family: 'DM_Serif_Display', sans-serif;
     font-size: 2.8em;
+    font-weight: 200;
+    line-height: 1.0;
 }
 
 h2 {
     font-family: 'DM_Serif_Display', sans-serif;
     font-size: 2.1em;
     font-style: italic;
+    font-weight: 200;
     caret-color: transparent;
 }
 
