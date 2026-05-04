@@ -68,10 +68,22 @@ function kpiConcluidos(usuarioId) {
     return database.executar(instrucao);
 }
 
+function kpiHorasTotais(usuarioId) {
+    var instrucao = `
+        select 
+            concat(round(sum(horas), 0), 'h' )total_horas
+        from item 
+        where usuario_id = ${usuarioId}
+            and year(concluido_em) = year(now());
+    `;
+
+    return database.executar(instrucao);
+}
 
 module.exports = {
     consumoMensal,
     horasPorCategoria,
     metasVsConcluidos,
-    kpiConcluidos
+    kpiConcluidos,
+    kpiHorasTotais
 };

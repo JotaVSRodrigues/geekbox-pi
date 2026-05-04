@@ -56,9 +56,22 @@ function kpiConcluidos(req, res) {
         })
 }
 
+function kpiHorasTotais(req, res) {
+    var usuarioId = req.params.id;
+
+    estatisticaModel.kpiHorasTotais(usuarioId)
+        .then(function(resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro.sqlMessage);
+        })
+}
+
 module.exports = {
     consumoMensal, 
     horasPorCategoria,
     metasVsConcluidos,
-    kpiConcluidos
+    kpiConcluidos,
+    kpiHorasTotais
 };

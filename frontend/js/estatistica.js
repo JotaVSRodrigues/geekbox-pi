@@ -1,6 +1,5 @@
 /* 
 IDs
-kpi-concluidos
 kpi-horas
 kpi-semanal
 kpi-conclusao
@@ -52,7 +51,15 @@ function carregarKpis() {
 
             document.getElementById("kpi-concluidos").innerText = data[0].quantidade_concluido;
         });
+        
+    fetch(`/estatisticas/kpi-horas-totais/${usuarioId}`)
+        .then(function(resposta) { return resposta.json(); })
+        .then(function(data) {
+            console.log("DATA KPI 1:", data)
+            console.log("QTD CONCLUIDO:", data[0].total_horas)
 
+            document.getElementById("kpi-horas").innerText = data[0].total_horas;
+        });
 }
 
 const CORES = {

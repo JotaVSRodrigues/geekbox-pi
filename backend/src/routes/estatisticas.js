@@ -44,6 +44,10 @@ router.get("/kpi-concluidos/:id", function (req, res) {
     estatisticaController.kpiConcluidos(req, res);
 });
 
+router.get("/kpi-horas-totais/:id", function (req, res) {
+    estatisticaController.kpiHorasTotais(req, res);
+});
+
 // router.get("/grafico/frequencia-consumo", function (req, res) {
 //     estatisticaController.buscarFrequenciaConsumo(req, res);
 // });
