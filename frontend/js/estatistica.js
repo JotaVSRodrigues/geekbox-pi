@@ -109,7 +109,8 @@ function carregarLinhas() {
                     scales: {
                         x: {
                             grid: { color: 'rgba(255,255,255,0.04)' },
-                            ticks: { color: '#5c5a55'}
+                            ticks: { color: '#5c5a55'},
+                            beginAtZero: true
                         },
                         y: {
                             grid: { color: 'rgba(255,255,255,0.04)' },
@@ -178,22 +179,6 @@ function carregarMetas() {
         .then(function(data) {
             console.log("DATA BARRA: ", data);
 
-            // let labels = []   
-            // let valores = []
-            // let cores = []
-
-            // for (let i = 0; i < data.length; i++) {
-            //     labels.push(data[i].nome_categoria);
-            //     valores.push(data[i].total_horas);
-            //     cores.push(CORES[data[i].nome_categoria] || '#888');
-            // }
-
-            // new Chart (document.getElementById("grafico-metas"), {
-            //     type: '',
-            //     data: { },
-            //     options: { }
-            // }) 
-
             let labels = [];
             let valoresMeta = [];
             let valoresConcluido = [];
@@ -207,8 +192,50 @@ function carregarMetas() {
             
                 console.log(`${labels[i]} || ${valoresMeta[i]} || ${valoresConcluido[i]}`)
             }
-
-            new Chart ()
+            
+            new Chart (document.getElementById("grafico-metas"), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Concluído',
+                            data: valoresConcluido,
+                            backgroundColor: cores,
+                            borderRadius: 12,
+                            barThickness: 8
+                        },
+                        {
+                            label: 'Meta',
+                            data: valoresMeta,
+                            backgroundColor: 'rgba(255,255,255,0.06)',
+                            borderRadius: 12,
+                            barThickness: 8
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true },
+                        tooltip: { enabled: true }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.04)' },
+                            ticks: { color: '#5c5a55'}
+                            // stacked: true
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#5c5a55' },
+                            stacked: true
+                        }
+                    }
+                }
+            })
             
 
         }).catch(function(erro) {
