@@ -12,3 +12,11 @@ if (horaAtual < 12) {
 }
 
 document.getElementById("mensagem-hora").innerText = mensagem;
+
+var nomeUsuario = sessionStorage.getItem("NOME_USUARIO");
+var elementoNome = document.getElementById("h1-span");
+
+if (nomeUsuario && elementoNome) {
+    var primeiroNome = nomeUsuario.split(" ")[0];
+    elementoNome.innerText = primeiroNome + "!";
+}
