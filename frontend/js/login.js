@@ -37,8 +37,12 @@ function loginUser() {
             console.log(resposta);
 
             resposta.json().then(json => {
-                console.log(json);
+                console.log("dados recebidos do backend", json);
                 console.log(JSON.stringify(json));
+
+                // limpa sessões anteriores
+                sessionStorage.clear();
+                
                 sessionStorage.ID_USUARIO = json.id;
                 sessionStorage.NOME_USUARIO = json.nome; 
                 sessionStorage.EMAIL_USUARIO = json.email;
