@@ -148,8 +148,8 @@ function carregarDonut() {
                     datasets: [{
                         data: valores,
                         backgroundColor: cores,
-                        borderColor: '#0d0d0f',
-                        borderWidth: 3,
+                        borderColor: '#141418',
+                        borderWidth: 5,
                         hoverOffset: 6  
                     }]
                 },
@@ -197,7 +197,7 @@ function carregarMetas() {
             let labels = [];
             let valoresMeta = [];
             let valoresConcluido = [];
-            let cores = [];
+            let cores   = [];
 
             for (let i = 0; i < data.length; i++) {
                 labels.push(data[i].nome_categoria);
@@ -208,6 +208,7 @@ function carregarMetas() {
                 console.log(`${labels[i]} || ${valoresMeta[i]} || ${valoresConcluido[i]}`)
             }
 
+            new Chart ()
             
 
         }).catch(function(erro) {
