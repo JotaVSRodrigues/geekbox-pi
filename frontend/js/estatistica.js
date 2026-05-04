@@ -61,32 +61,41 @@ function carregarLinhas() {
     fetch(`/estatisticas/consumo-mensal/${usuarioId}`)
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
-            var series = {};
+            
             console.log("DATA:", data);
             console.log("TIPO:", typeof data);
+            
+            var series = {};
 
-            data.forEach(function(row) {
+            for (let i = 0; i < data.length; i++) {
+                let row = data[i];
+
                 if (!series[row.nome_categoria]) {
                     series[row.nome_categoria] = new Array(12).fill(0);
                 }
-                series[row.nome_categoria][row.mes - 1] = row.total;
-            });
 
-            var datasets = Object.entries(series).map(function(entry) {
-                var cat = entry[0];
-                var valores = entry[1];
-                return {
+                series[row.nome_categoria][row.mes - 1] = row.total;    
+            }   
+
+            var datasets = [];
+            var categorias = Object.keys(series);
+
+
+            for (let i = 0; i < categorias.length; i++) {
+                var cat = categorias[i];
+            
+                datasets.push({
                     label: cat,
-                    data: valores,
+                    data: series[cat],
                     borderColor: CORES[cat] || '#888',
                     backgroundColor: (CORES[cat] || '#888') + '15',
                     borderWidth: 2,
                     pointRadius: 3,
                     pointHoverRadius: 6,
                     tension: 0.4,
-                    fill: false
-                };
-            });
+                    fill: false 
+                });
+            }
 
             new Chart(document.getElementById("grafico-linha"), {
                 type: 'line',
