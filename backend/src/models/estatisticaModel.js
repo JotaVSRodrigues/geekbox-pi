@@ -7,16 +7,16 @@ var database = require("../database/config");
 
 function consumoMensal(usuarioId) {
     var instrucao = `
-        SELECT MONTH(i.concluido_em) AS mes,
+        select month(i.concluido_em) mes,
             c.nome_categoria, 
-            COUNT(*) AS total   
-        FROM item i 
-        JOIN categoria c ON c.id_categoria = i.categoria_id
-        WHERE i.usuario_id = ${usuarioId}
-            AND i.status = 'concluido'
-            AND YEAR(i.concluido_em) = YEAR(NOW())
-        GROUP BY mes, c.nome_categoria
-        ORDER BY mes
+            count(*) total   
+        from item i 
+        join categoria c on c.id_categoria = i.categoria_id
+        where i.usuario_id = ${usuarioId}
+            and i.status = 'concluido'
+            and year(i.concluido_em) = year(now())
+        group by mes, c.nome_categoria
+        order by mes
     `;
     return database.executar(instrucao);
 }
@@ -56,8 +56,22 @@ function metasVsConcluidos(usuarioId) {
     return database.executar(instrucao);
 }
 
+function kpiConcluidos(usuarioId) {
+    var instrucao = `
+        select count(*) quantidade_concluido   
+        from item i 
+        where i.usuario_id = ${usuarioId}
+            and i.status = 'concluido'
+        group by year(now());
+    `;
+
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     consumoMensal,
     horasPorCategoria,
-    metasVsConcluidos
+    metasVsConcluidos,
+    kpiConcluidos
 };

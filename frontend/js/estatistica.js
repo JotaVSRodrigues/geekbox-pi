@@ -43,6 +43,12 @@ document.addEventListener("DOMContentLoaded", function() {
     carregarMetas();
 });
 
+function carregarKpis() {
+    fetch(`/estatisticas/kpi-concluidos/${usuarioId}`, {
+        
+    })
+}
+
 const CORES = {
     'jogo':   '#7f77dd',
     'livro':  '#1d9e75',

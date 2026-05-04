@@ -40,6 +40,9 @@ router.get("/metas-por-ano/:id", function (req, res) {
     estatisticaController.metasVsConcluidos(req, res);
 });
 
+router.get("metas/kpi-concluidos/:id", function (req, res) {
+    estatisticaController.kpiConcluidos(req, res);
+});
 
 // router.get("/grafico/frequencia-consumo", function (req, res) {
 //     estatisticaController.buscarFrequenciaConsumo(req, res);
