@@ -37,16 +37,22 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    // carregarKpis();
+    carregarKpis();
     carregarDonut();
     carregarLinhas();
     carregarMetas();
 });
 
 function carregarKpis() {
-    fetch(`/estatisticas/kpi-concluidos/${usuarioId}`, {
-        
-    })
+    fetch(`/estatisticas/kpi-concluidos/${usuarioId}`)
+        .then(function(resposta) { return resposta.json(); })
+        .then(function(data) {
+            console.log("DATA KPI 1:", data)
+            console.log("QTD CONCLUIDO:", data[0].quantidade_concluido)
+
+            document.getElementById("kpi-concluidos").innerText = data[0].quantidade_concluido;
+        });
+
 }
 
 const CORES = {
