@@ -36,13 +36,10 @@ router.get("/horas-por-categoria/:id", function (req, res) {
     estatisticaController.horasPorCategoria(req, res);
 });
 
-// router.get("/grafico/horas-por-midia", function (req, res) {
-//     estatisticaController.buscarHorasPorMidia(req, res);
-// });
+router.get("/metas-por-ano/:id", function (req, res) {
+    estatisticaController.metasVsConcluidos(req, res);
+});
 
-// router.get("/grafico/metas-por-ano", function (req, res) {
-//     estatisticaController.buscarMetasPorAno(req, res);
-// });
 
 // router.get("/grafico/frequencia-consumo", function (req, res) {
 //     estatisticaController.buscarFrequenciaConsumo(req, res);

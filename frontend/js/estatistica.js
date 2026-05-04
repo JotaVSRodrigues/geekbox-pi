@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // carregarKpis();
     carregarDonut();
     carregarLinhas();
-    // carregarMetas();
+    carregarMetas();
 });
 
 const CORES = {
@@ -169,7 +169,31 @@ function carregarDonut() {
             }) 
         }).catch(function(erro) {
             console.error("Erro ao carregar horas por categoria:", erro)
-        });
+    });
+}
 
-        
+function carregarMetas() {
+    fetch(`/estatisticas/metas-por-ano/${usuarioId}`)
+        .then(function(resposta) { return resposta.json() })
+        .then(function(data) {
+            console.log("DATA BARRA: ", data);
+
+            // let labels = []   
+            // let valores = []
+            // let cores = []
+
+            // for (let i = 0; i < data.length; i++) {
+            //     labels.push(data[i].nome_categoria);
+            //     valores.push(data[i].total_horas);
+            //     cores.push(CORES[data[i].nome_categoria] || '#888');
+            // }
+
+            // new Chart (document.getElementById("grafico-metas"), {
+            //     type: '',
+            //     data: { },
+            //     options: { }
+            // }) 
+        }).catch(function(erro) {
+            console.error("Erro ao carregar horas por categoria:", erro)
+        });
 }

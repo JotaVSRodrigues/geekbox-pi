@@ -36,7 +36,28 @@ function horasPorCategoria(usuarioId) {
     return database.executar(instrucao);    
 }
 
+function metasVsConcluidos(usuarioId) {
+    var instrucao = `
+        select 
+        c.nome_categoria,
+        m.quantidade quantidade_meta,
+        count(*) as quantidade_concluido  
+        from meta m
+        join categoria c on m.categoria_id = c.id_categoria
+        join item i on i.categoria_id = c.id_categoria
+        where m.usuario_id = ${usuarioId}
+            and i.status = 'concluido'
+            and year(i.concluido_em) = year(now())
+            and m.ano = year(now())
+        group by c.nome_categoria, quantidade_meta
+        order by year(now());
+    `;
+
+    return database.executar(instrucao);
+}
+
 module.exports = {
     consumoMensal,
-    horasPorCategoria
+    horasPorCategoria,
+    metasVsConcluidos
 };
