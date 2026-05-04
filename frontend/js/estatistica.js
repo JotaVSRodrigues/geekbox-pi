@@ -193,6 +193,23 @@ function carregarMetas() {
             //     data: { },
             //     options: { }
             // }) 
+
+            let labels = [];
+            let valoresMeta = [];
+            let valoresConcluido = [];
+            let cores = [];
+
+            for (let i = 0; i < data.length; i++) {
+                labels.push(data[i].nome_categoria);
+                valoresMeta.push(data[i].quantidade_meta);
+                valoresConcluido.push(data[i].quantidade_concluido);
+                cores.push(CORES[data[i].nome_categoria] || '#888');
+            
+                console.log(`${labels[i]} || ${valoresMeta[i]} || ${valoresConcluido[i]}`)
+            }
+
+            
+
         }).catch(function(erro) {
             console.error("Erro ao carregar horas por categoria:", erro)
         });
