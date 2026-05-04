@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // carregarKpis();
-    // carregarDonut();
+    carregarDonut();
     carregarLinhas();
     // carregarMetas();
 });
@@ -113,7 +113,7 @@ function carregarLinhas() {
                         },
                         y: {
                             grid: { color: 'rgba(255,255,255,0.04)' },
-                            ticks: { color: '#5c5a55', stepSize: 1},
+                            ticks: { color: '#5c5a55', stepSize: 1 /* sempre vai de 1 em 1 */},
                             beginAtZero: true
                         }
                     }
@@ -122,4 +122,55 @@ function carregarLinhas() {
         }).catch(function(erro) {
             console.error("Erro ao carregar consumo anual:", erro)
         });
+}
+
+
+function carregarDonut() {
+    fetch(`/estatisticas/horas-por-categoria/${usuarioId}`)
+        .then(function(resposta) { return resposta.json() })
+        .then(function(data) {
+            console.log("DATA DONUT: ", data);
+
+            let labels = []   
+            let valores = []
+            let cores = []
+
+            for (let i = 0; i < data.length; i++) {
+                labels.push(data[i].nome_categoria);
+                valores.push(data[i].total_horas);
+                cores.push(CORES[data[i].nome_categoria] || '#888');
+            }
+
+            new Chart (document.getElementById("grafico-donut"), {
+                type: 'doughnut',
+                data: { 
+                    labels: labels, 
+                    datasets: [{
+                        data: valores,
+                        backgroundColor: cores,
+                        borderColor: '#0d0d0f',
+                        borderWidth: 3,
+                        hoverOffset: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '40%',  
+                    plugins: {
+                        legend: { display: true, position: 'left' },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ` ${ctx.parsed} horas`
+                            }
+                            
+                        }
+                    }
+                }
+            }) 
+        }).catch(function(erro) {
+            console.error("Erro ao carregar horas por categoria:", erro)
+        });
+
+        
 }

@@ -32,6 +32,10 @@ router.get("/consumo-mensal/:id", function (req, res) {
     estatisticaController.consumoMensal(req, res);
 });
 
+router.get("/horas-por-categoria/:id", function (req, res) {
+    estatisticaController.horasPorCategoria(req, res);
+});
+
 // router.get("/grafico/horas-por-midia", function (req, res) {
 //     estatisticaController.buscarHorasPorMidia(req, res);
 // });
