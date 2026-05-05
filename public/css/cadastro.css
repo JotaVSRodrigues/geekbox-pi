@@ -109,33 +109,6 @@
     gap: 20px;
 }
 
-.btn-cadastro-div {
-    display: flex;
-    flex-direction: row;
-
-    margin: 10px 0 20px 0;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-cadastro {
-    background-color: #A26300;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-    border-radius: 6px;
-    padding: 10px 36px;
-    cursor: pointer;
-    transition: 0.3s ease, background-color 0.3s ease;
-
-    font-family: 'Syne', sans-serif;
-    font-weight: 750;
-}
-
-.btn-cadastro:hover {
-    background-color: transparent;
-    transform: scale(1.1);
-}
-
 .others {
     display: flex;
     flex-direction: row;

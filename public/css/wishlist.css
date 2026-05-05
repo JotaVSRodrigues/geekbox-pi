@@ -1,0 +1,47 @@
+
+
+.content-wishlist {
+    display: flex;
+    flex-direction: row;
+    
+    height: 70vh;
+    width: 100%;
+    gap: 50px;
+}
+
+
+.card-selected {
+    height: 100%;
+    width: 35%;
+
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.buttons-items {
+    display: flex;
+    flex-direction: row;
+    
+    width: 100%;
+
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.items-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+    
+    width: 65%;
+}
+
+
+.month-date span {
+    font-family: DM_Mono, Syne, sans-serif;
+    font-size: 1.0;
+    color: #A26300;
+}
