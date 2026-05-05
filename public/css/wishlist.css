@@ -39,9 +39,34 @@
     width: 65%;
 }
 
+.month-date {
+    margin: 24px 0;
+}
 
 .month-date span {
     font-family: DM_Mono, Syne, sans-serif;
     font-size: 1.0;
     color: #A26300;
 }
+
+.div-items {
+    width: 100%;
+    height: fit-content;
+}
+
+.div-item {
+    width: 100%;
+    height: 80px;
+
+    border: 2px solid white;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.information {}
