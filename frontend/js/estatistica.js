@@ -70,7 +70,7 @@ function carregarKpis() {
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
             console.log("DATA KPI 4:", data)
-            console.log("TAXA CONCLUSAO:", data[0].taxa_concluido)
+            console.log(`TAXA CONCLUSAO DO USUÁRIO ${usuarioId} ${data[0].taxa_concluido}`)
 
             document.getElementById("kpi-conclusao").innerText = data[0].taxa_concluido;
         });
