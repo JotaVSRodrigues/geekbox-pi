@@ -1,8 +1,4 @@
 /* 
-IDs
-kpi-horas
-kpi-semanal
-kpi-conclusao
 
 grafico-linha
 grafico-donut
@@ -29,7 +25,7 @@ if (!usuarioId) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("usuarioId:", usuarioId); // deve mostrar o id no console
+    console.log("usuarioId:", usuarioId); // id no console
 
     if (!usuarioId) {
         window.location.href = "../html/login.html"; // redireciona se não tiver sessão
@@ -68,6 +64,15 @@ function carregarKpis() {
             console.log("QTD HORAS SEMANAIS:", data[0].total_horas)
 
             document.getElementById("kpi-semanal").innerText = data[0].horas_semanais;
+        });
+
+    fetch(`/estatisticas/kpi-taxa-conclusao/${usuarioId}`)
+        .then(function(resposta) { return resposta.json(); })
+        .then(function(data) {
+            console.log("DATA KPI 4:", data)
+            console.log("TAXA CONCLUSAO:", data[0].taxa_concluido)
+
+            document.getElementById("kpi-conclusao").innerText = data[0].taxa_concluido;
         });
 }
 

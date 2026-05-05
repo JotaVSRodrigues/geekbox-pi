@@ -81,11 +81,24 @@ function kpiHorasSemanais(req, res) {
         })
 }
 
+function kpiTaxaConclusao(req, res) {
+    var usuarioId = req.params.id;
+
+    estatisticaModel.kpiTaxaConclusao(usuarioId)
+        .then(function(resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro.sqlMessage);
+        })
+}
+
 module.exports = {
     consumoMensal, 
     horasPorCategoria,
     metasVsConcluidos,
     kpiConcluidos,
     kpiHorasTotais,
-    kpiHorasSemanais
+    kpiHorasSemanais,
+    kpiTaxaConclusao
 };

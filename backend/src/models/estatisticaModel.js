@@ -94,6 +94,23 @@ function kpiHorasSemanais(usuarioId) {
     return database.executar(instrucao);
 }
 
+function kpiTaxaConclusao(usuarioId) {
+    var instrucao = `
+        select 
+        concat(round((count(*) / (
+            select count(*)
+            from item
+            where usuario_id = 5
+                and status = 'concluido'
+            group by year(now()) ) * 100), 0), '%') taxa_concluido
+        from item 
+        where usuario_id = 5
+            and status != 'concluido'
+        group by year(now());
+    `;
+
+    return database.executar(instrucao);
+}
 
 module.exports = {
     consumoMensal,
@@ -101,5 +118,6 @@ module.exports = {
     metasVsConcluidos,
     kpiConcluidos,
     kpiHorasTotais,
-    kpiHorasSemanais
+    kpiHorasSemanais,
+    kpiTaxaConclusao
 };
