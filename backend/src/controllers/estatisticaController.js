@@ -68,10 +68,24 @@ function kpiHorasTotais(req, res) {
         })
 }
 
+
+function kpiHorasSemanais(req, res) {
+    var usuarioId = req.params.id;
+
+    estatisticaModel.kpiHorasSemanais(usuarioId)
+        .then(function(resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro.sqlMessage);
+        })
+}
+
 module.exports = {
     consumoMensal, 
     horasPorCategoria,
     metasVsConcluidos,
     kpiConcluidos,
-    kpiHorasTotais
+    kpiHorasTotais,
+    kpiHorasSemanais
 };

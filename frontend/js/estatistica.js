@@ -55,10 +55,19 @@ function carregarKpis() {
     fetch(`/estatisticas/kpi-horas-totais/${usuarioId}`)
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
-            console.log("DATA KPI 1:", data)
-            console.log("QTD CONCLUIDO:", data[0].total_horas)
+            console.log("DATA KPI 2:", data)
+            console.log("QTD HORAS TOTAIS:", data[0].total_horas)
 
             document.getElementById("kpi-horas").innerText = data[0].total_horas;
+        });
+
+    fetch(`/estatisticas/kpi-horas-semanais/${usuarioId}`)
+        .then(function(resposta) { return resposta.json(); })
+        .then(function(data) {
+            console.log("DATA KPI 3:", data)
+            console.log("QTD HORAS SEMANAIS:", data[0].total_horas)
+
+            document.getElementById("kpi-semanal").innerText = data[0].horas_semanais;
         });
 }
 
