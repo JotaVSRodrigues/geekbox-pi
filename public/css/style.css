@@ -79,6 +79,14 @@
     font-family: 'DM_Mono';
     src: url('../assets/fonts/DM_Mono/DMMono-Medium.ttf');
     font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'DM_Mono';
+    src: url('../assets/fonts/DM_Mono/DMMono-Medium.ttf');
+    font-style: bold;
+    font-weight: 400;
 }
 
 body {

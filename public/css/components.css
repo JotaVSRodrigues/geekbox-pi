@@ -102,3 +102,14 @@
 .btn-wishlist {
     padding: 10px 18px;
 }
+
+#span-concluido {
+    color: #1D9E75;
+}
+
+.elipse-btn {
+    font-size: 30px;
+    background-color: transparent;
+    color: #FFFFFF;
+    border: none;
+}
