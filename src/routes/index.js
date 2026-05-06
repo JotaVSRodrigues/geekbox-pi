@@ -4,8 +4,8 @@ const path = require("path");
 
 router.get("/", function (req, res) {
     // res.json({ message: 'API working nice' });
-    // res.sendFile(path.join(__dirname, "../login.html"));
-    res.render("index");
+    res.sendFile(path.join(__dirname, "../login.html"));
+    // res.render("../html/login");
 })
 
 module.exports = router
