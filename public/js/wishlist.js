@@ -47,6 +47,7 @@ function updateDateSubtitle() {
 function addItem() {    
     const newItem = document.createElement("div");
     newItem.setAttribute("id", "new_item" + qtdItems);
+    newItem.classList.add("item-anim");
 
     const firstItem = fieldList.querySelector(".item");
 
@@ -80,6 +81,9 @@ function addItem() {
     `;
     
     
+    requestAnimationFrame(() => {
+        newItem.classList.add("show");
+    });
 
     qtdItems++;
     console.log(qtdItems);
