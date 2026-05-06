@@ -44,20 +44,16 @@ function updateDateSubtitle() {
         `;
 }
 
-function addItem() {
-    const date = new Date();
-    const month = calculateMonth();
-    const year = date.getFullYear();
-
-    const dateSubtitle = document.getElementById("id", "subtitle" + month + year);
-
+function addItem() {    
     const newItem = document.createElement("div");
     newItem.setAttribute("id", "new_item" + qtdItems);
 
-    if (qtdItems < 1) {
-        fieldList.appendChild(newItem);
+    const firstItem = fieldList.querySelector(".item");
+
+    if (firstItem) {
+        fieldList.insertBefore(newItem, firstItem.parentNode);
     } else {
-        fieldList.insertBefore(newItem, dateSubtitle);
+        fieldList.appendChild(newItem);
     }
     
     document.getElementById("new_item" + qtdItems).innerHTML = 
@@ -83,6 +79,8 @@ function addItem() {
         </div>
     `;
     
+    
+
     qtdItems++;
     console.log(qtdItems);
 
