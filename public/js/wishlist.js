@@ -45,6 +45,14 @@ function updateDateSubtitle() {
 }
 
 function addItem() {    
+    // essa funcao fara um insert no banco 
+    // essa funcao fara um select no banco e exibira as divs dinamicamente
+    /* 
+        exibir div, por exemplo, com um array de objetos (json puxado do banco) 
+        e fazendo appendChild ou innerHTMl, junto de um arrayObjetos.forEach(() => {
+            div.innerHTML ou div.appendChild()+
+            })
+    */
     const newItem = document.createElement("div");
     newItem.setAttribute("id", "new_item" + qtdItems);
     newItem.classList.add("item-anim");

@@ -103,3 +103,9 @@
     color: #4D4D4D;
     font-size: 1.1em;
 }
+
+#poster-image-wishlist {
+    height: 300px;
+    border: 2px solid white;
+    border-radius: 12px;
+}

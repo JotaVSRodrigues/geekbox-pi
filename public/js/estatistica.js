@@ -16,7 +16,6 @@ class .chart
 // }
 
 const usuarioId = sessionStorage.getItem("ID_USUARIO");
-
 console.log("usuarioId:", usuarioId);
 
 if (!usuarioId) {
@@ -39,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function carregarKpis() {
+    // colocar catch em todos os fetchs ou try catch em tudo (mas acho que nao pode)
+
     fetch(`/estatisticas/kpi-concluidos/${usuarioId}`)
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
@@ -215,7 +216,7 @@ function carregarMetas() {
             let labels = [];
             let valoresMeta = [];
             let valoresConcluido = [];
-            let cores   = [];
+            let cores = [];
 
             for (let i = 0; i < data.length; i++) {
                 labels.push(data[i].nome_categoria);
