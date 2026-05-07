@@ -1,6 +1,7 @@
 let qtdItems = 0
 // let qtdSubtitles = 0
 const fieldList = document.getElementById("field-list");
+const modal = document.querySelector('.modal-container');
 // const dateSubtitle = document.getElementById("date-subtitle");
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -44,6 +45,13 @@ function updateDateSubtitle() {
         `;
 }
 
+function createItemCard() {
+    modal.classList.add("active")
+
+
+    // chamar addItem()
+}
+
 function addItem() {    
     // essa funcao fara um insert no banco 
     // essa funcao fara um select no banco e exibira as divs dinamicamente
@@ -53,6 +61,7 @@ function addItem() {
             div.innerHTML ou div.appendChild()+
             })
     */
+
     const newItem = document.createElement("div");
     newItem.setAttribute("id", "new_item" + qtdItems);
     newItem.classList.add("item-anim");
