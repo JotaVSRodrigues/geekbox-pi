@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/wishlist.css">
     <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="shortcut icon" href="../assets/images/logo/Vector.png" type="image/x-icon">
 </head>
 <body>
@@ -26,14 +27,51 @@
     <section>
         <div class="modal-container">
             <div class="modal">
-                <h2>Modal</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate voluptatem ipsa, ipsum maxime quos accusamus nobis aperiam, quaerat enim corrupti cum officiis praesentium molestias eum doloremque itaque saepe, amet consequatur!</p>
-                <hr>
-                <button class="btnOk" onclick="closeModal()">Ok</button>
-                <button class="btnClose" onclick="closeModal()">Close</button>
+                <div class="box">
+                    <div class="header-box">
+                        <h1>
+                            <span>Cadastre um</span>
+                            <span>novo</span>
+                            <span id="highlight-span">item.</span>
+                        </h1>
+                        <p>
+                            Jogos, livros, filmes, séries, animes, mangás e músicas — rastreados, organizados e visualizados <span id="highlight-span-sub">do jeito que você merece.</span>
+                        </p>
+                    </div>
+                    <div class="content-box">
+                        <div class="header-content-box">
+                            <h2>Crie a sua conta</h2>
+                        </div>
+                        <div class="label-box">
+                            <div class="name-surname">
+                                <input id="ipt_nome" type="text" placeholder="Nome">
+                                <input id="ipt_sobrenome" type="text" placeholder="Sobrenome">
+                            </div>
+                            <div class="field-box">
+                                <div class="field">
+                                    <input id="ipt_titulo" type="text" placeholder="Título: Senhor dos Anéis...">
+                                </div>
+                                <div class="field">
+                                    <input id="ipt_categoria" type="text" placeholder="Senha forte">
+                                </div>
+                                <div class="field">
+                                    <input id="ipt_senha_conf" type="text" placeholder="Confirme sua senha">
+                                </div>
+                                <div class="field">
+                                    <input id="ipt_telefone" type="text" placeholder="(11) 99999-9999">
+                                </div>
+                            </div>
+                            <div class="btn-cadastro-div">
+                                <button onclick="registerUser()" class="btn-cadastro">Cadastrar item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- closeItemCard()
+        createItemCard() -->
         <div class="container">
             <div class="header-container">
 

@@ -11,10 +11,12 @@
     display: flex;
     flex-direction: column;
     padding: 30px;
-    background-color: #FFFFFF;
     border-radius: 10px;
     width: 50%;
-    color: black;
+    color: rgb(255, 255, 255);
+    border: 1px solid #1C1C22;
+    border-radius: 10px;
+    background-color: #141418;
 }
 
 .active {
@@ -23,6 +25,22 @@
 
 .active .modal {
     animation: modal .4s;
+}
+
+.section-inactive {
+    pointer-events: none;
+    cursor: default;
+    overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+  z-index: 1; /* Garante que o overlay fique atrás do texto */
 }
 
 @keyframes modal {

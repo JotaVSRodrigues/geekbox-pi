@@ -2,6 +2,7 @@ let qtdItems = 0
 // let qtdSubtitles = 0
 const fieldList = document.getElementById("field-list");
 const modal = document.querySelector('.modal-container');
+const body = document.getElementById("wishlist-body");
 // const dateSubtitle = document.getElementById("date-subtitle");
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -47,9 +48,11 @@ function updateDateSubtitle() {
 
 function createItemCard() {
     modal.classList.add("active")
-
-
     // chamar addItem()
+}
+
+function closeItemCard() {
+    modal.classList.remove("active")
 }
 
 function addItem() {    

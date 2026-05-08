@@ -9,7 +9,7 @@ var estatisticaModel = require("../models/estatisticaModel");
 
 function consumoMensal(req, res) {
     var usuarioId = req.params.id; 
-
+    
     
     estatisticaModel.consumoMensal(usuarioId)
         .then(function(resultado) {

@@ -23,7 +23,7 @@ if (!usuarioId) {
     window.location.href = "../html/login.html";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
     console.log("usuarioId:", usuarioId); // id no console
 
     if (!usuarioId) {
@@ -45,10 +45,11 @@ function carregarKpis() {
         .then(function(data) {
             console.log("DATA KPI 1:", data)
             console.log("QTD CONCLUIDO:", data[0].quantidade_concluido)
-
-            document.getElementById("kpi-concluidos").innerText = data[0].quantidade_concluido;
+            
+            document.getElementById("kpi-concluidos").innerHTML = data[0].quantidade_concluido;
         });
         
+
     fetch(`/estatisticas/kpi-horas-totais/${usuarioId}`)
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
@@ -137,7 +138,7 @@ function carregarLinhas() {
                 }, 
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: true,
                     plugins: { legend: { display: true }
                     },
                     scales: {
