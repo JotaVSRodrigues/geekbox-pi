@@ -134,3 +134,28 @@
     border: none;
     transform: scale(1.1);
 }   
+
+.label-box input {
+    background-color: transparent;
+    padding: 8px 8px;
+
+    width: 100%;
+    margin-bottom: 14px;
+
+    border: 2px solid white;
+    border-radius: 6px;
+
+    color: #FFFFFF;
+}
+
+::placeholder {
+    color: #707070;
+    font-family: 'Syne', sans-serif;
+}
+
+.responsive-labels {
+    display: flex;
+    flex-direction: row;
+
+    gap: 20px;
+}

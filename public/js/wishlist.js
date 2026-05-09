@@ -1,9 +1,8 @@
 let qtdItems = 0
 // let qtdSubtitles = 0
 const fieldList = document.getElementById("field-list");
-const modal = document.querySelector('.modal-container');
-const body = document.getElementById("wishlist-body");
-// const dateSubtitle = document.getElementById("date-subtitle");
+const modalItem = document.querySelector('.modal-container-item');
+const modalMeta = document.querySelector('.modal-container-meta');
 
 document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
@@ -46,13 +45,12 @@ function updateDateSubtitle() {
         `;
 }
 
-function createItemCard() {
+function createItemCard(modal) {
     modal.classList.remove("closing");
     modal.classList.add("active");
-    // chamar addItem()
 }
 
-function closeItemCard() {
+function closeItemCard(modal) {
     modal.classList.add("closing");
 
     setTimeout(() => {
@@ -70,6 +68,7 @@ function addItem() {
             div.innerHTML ou div.appendChild()+
             })
     */
+    closeItemCard(modalItem);
 
     const newItem = document.createElement("div");
     newItem.setAttribute("id", "new_item" + qtdItems);

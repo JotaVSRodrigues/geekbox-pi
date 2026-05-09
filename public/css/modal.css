@@ -22,7 +22,16 @@
 }
 
 
-.modal-container {
+.modal-container-item {
+    width: 100vw;
+    position: fixed;
+    top: 30vh;
+    display: none;
+    z-index: 999;
+    justify-content: center;
+}
+
+.modal-container-meta {
     width: 100vw;
     position: fixed;
     top: 30vh;
@@ -79,6 +88,7 @@
     display: flex;
     flex-direction: row;
     gap: 305;
+    margin-bottom: 24px;
 }
 
 .close-modal {
@@ -88,6 +98,9 @@
     margin-bottom: 10px;
 }
 
+#label-box-modal input {
+    font-size: 1.1em;
+}
 /* .section-inactive {
     pointer-events: none;
     cursor: default;
