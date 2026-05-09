@@ -1,47 +1,3 @@
-.modal-container {
-    width: 100vw;
-    position: fixed;
-    top: 30px;
-    display: none;
-    z-index: 999;
-    justify-content: center;
-}
-
-.modal {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    border-radius: 10px;
-    width: 50%;
-    color: rgb(255, 255, 255);
-    border: 1px solid #1C1C22;
-    border-radius: 10px;
-    background-color: #141418;
-}
-
-.active {
-    display: flex;
-}
-
-.active .modal {
-    animation: modal .4s;
-}
-
-.section-inactive {
-    pointer-events: none;
-    cursor: default;
-    overflow: hidden;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
-  z-index: 1; /* Garante que o overlay fique atrás do texto */
-}
 
 @keyframes modal {
     from {
@@ -53,3 +9,97 @@
         transform: translate3d(0, 0, 0);
     }
 }
+
+@keyframes modalClose {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+}
+
+
+.modal-container {
+    width: 100vw;
+    position: fixed;
+    top: 30vh;
+    display: none;
+    z-index: 999;
+    justify-content: center;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    padding: 46px;
+    border-radius: 10px;
+    width: 50%;
+    color: rgb(255, 255, 255);
+    border: 0.5px solid #4D4D4D;
+    border-radius: 10px;
+    background-color: #1C1C22;
+}
+
+.active {
+    display: flex;
+}
+
+.active .modal {
+    animation: modal .6s;
+}
+
+.closing {
+    pointer-events: none;
+}
+
+.closing .modal {
+    animation: modalClose .6s forwards;
+}
+
+
+.modal-header h2 {
+    display: block;
+    font-size: 2.8em;
+    line-height: 0.8;
+    font-family: 'DM_Serif_Display', sans-serif;
+}
+
+.modal-header p {
+    font-size: 1.2em;
+    display: block;
+    line-height: 1.0;
+    text-align: right;
+}
+
+.modal-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 305;
+}
+
+.close-modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* .section-inactive {
+    pointer-events: none;
+    cursor: default;
+    overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1; 
+} */

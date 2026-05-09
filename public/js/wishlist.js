@@ -47,12 +47,18 @@ function updateDateSubtitle() {
 }
 
 function createItemCard() {
-    modal.classList.add("active")
+    modal.classList.remove("closing");
+    modal.classList.add("active");
     // chamar addItem()
 }
 
 function closeItemCard() {
-    modal.classList.remove("active")
+    modal.classList.add("closing");
+
+    setTimeout(() => {
+        modal.classList.remove("active");
+        modal.classList.remove("closing");
+    }, 600);
 }
 
 function addItem() {    

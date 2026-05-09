@@ -123,3 +123,14 @@
     background-color: #FFFFFF;
     border-radius: 50%;
 }
+
+.close-modal button {
+    background: transparent;
+    border: none;
+    transition: 0.3s ease-in-out;
+}   
+
+.close-modal button:hover {
+    border: none;
+    transform: scale(1.1);
+}   

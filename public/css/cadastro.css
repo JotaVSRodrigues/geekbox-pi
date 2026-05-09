@@ -62,18 +62,6 @@
     line-height: 1.2;
 }
 
-#highlight-span {
-    font-style: italic;
-    /* font-weight: 600; */
-    color: #A26300;
-}
-
-#highlight-span-sub {
-    /* font-style: italic; */
-    font-weight: 500;
-    color: #A26300;
-}
-
 .content-box {
     display: flex;
     flex-direction: column;
