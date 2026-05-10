@@ -99,20 +99,10 @@
 }
 
 #label-box-modal input {
+    font-family: 'Syne', sans-serif;
     font-size: 1.1em;
 }
-/* .section-inactive {
-    pointer-events: none;
-    cursor: default;
-    overflow: hidden;
-}
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 1; 
-} */
+.responsive-labels #ipt_titulo {
+    width: 180%;
+}

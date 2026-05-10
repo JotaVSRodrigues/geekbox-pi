@@ -137,7 +137,20 @@
 
 .label-box input {
     background-color: transparent;
-    padding: 8px 8px;
+    padding: 8px 10px;
+
+    width: 100%;
+    margin-bottom: 14px;
+
+    border: 2px solid white;
+    border-radius: 6px;
+
+    color: #FFFFFF;
+}
+
+.label-box select {
+    background-color: transparent;
+    padding: 8px 10px;
 
     width: 100%;
     margin-bottom: 14px;
@@ -159,3 +172,32 @@
 
     gap: 20px;
 }
+
+select {
+    min-inline-size: 14ch;
+    justify-content: space-between;
+}
+
+select, select::picker(select) {
+    font-size: 1.1em;
+    appearance: base-select;
+    padding: 1rem;
+    border: 0.5px solid #4D4D4D;
+    border-radius: 1rem;
+    background-color: #222;
+    line-height: 1.6;
+    color: #FFFFFF;
+}
+
+select::picker-icon {
+    color: #4D4D4D;
+    transition: transform 0.4s ease;
+    margin-right: 8px;
+    border-radius: 100px;
+}
+
+select:open::picker-icon {
+    transform: rotate(90deg);
+}
+
+
