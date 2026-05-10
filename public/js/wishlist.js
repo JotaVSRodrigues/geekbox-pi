@@ -3,6 +3,9 @@ let qtdItems = 0
 const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
+const selectCategoria = document.getElementById("select_categoria");
+const selectGenero = document.getElementById("select_genero");
+
 
 document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
@@ -114,3 +117,24 @@ function addItem() {
     console.log(qtdItems);
 
 }
+
+const genres = [
+    { id: 1, nome: "RPG", categoria: 1 },
+    { id: 2, nome: "FPS", categoria: 1 },
+
+    { id: 3, nome: "Fantasia", categoria: 2 },
+    { id: 4, nome: "Drama", categoria: 2 },
+
+    { id: 5, nome: "Ação", categoria: 3 },
+    { id: 6, nome: "Terror", categoria: 3 },
+
+    { id: 7, nome: "Shounen", categoria: 5 },
+    { id: 8, nome: "Seinen", categoria: 5 },
+
+    { id: 9, nome: "Rock", categoria: 7 },
+    { id: 10, nome: "Jazz", categoria: 7 },
+];
+
+selectCategoria.addEventListener("change", () => {
+    const categoriaSelecionada = 
+})

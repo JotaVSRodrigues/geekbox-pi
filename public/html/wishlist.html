@@ -115,9 +115,29 @@
                         </select>
                     </div>
                     <div class="responsive-labels">
-                        <input id="ipt_status" type="text" placeholder="Status">
-                        <input id="ipt_horas_estimadas" type="text" placeholder="Horas estimadas">
-                        <input id="ipt_genero" type="text" placeholder="Gênero">
+                        <select name="Genero" id="select_genero" required="required">
+                            <option value="">Gênero</option>
+                            <option value="wishlist">Wishlist</option>
+                            <option value="em_progresso">Em Progresso</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="pausado">Pausado</option>
+                            <option value="abandonado">Abandonado</option>
+                        </select>
+
+                        <select name="Status" id="select_status" required="required">
+                            <option value="">Status</option>
+                            <option value="wishlist">Wishlist</option>
+                            <option value="em_progresso">Em Progresso</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="pausado">Pausado</option>
+                            <option value="abandonado">Abandonado</option>
+                        </select>
+
+                        <label>Horas:</label>
+                        <input type="number" name="horas" min="0" max="99" placeholder="00">
+                        <label>Minutos:</label>
+                        <input type="number" name="minutos" min="0" max="59" placeholder="00">
+
                     </div>
                     <div class="responsive-labels">
                         <input id="ipt_url_imagem" type="text" placeholder="Url da imagem de capa">
