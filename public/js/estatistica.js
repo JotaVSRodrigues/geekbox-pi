@@ -47,6 +47,8 @@ function carregarKpis() {
             console.log("QTD CONCLUIDO:", data[0].quantidade_concluido)
             
             document.getElementById("kpi-concluidos").innerHTML = data[0].quantidade_concluido;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
         
 

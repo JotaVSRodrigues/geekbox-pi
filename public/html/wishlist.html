@@ -104,7 +104,7 @@
                         <input id="ipt_titulo" type="text" placeholder="Título. Ex: Senhor dos Anéis... ">
 
                         <select name="Categoria" id="select_categoria" required="required">
-                            <option value="">Categoria</option>
+                            <option value="" disabled selected hidden >Categoria</option>
                             <option value="1">Jogo</option>
                             <option value="2">Livro</option>
                             <option value="3">Filme</option>
@@ -116,16 +116,12 @@
                     </div>
                     <div class="responsive-labels">
                         <select name="Genero" id="select_genero" required="required">
-                            <option value="">Gênero</option>
-                            <option value="wishlist">Wishlist</option>
-                            <option value="em_progresso">Em Progresso</option>
-                            <option value="concluido">Concluído</option>
-                            <option value="pausado">Pausado</option>
-                            <option value="abandonado">Abandonado</option>
+                            <option value="" disabled selected hidden >Gênero</option>
+
                         </select>
 
                         <select name="Status" id="select_status" required="required">
-                            <option value="">Status</option>
+                            <option value="" disabled selected hidden >Status</option>
                             <option value="wishlist">Wishlist</option>
                             <option value="em_progresso">Em Progresso</option>
                             <option value="concluido">Concluído</option>
@@ -134,9 +130,9 @@
                         </select>
 
                         <label>Horas:</label>
-                        <input type="number" name="horas" min="0" max="99" placeholder="00">
+                        <input id="ipt_horas" type="number" name="horas" min="0" max="99" placeholder="00">
                         <label>Minutos:</label>
-                        <input type="number" name="minutos" min="0" max="59" placeholder="00">
+                        <input id="ipt_minutos" type="number" name="minutos" min="0" max="59" placeholder="00">
 
                     </div>
                     <div class="responsive-labels">
@@ -217,6 +213,7 @@
 
     <script src="../js/sessao.js"></script>
     <script src="../js/wishlist.js"></script>
+    <script src="../js/cadastroItem.js"></script>
 </body>
 
 </html>

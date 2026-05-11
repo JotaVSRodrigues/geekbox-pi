@@ -3,29 +3,6 @@ var router = express.Router();
 
 var estatisticaController = require("../controllers/estatisticaController");
 
-// kpis
-// horasSemanais
-// horasPorCategoria
-// metasVsConcluidos
-
-
-// KPIS
-// router.get("/kpi/concluidos", function (req, res) {
-//     estatisticaController.buscarConcluidos(req, res);
-// });
-
-// router.get("/kpi/horas-totais", function (req, res) {
-//     estatisticaController.buscarHorasTotais(req, res);
-// });
-
-// router.get("/kpi/horas-semanais", function (req, res) {
-//     estatisticaController.buscarHorasSemanais(req, res);
-// });
-
-// router.get("/kpi/taxa-de-conclusao", function (req, res) {
-//     estatisticaController.buscarTaxaDeConclusao(req, res);
-// });
-
 
 // GRAFICOS
 router.get("/consumo-mensal/:id", function (req, res) {
