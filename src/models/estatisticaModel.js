@@ -16,7 +16,7 @@ function consumoMensal(usuarioId) {
             and i.status = 'concluido'
             and year(i.concluido_em) = year(now())
         group by mes, c.nome_categoria
-        order by mes
+        order by mes;
     `;
     return database.executar(instrucao);
 }

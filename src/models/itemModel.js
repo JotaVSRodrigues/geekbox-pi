@@ -7,11 +7,11 @@ function buscarGeneros() {
     return database.executar(instrucao);
 }
 
-function cadastrar(titulo, idCategoria, idGenero, status, ) {
+function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId) {
 
     var instrucaoSQL = `
-        INSERT INTO usuario (nome, email, senha, telefone) VALUES
-        ('${nome}', '${email}', '${senha}', '${telefone}');
+        insert into item (usuario_id, categoria_id, titulo, status, horas, genero_id) values
+        (${usuarioId}, ${categoriaId}, '${titulo}', '${status}', ${horas}, ${generoId});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);
@@ -19,5 +19,6 @@ function cadastrar(titulo, idCategoria, idGenero, status, ) {
 }
 
 module.exports = {
-    buscarGeneros
+    buscarGeneros,
+    cadastrarItem
 };

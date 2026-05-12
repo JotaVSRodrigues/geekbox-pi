@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
     carregarGeneros();
 
-    const categorySelect = document.getElementById("select_categoria");
+        const categorySelect = document.getElementById("select_categoria");
     const genreSelect = document.getElementById("select_genero");
 
     categorySelect.addEventListener("change", () => {
