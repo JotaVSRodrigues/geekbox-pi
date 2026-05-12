@@ -11,10 +11,9 @@ function buscarGeneros(req, res) {
 }
 
 function cadastrarItem(req, res) {
-    var usuarioId = req.params.id;
-
-    const titulo = req.body.tituloServer;
+    const usuarioId = req.body.usuarioIdServer;
     const categoriaId = req.body.categoriaIdServer;
+    const titulo = req.body.tituloServer;
     const status = req.body.statusServer;
     const horas = req.body.horasServer;
     const generoId = req.body.generoIdServer;

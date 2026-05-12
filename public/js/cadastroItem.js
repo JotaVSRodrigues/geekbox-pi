@@ -1,4 +1,9 @@
+
+const usuarioId = sessionStorage.getItem("ID_USUARIO");
+
 function registerItem() {
+    console.log(usuarioId)
+
     var titulo = ipt_titulo.value
     var idCategoria = select_categoria.value
     var idGenero = select_genero.value
@@ -38,6 +43,7 @@ function registerItem() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            usuarioIdServer: usuarioId,
             tituloServer: titulo,
             categoriaIdServer: idCategoria,
             statusServer: status,
