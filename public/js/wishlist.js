@@ -108,6 +108,11 @@ function carregarItens() {
             } else {
                 fieldList.appendChild(newItem);
             }
+
+            let num = item.horas;
+            let parteDecimal = num - Math.trunc(num); 
+            
+            let horaFormatada = `${String(num)}h${(parteDecimal*60).toFixed(2)}min`
             
             document.getElementById("new_item" + qtdItems).innerHTML = `
                 <div class="item">
@@ -116,7 +121,7 @@ function carregarItens() {
                         <div class="information-subtitle">
                             <span id="span-concluido">${item.status}</span>
                             <span>· ${item.horas} ·</span>
-                            <span> ${item.nome_categoria} </span>
+                            <span> ${item.nome_categoria} ·</span>
                             <span> ${item.nome_genero} </span>
                         </div>
                     </div>
