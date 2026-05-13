@@ -118,7 +118,7 @@ function carregarItens() {
             let generoFormatado = item.nome_genero.toLowerCase()
 
 
-            const meses = ["jan", "fev", "mar", "mai", "abr", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+            const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 
             document.getElementById("new_item" + qtdItems).innerHTML = `
@@ -157,64 +157,3 @@ function carregarItens() {
 
 }
 
-function capitalizar(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function addItem() {
-    const usuarioId = sessionStorage.getItem("ID_USUARIO");
-    closeItemCard(modalItem);
-
-    const newItem = document.createElement("div");
-    newItem.setAttribute("id", "new_item" + qtdItems);
-    newItem.classList.add("item-anim");
-
-    const firstItem = fieldList.querySelector(".item");
-
-    if (firstItem) {
-        fieldList.insertBefore(newItem, firstItem.parentNode);
-    } else {
-        fieldList.appendChild(newItem);
-    }
-
-    /* titulo, status, horas, categoria, genero, cadastrado_em */
-
-    fetch(`/itens/buscar-wishlist/${usuarioId}`)
-        .then((resposta) => { return resposta.json() })
-        .then((data) => {
-
-            console.log(data)
-            data.forEach((element) => {
-                
-            }) 
-        })
-
-        document.getElementById("new_item" + qtdItems).innerHTML = `
-            <div class="item">
-                <div class="information">
-                    <h4 class="item-header">Devoradores de Estrelas</h4>
-                    <div class="information-subtitle">
-                        <span id="span-concluido">CONCLUÍDO</span>
-                        <span>· 2h36min ·</span>
-                        <span>Sci-fi</span>
-                    </div>
-                </div>
-                <div class="right-information">
-                    <span class="right-information-date">23 dez</span>
-                    <button class="elipse-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        `;
-
-
-    requestAnimationFrame(() => {
-        newItem.classList.add("show");
-    });
-
-    qtdItems++;
-    console.log(qtdItems);
-}

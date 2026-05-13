@@ -56,7 +56,7 @@ function registerItem() {
             alert("Cadastro de item realizado com sucesso");
 
             setTimeout(() => {
-                addItem();
+                carregarItens();
             }, "600");
         } else {
             throw "Houve um erro ao realizar o cadastro de item!";
