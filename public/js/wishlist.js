@@ -95,6 +95,10 @@ function addItem() {
         fieldList.appendChild(newItem);
     }
 
+    /* titulo, status, horas, categoria, genero, cadastrado_em */
+
+    
+
     document.getElementById("new_item" + qtdItems).innerHTML = `
         <div class="item">
             <div class="information">
@@ -102,7 +106,7 @@ function addItem() {
                 <div class="information-subtitle">
                     <span id="span-concluido">CONCLUÍDO</span>
                     <span>· 2h36min ·</span>
-                    <span>Cinema</span>
+                    <span>Sci-fi</span>
                 </div>
             </div>
             <div class="right-information">

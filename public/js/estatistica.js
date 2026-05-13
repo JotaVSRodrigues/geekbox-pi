@@ -41,8 +41,12 @@ function carregarKpis() {
     // colocar catch em todos os fetchs ou try catch em tudo (mas acho que nao pode)
 
     fetch(`/estatisticas/kpi-concluidos/${usuarioId}`)
-        .then(function(resposta) { return resposta.json(); })
+    // ENTÃO
+        .then(function(resposta) { 
+            // console.log("RESPOSTA DA KPI 1:", resposta.json()); // --> Erro: TypeError: Failed to execute 'json' on 'Response': body stream already read
+            return resposta.json(); })
         .then(function(data) {
+            
             console.log("DATA KPI 1:", data)
             console.log("QTD CONCLUIDO:", data[0].quantidade_concluido)
             
@@ -96,7 +100,8 @@ const MESES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'O
 
 function carregarLinhas() {
     fetch(`/estatisticas/consumo-mensal/${usuarioId}`)
-        .then(function(resposta) { return resposta.json(); })
+        .then(function(resposta) { 
+            return resposta.json(); })
         .then(function(data) {
             
             console.log("DATA:", data);

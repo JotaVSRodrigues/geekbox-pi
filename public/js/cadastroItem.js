@@ -18,22 +18,21 @@ function registerItem() {
 
     var horasTotais = horas + (minutos/60).toFixed(2)
 
-    // if (!titulo || 
-    //     !idCategoria || 
-    //     !idGenero || 
-    //     !status ||
-    //     !horas ||
-    //     !minutos ||
-    //     titulo.trim().length === 0 ||
-    //     idCategoria.trim().length === 0 ||
-    //     idGenero.trim().length === 0 ||
-    //     status.trim().length === 0 ||
-    //     horas.trim().length === 0     
-    // ) {
-    //     alert(" Preencha todos os campos para cadastrar o item");
-    //     // colocar mensagem amigavel para o usuario (preenchimento de todos os campos)
-    //     return false;
-    // }
+    if (!titulo || 
+        !idCategoria || 
+        !idGenero || 
+        !status ||
+        !horasTotais ||
+        titulo.trim().length === 0 ||
+        idCategoria.trim().length === 0 ||
+        idGenero.trim().length === 0 ||
+        status.trim().length === 0 ||
+        horasTotais.trim().length === 0     
+    ) {
+        alert(" Preencha todos os campos para cadastrar o item");
+        // colocar mensagem amigavel para o usuario (preenchimento de todos os campos)
+        return false;
+    }
 
     // enviando o valor da nova input
 
@@ -58,8 +57,7 @@ function registerItem() {
 
             setTimeout(() => {
                 addItem();
-                window.location.href = "../wishlist.html";
-            }, "2000");
+            }, "600");
         } else {
             throw "Houve um erro ao realizar o cadastro de item!";
         }

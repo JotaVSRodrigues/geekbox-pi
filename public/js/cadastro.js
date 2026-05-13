@@ -39,6 +39,7 @@ function registerUser() {
 
     // enviando o valor da nova input
 
+    // BUSCA
     fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {

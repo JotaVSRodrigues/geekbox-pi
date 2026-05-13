@@ -43,13 +43,16 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
     var telefone = req.body.telefoneServer;
 
+    
+    console.log("NOME DA REQUISIÇÃO: ", req.body.nomeServer);
 
     if (nome == undefined || email == undefined 
         || senha == undefined || telefone == undefined) {
         res.status(400).send("Algum dado está undefined!");
-        
     } else {
-        usuarioModel.cadastrar(nome, email, senha, telefone).then(function(resposta) {   
+        usuarioModel.cadastrar(nome, email, senha, telefone).
+            // ENTÃO
+            then(function(resposta) {   
             res.status(200).send("Usuário criado com sucesso");
         }).catch(function(erro) {
             console.error("Erro no Usuario Model", erro)
