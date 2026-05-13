@@ -13,8 +13,9 @@ async function carregarGeneros() {
 document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
     carregarGeneros();
+    carregarItens();
 
-        const categorySelect = document.getElementById("select_categoria");
+    const categorySelect = document.getElementById("select_categoria");
     const genreSelect = document.getElementById("select_genero");
 
     categorySelect.addEventListener("change", () => {
@@ -80,7 +81,68 @@ function closeItemCard(modal) {
     }, 600);
 }
 
+function carregarItens() {
+    const usuarioId = sessionStorage.getItem("ID_USUARIO");
+
+    const newItem = document.createElement("div");
+    newItem.setAttribute("id", "new_item" + qtdItems);
+    newItem.classList.add("item-anim");
+
+    const firstItem = fieldList.querySelector(".item");
+
+    if (firstItem) {
+        fieldList.insertBefore(newItem, firstItem.parentNode);
+    } else {
+        fieldList.appendChild(newItem);
+    }
+
+    /* titulo, status, horas, categoria, genero, cadastrado_em */
+    let data = []
+
+    fetch(`/itens/buscar-wishlist/${usuarioId}`)
+        .then((resposta) => { return resposta.json() })
+        .then((resposta) => {
+            data = resposta
+            console.log(resposta[0].titulo)
+            console.log(data)
+
+        })
+        
+    for (let i = 0; i < data.length; i++) {
+        document.getElementById("new_item" + qtdItems).innerHTML = `
+            <div class="item">
+                <div class="information">
+                    <h4 class="item-header">${data[i].titulo}</h4>
+                    <div class="information-subtitle">
+                        <span id="span-concluido">${data[i].status}</span>
+                        <span>· ${data[i].horas} ·</span>
+                        <span> ${data[i].nome_categoria} </span>
+                        <span> ${data[i].nome_genero} </span>
+                    </div>
+                </div>
+                <div class="right-information">
+                    <span class="right-information-date">${data[i].dia_criacao}/${data[i].mes_criacao}</span>
+                    <button class="elipse-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        `;
+        console.log(i, "vez de execucao", qtdItems)
+        qtdItems++;
+    }
+
+    requestAnimationFrame(() => {
+        newItem.classList.add("show");
+    });
+
+    console.log(qtdItems);
+}
+
 function addItem() {
+    const usuarioId = sessionStorage.getItem("ID_USUARIO");
     closeItemCard(modalItem);
 
     const newItem = document.createElement("div");
@@ -97,28 +159,37 @@ function addItem() {
 
     /* titulo, status, horas, categoria, genero, cadastrado_em */
 
-    
+    fetch(`/itens/buscar-wishlist/${usuarioId}`)
+        .then((resposta) => { return resposta.json() })
+        .then((data) => {
 
-    document.getElementById("new_item" + qtdItems).innerHTML = `
-        <div class="item">
-            <div class="information">
-                <h4 class="item-header">Devoradores de Estrelas</h4>
-                <div class="information-subtitle">
-                    <span id="span-concluido">CONCLUÍDO</span>
-                    <span>· 2h36min ·</span>
-                    <span>Sci-fi</span>
+            console.log(data)
+            data.forEach((element) => {
+                
+            }) 
+        })
+
+        document.getElementById("new_item" + qtdItems).innerHTML = `
+            <div class="item">
+                <div class="information">
+                    <h4 class="item-header">Devoradores de Estrelas</h4>
+                    <div class="information-subtitle">
+                        <span id="span-concluido">CONCLUÍDO</span>
+                        <span>· 2h36min ·</span>
+                        <span>Sci-fi</span>
+                    </div>
+                </div>
+                <div class="right-information">
+                    <span class="right-information-date">23 dez</span>
+                    <button class="elipse-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
-            <div class="right-information">
-                <span class="right-information-date">23 dez</span>
-                <button class="elipse-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    `;
+        `;
+
 
     requestAnimationFrame(() => {
         newItem.classList.add("show");

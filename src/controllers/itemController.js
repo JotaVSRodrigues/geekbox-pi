@@ -29,7 +29,8 @@ function cadastrarItem(req, res) {
 }
 
 function buscarItensWishlist(req, res) {
-    const usuarioId = req.body.usuarioIdServer;
+    const usuarioId = req.params.id;
+    console.log(usuarioId)
 
     itemModel.buscarItensWishlist(usuarioId)
         .then((resposta) => {

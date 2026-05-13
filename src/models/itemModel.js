@@ -25,7 +25,8 @@ function buscarItensWishlist(usuarioId) {
         i.horas,
         c.nome_categoria,
         g.nome nome_genero,
-        i.criado_em
+        day(i.criado_em) dia_criacao,
+        month(i.criado_em) mes_criacao
     from item i 
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
