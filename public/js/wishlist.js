@@ -116,6 +116,11 @@ function carregarItens() {
         
             let statusFormatado = item.status.toUpperCase().replace("_", " ")
             let generoFormatado = item.nome_genero.toLowerCase()
+
+
+            const meses = ["jan", "fev", "mar", "mai", "abr", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+
             document.getElementById("new_item" + qtdItems).innerHTML = `
                 <div class="item">
                     <div class="information">
@@ -128,7 +133,7 @@ function carregarItens() {
                         </div>
                     </div>
                     <div class="right-information">
-                        <span class="right-information-date">${item.dia_criacao}/${item.mes_criacao}</span>
+                        <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
                         <button class="elipse-btn">
                             <span></span>
                             <span></span>
