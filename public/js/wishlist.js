@@ -110,17 +110,19 @@ function carregarItens() {
             }
 
             let num = item.horas;
-            let parteDecimal = num - Math.trunc(num); 
-            
-            let horaFormatada = `${String(num)}h${(parteDecimal*60).toFixed(2)}min`
-            
+            let numInteiro = Math.trunc(num);
+            let parteDecimal = ((num % 1).toFixed(2) * 60)
+            let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
+        
+
+
             document.getElementById("new_item" + qtdItems).innerHTML = `
                 <div class="item">
                     <div class="information">
                         <h4 class="item-header">${item.titulo}</h4>
                         <div class="information-subtitle">
                             <span id="span-concluido">${item.status}</span>
-                            <span>· ${item.horas} ·</span>
+                            <span>· ${horaFormatada} ·</span>
                             <span> ${item.nome_categoria} ·</span>
                             <span> ${item.nome_genero} </span>
                         </div>
@@ -148,6 +150,10 @@ function carregarItens() {
     // for (let i = 0; i < data.length; i++) {
     // }
 
+}
+
+function capitalizar(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function addItem() {
