@@ -84,64 +84,65 @@ function closeItemCard(modal) {
 function carregarItens() {
     const usuarioId = sessionStorage.getItem("ID_USUARIO");
 
-    const newItem = document.createElement("div");
-    newItem.setAttribute("id", "new_item" + qtdItems);
-    newItem.classList.add("item-anim");
-
-    const firstItem = fieldList.querySelector(".item");
-
-    if (firstItem) {
-        fieldList.insertBefore(newItem, firstItem.parentNode);
-    } else {
-        fieldList.appendChild(newItem);
-    }
-
-    /* titulo, status, horas, categoria, genero, cadastrado_em */
-    let data = []
-
+    
     fetch(`/itens/buscar-wishlist/${usuarioId}`)
-        .then((resposta) => { return resposta.json() })
-        .then((resultado) => {
-            data = resultado
-            console.log(resultado[0].titulo)
-            console.log(data)
-
-            data.forEach((element, i) => {
-                document.getElementById("new_item" + qtdItems).innerHTML = `
-                    <div class="item">
-                        <div class="information">
-                            <h4 class="item-header">${data[i].titulo}</h4>
-                            <div class="information-subtitle">
-                                <span id="span-concluido">${data[i].status}</span>
-                                <span>· ${data[i].horas} ·</span>
-                                <span> ${data[i].nome_categoria} </span>
-                                <span> ${data[i].nome_genero} </span>
-                            </div>
-                        </div>
-                        <div class="right-information">
-                            <span class="right-information-date">${data[i].dia_criacao}/${data[i].mes_criacao}</span>
-                            <button class="elipse-btn">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
+    .then((resposta) => { return resposta.json() })
+    .then((data) => {
+       
+        console.log(data);
+        updateDateSubtitle();
+        
+        
+        /* titulo, status, horas, categoria, genero, cadastrado_em */
+        
+        
+        data.forEach((item) => {
+            const newItem = document.createElement("div");
+            newItem.setAttribute("id", "new_item" + qtdItems);
+            newItem.classList.add("item-anim");
+        
+            const firstItem = fieldList.querySelector(".item");
+        
+            if (firstItem) {
+                fieldList.insertBefore(newItem, firstItem.parentNode);
+            } else {
+                fieldList.appendChild(newItem);
+            }
+            
+            document.getElementById("new_item" + qtdItems).innerHTML = `
+                <div class="item">
+                    <div class="information">
+                        <h4 class="item-header">${item.titulo}</h4>
+                        <div class="information-subtitle">
+                            <span id="span-concluido">${item.status}</span>
+                            <span>· ${item.horas} ·</span>
+                            <span> ${item.nome_categoria} </span>
+                            <span> ${item.nome_genero} </span>
                         </div>
                     </div>
-                `;
-                console.log(i, "vez de execucao", qtdItems)
-                qtdItems++; 
-            })
+                    <div class="right-information">
+                        <span class="right-information-date">${item.dia_criacao}/${item.mes_criacao}</span>
+                        <button class="elipse-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            requestAnimationFrame(() => {
+                newItem.classList.add("show");
+            });
+
+            qtdItems++; 
         })
+    })
         
 
     // for (let i = 0; i < data.length; i++) {
     // }
 
-    requestAnimationFrame(() => {
-        newItem.classList.add("show");
-    });
-
-    console.log(qtdItems);
 }
 
 function addItem() {
