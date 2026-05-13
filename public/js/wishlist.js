@@ -114,17 +114,17 @@ function carregarItens() {
             let parteDecimal = ((num % 1).toFixed(2) * 60)
             let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
         
-
-
+            let statusFormatado = item.status.toUpperCase().replace("_", " ")
+            let generoFormatado = item.nome_genero.toLowerCase()
             document.getElementById("new_item" + qtdItems).innerHTML = `
                 <div class="item">
                     <div class="information">
                         <h4 class="item-header">${item.titulo}</h4>
                         <div class="information-subtitle">
-                            <span id="span-concluido">${item.status}</span>
+                            <span id="span-concluido">${statusFormatado}</span>
                             <span>· ${horaFormatada} ·</span>
                             <span> ${item.nome_categoria} ·</span>
-                            <span> ${item.nome_genero} </span>
+                            <span> ${generoFormatado} </span>
                         </div>
                     </div>
                     <div class="right-information">
