@@ -1,10 +1,7 @@
-const { elements } = require("chart.js");
-
 let qtdItems = 0;
 const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
-// const divItem = document.querySelector('.item');
 
 let genres = [];
 
@@ -124,8 +121,9 @@ function carregarItens() {
             const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
 
+
             document.getElementById("new_item" + qtdItems).innerHTML = `
-                <div class="item" >
+                <div class="item" onclick="getItem(${item.id})">
                     <div class="information">
                         <h4 class="item-header">${item.titulo}</h4>
                         <div class="information-subtitle">
@@ -153,26 +151,17 @@ function carregarItens() {
             qtdItems++; 
         })
     })
+        
 
 }
 
-// divItem.addEventListener('click', () => {
-//     const divId = div.getAtribute('data-json');
-//     console.log(divId);
-// })
+function getItem(itemId) {
+    console.log("item clicado: ", itemId)
 
-// function acessarItem() {
-//     // let idItem = 
+    fetch(`/itens/buscar-item/${itemId}`)
+    .then((resposta) => { return resposta.json() })
+    .then((data) => {
 
-//     //   {
-//     // id: 186,
-//     // titulo: 'Human Nature',
-//     // status: 'wishlist',
-//     // horas: '0.1',
-//     // nome_categoria: 'musica',
-//     // nome_genero: 'Pop',
-//     // dia_criacao: 13,
-//     // mes_criacao: 5
-//     //   }
-// }
 
+    }
+}

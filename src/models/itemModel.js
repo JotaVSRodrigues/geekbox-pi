@@ -20,8 +20,8 @@ function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId) 
 
 function buscarItensWishlist(usuarioId) {
     var instrucaoSQL = `
-    select
-        i.id, 
+    select 
+        i.id,
         i.titulo, 
         i.status,
         i.horas,
@@ -39,8 +39,27 @@ function buscarItensWishlist(usuarioId) {
     return database.executar(instrucaoSQL);
 }
 
+function buscarItemSelecionado(itemId) {
+    var instrucaoSQL = `
+    select i.titulo, 
+		i.url_imagem, 
+        i.status,
+        i.horas,
+        c.nome_categoria, 
+        g.nome nome_genero, 
+        day(i.criado_em) dia_criacao, 
+        month(i.criado_em) mes_criacao, 
+        year(i.criado_em) ano_criacao
+    from item i 
+    join categoria c on i.categoria_id = c.id_categoria
+    join genero g on g.id = i.genero_id
+        where i.id = ${itemId};
+    `
+}
+
 module.exports = {
     buscarGeneros,
     cadastrarItem,
-    buscarItensWishlist
+    buscarItensWishlist,
+    buscarItemSelecionado
 };
