@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,12 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/hero.css">
     <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/wishlist.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="shortcut icon" href="../assets/images/logo/Vector.png" type="image/x-icon">
 </head>
+
 <body>
     <div class="navbar-div">
         <nav class="navbar">
@@ -22,6 +27,134 @@
     </div>
 
     <section>
+
+        <!-- DIVS DOS MODALS -->
+        <div class="modal-container-meta">
+            <div class="modal">
+                <div class="close-modal">
+                    <button onclick="closeItemCard(modalMeta)">
+                        <img src="../assets/images/icons/x-icon.png" alt="">
+                    </button>
+                </div>
+                <div class="modal-header-meta">
+                    <div>
+                        <h2>
+                            <span>Cadastre uma</span>
+                            <span>nova <span id="highlight-span">meta.</span></span>
+                        </h2>
+                    </div>
+                    <div>
+                        <p>
+                            <span>Defina uma quantidade, categoria e</span>
+                            <span>data de conclusão. E pronto!</span>
+                            <span>Você terá uma meta de consumo.</span>
+                            <span>Tudo organizado e monitorado <span id="highlight-span">num só lugar.</span></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="label-box" id="label-box-modal">
+                    <div class="responsive-labels">
+                        
+                        <input id="ipt_quantidade" type="number" name="horas" min="0" placeholder="Quantidade">
+                        <select name="Categoria" id="select_categoria_meta" required="required">
+                            <option value="" disabled selected hidden >Categoria</option>
+                            <option value="1">Jogo</option>
+                            <option value="2">Livro</option>
+                            <option value="3">Filme</option>
+                            <option value="4">Série</option>
+                            <option value="5">Anime</option>
+                            <option value="6">Mangá</option>
+                            <option value="7">Música</option>
+                        </select>
+                    </div>
+                    <div class="responsive-labels">
+                        <input id="ipt_data_meta" type="date" placeholder="Data de conclusão">
+                    </div>
+                </div>
+
+                <div class="btn-cadastro-div">
+                    <button onclick="criarMeta()" class="btn-cadastro">Cadastrar Meta</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal-container-item">
+            <div class="modal">
+                <div class="close-modal">
+                    <button onclick="closeItemCard(modalItem)">
+                        <img src="../assets/images/icons/x-icon.png" alt="">
+                    </button>
+                </div>
+                <div class="modal-header">
+                    <div>
+                        <h2>
+                            <span>Cadastre um</span>
+                            <span>novo <span id="highlight-span">item.</span></span>
+                        </h2>
+                    </div>
+                    <div>
+                        <p>
+                            <span>Jogos, livros, filmes, séries,</span>
+                            <span>animes, mangás e músicas</span>
+                            <span>— rastreados, organizados</span>
+                            <span>e visualizados <span id="highlight-span">num só lugar.</span></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="label-box" id="label-box-modal">
+                    <div class="responsive-labels">
+                        <input id="ipt_titulo" type="text" placeholder="Título. Ex: Senhor dos Anéis... ">
+
+                        <select name="Categoria" id="select_categoria" required="required">
+                            <option value="" disabled selected hidden >Categoria</option>
+                            <option value="1">Jogo</option>
+                            <option value="2">Livro</option>
+                            <option value="3">Filme</option>
+                            <option value="4">Série</option>
+                            <option value="5">Anime</option>
+                            <option value="6">Mangá</option>
+                            <option value="7">Música</option>
+                        </select>
+                    </div>
+                    <div class="responsive-labels">
+                        <select name="Genero" id="select_genero" required="required">
+                            <option value="" disabled selected hidden >Gênero</option>
+
+                        </select>
+
+                        <select name="Status" id="select_status" required="required">
+                            <option value="" disabled selected hidden >Status</option>
+                            <option value="wishlist">Wishlist</option>
+                            <option value="em_progresso">Em Progresso</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="pausado">Pausado</option>
+                            <option value="abandonado">Abandonado</option>
+                        </select>
+
+                        <label>Horas:</label>
+                        <input id="ipt_horas" type="number" name="horas" min="0" max="99" placeholder="00">
+                        <label>Minutos:</label>
+                        <input id="ipt_minutos" type="number" name="minutos" min="0" max="59" placeholder="00">
+
+                    </div>
+                    <div class="responsive-labels">
+                        <input id="ipt_url_imagem" type="text" placeholder="Url da imagem de capa">
+                    </div>
+                </div>
+
+                <div class="btn-cadastro-div">
+                    <button onclick="registerItem()" class="btn-cadastro">Cadastrar item</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- AQUI ACABA AS DIVS DOS MODALS -->
+
+        <!-- closeItemCard()
+        createItemCard() -->
         <div class="container">
             <div class="header-container">
 
@@ -38,8 +171,7 @@
 
                 <div class="navigation-buttons">
                     <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../html/timeline.html">Timeline</a></li>
+                        <li><a href="../index.html">Timeline</a></li>
                         <li><a href="../html/wishlist.html">Wishlist</a></li>
                         <li><a href="../html/dashboard.html">Estatísticas</a></li>
                     </ul>
@@ -47,39 +179,32 @@
             </div>
 
             <div class="content-container">
-                <div class="main-content anim-scale-in anim-d1">
-                    <div class="card anim-fade-up anim-d2">
-                        <h2>Devoradores de Estrelas</h2>
-                        <div class="main-card-information">
-                            <img id="poster-image" src="../assets/images/poster/project-hail-mary-poster.jpg" alt="">
-                            <div class="card-information">
-                                <span>Categoria: Filme</span>
-                                <span>Horas: 2h45min</span>
-                                <span>Nota: 4.6/5</span>
-                                <span>Abr 24 2026</span>
+                <div class="content-wishlist anim-scale-in anim-d1">
+                    
+                    <div class="card-selected anim-fade-up anim-d2 dash-card">
+                        <div class="content-selected" id="div-content-selected">
+                            <div class="no-content">
+                                <p>Selecione algum item</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-content anim-fade-up anim-d3">
-                        <div class="content-header">
-                            <h2>
-                                <span>Escreva sua</span>
-                                <span>resenha aqui.</span>
-                            </h2>
-                            <div class="card-categories">
-                                <div>Filmes</div>
-                                <div>Concluído</div>
-                                <div>Ficção Científica</div>
+                    <div class="items-list anim-scale-in anim-d1">
+                        <div class="buttons-items">
+                            <div class="btn-cadastro-div anim-fade-up anim-d3">
+                                <button onclick="createItemCard(modalMeta)" class="btn-cadastro btn-wishlist">Metas</button>
                             </div>
-                            <div class="stars-classification">
-                                <img src="../assets/images/icons/star-classification.png" alt="">
-                            </div>
-                        </div>
-                        <div class="content-text">
-                            <textarea name="" id="textarea-resenha"></textarea>
 
-                            <div class="caraceteres-count"><span>240/560 caracteres</span></div>
+                            <div class="btn-cadastro-div anim-fade-up anim-d3">
+                                <button onclick="createItemCard(modalItem)" class="btn-cadastro  btn-wishlist">+ Novo
+                                    item</button>
+                            </div>
+
+                        </div>
+                        <div class="field-list-container">
+                            <div id="field-list" class="list">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,15 +213,8 @@
     </section>
 
     <script src="../js/sessao.js"></script>
+    <script src="../js/timeline.js"></script>
+    <script src="../js/cadastroItem.js"></script>
 </body>
-</html>
-<script>
-    const usuarioId = sessionStorage.getItem("ID_USUARIO");
-    console.log("usuarioId:", usuarioId);
 
-    
-    if (!usuarioId) {
-        console.error("usuarioId não encontrado!");
-        window.location.href = "../html/login.html";
-    }
-</script>
+</html>
