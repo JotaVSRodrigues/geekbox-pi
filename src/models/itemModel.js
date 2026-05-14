@@ -20,7 +20,9 @@ function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId) 
 
 function buscarItensWishlist(usuarioId) {
     var instrucaoSQL = `
-    select i.titulo, 
+    select
+        i.id, 
+        i.titulo, 
         i.status,
         i.horas,
         c.nome_categoria,

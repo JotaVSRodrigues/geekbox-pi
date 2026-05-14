@@ -57,7 +57,7 @@ function registerItem() {
 
             setTimeout(() => {
                 carregarItens();
-            }, "600");
+            }, "1200");
         } else {
             throw "Houve um erro ao realizar o cadastro de item!";
         }

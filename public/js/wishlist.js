@@ -1,7 +1,10 @@
+const { elements } = require("chart.js");
+
 let qtdItems = 0;
 const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
+// const divItem = document.querySelector('.item');
 
 let genres = [];
 
@@ -122,7 +125,7 @@ function carregarItens() {
 
 
             document.getElementById("new_item" + qtdItems).innerHTML = `
-                <div class="item">
+                <div class="item" >
                     <div class="information">
                         <h4 class="item-header">${item.titulo}</h4>
                         <div class="information-subtitle">
@@ -150,10 +153,26 @@ function carregarItens() {
             qtdItems++; 
         })
     })
-        
-
-    // for (let i = 0; i < data.length; i++) {
-    // }
 
 }
+
+// divItem.addEventListener('click', () => {
+//     const divId = div.getAtribute('data-json');
+//     console.log(divId);
+// })
+
+// function acessarItem() {
+//     // let idItem = 
+
+//     //   {
+//     // id: 186,
+//     // titulo: 'Human Nature',
+//     // status: 'wishlist',
+//     // horas: '0.1',
+//     // nome_categoria: 'musica',
+//     // nome_genero: 'Pop',
+//     // dia_criacao: 13,
+//     // mes_criacao: 5
+//     //   }
+// }
 
