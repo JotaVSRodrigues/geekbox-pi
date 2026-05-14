@@ -161,7 +161,22 @@ function getItem(itemId) {
     fetch(`/itens/buscar-item/${itemId}`)
     .then((resposta) => { return resposta.json() })
     .then((data) => {
+        console.log("FETCH DO GETITEM() FUNCIONANDO. DADOS=> ", data)
 
-
-    }
+    })
 }
+
+    // fetch("/itens/cadastrar-item", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         usuarioIdServer: usuarioId,
+    //         tituloServer: titulo,
+    //         categoriaIdServer: idCategoria,
+    //         statusServer: status,
+    //         horasServer: horasTotais,
+    //         generoIdServer: idGenero
+    //     }),
+    // })

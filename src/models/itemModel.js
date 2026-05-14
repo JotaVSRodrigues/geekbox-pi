@@ -55,6 +55,8 @@ function buscarItemSelecionado(itemId) {
     join genero g on g.id = i.genero_id
         where i.id = ${itemId};
     `
+
+    return database.executar(instrucaoSQL);
 }
 
 module.exports = {

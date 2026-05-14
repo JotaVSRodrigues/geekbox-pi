@@ -39,8 +39,22 @@ function buscarItensWishlist(req, res) {
             res.status(500).json(erro.sqlMessage)
         })
 }
+
+function buscarItemSelecionado(req, res) {
+    const itemId = req.params.itemId;
+    console.log("ITEM ID NO ITEM CONTROLLR: ", itemId)
+
+    itemModel.buscarItemSelecionado(itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
 module.exports = {
     buscarGeneros,
     cadastrarItem,
-    buscarItensWishlist
+    buscarItensWishlist,
+    buscarItemSelecionado
 };
