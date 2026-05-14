@@ -2,7 +2,7 @@ let qtdItems = 0;
 const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
-
+const divCard = document.getElementById("div-content-selected");
 let genres = [];
 
 async function carregarGeneros() {
@@ -156,16 +156,64 @@ function carregarItens() {
 }
 
 function getItem(itemId) {
+    divCard.innerHTML = ""
     console.log("item clicado: ", itemId)
 
     fetch(`/itens/buscar-item/${itemId}`)
     .then((resposta) => { return resposta.json() })
     .then((data) => {
         console.log("FETCH DO GETITEM() FUNCIONANDO. DADOS=> ", data)
+        
+        let num = data[0].horas;
+        let numInteiro = Math.trunc(num);
+        let parteDecimal = ((num % 1).toFixed(2) * 60)
+        let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
+    
+        let statusFormatado = data[0].status.toUpperCase().replace("_", " ")
+        let generoFormatado = data[0].nome_genero.toLowerCase()
+
+
+        const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+        
+        divCard.innerHTML =
+            `
+            <div class="content-selected-header anim-scale-in anim-d1">
+                <div class="selected-image anim-fade-up anim-d3">
+                    <img id="poster-image-wishlist" src="${data[0].url_imagem}" alt="">
+                </div>
+                
+                <div class="selected-card-information anim-fade-up anim-d3">
+                    <h2>${data[0].titulo}</h2>
+                    <div class="card-information">
+                        <span>Categoria: ${data[0].nome_categoria}</span>
+                        <span>Gênero: ${data[0].nome_genero}</span>
+                        <span>Duração: ${horaFormatada}</span>
+                        <span>Status: ${statusFormatado}</pan>
+                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
+                        <br>
+                        <span>Nota: 4.6/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Escreva sua resenha aqui.</h3>
+                <div class="wishlist-content-text">
+                    <textarea name="" id="textarea-resenha"></textarea>
+
+                    <div class="btn-cadastro-div">
+                        <button class="btn-cadastro">Salvar Resenha</button>
+                    </div>
+                </div>
+            </div>
+            `;
 
     })
 }
 
+function criarMeta() {
+    modalMeta
+}
     // fetch("/itens/cadastrar-item", {
     //     method: "POST",
     //     headers: {
