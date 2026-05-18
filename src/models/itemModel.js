@@ -59,9 +59,33 @@ function buscarItemSelecionado(itemId) {
     return database.executar(instrucaoSQL);
 }
 
+function buscarItensTimeline(usuarioId) {
+    var instrucaoSQL = `
+    select 
+        i.id,
+        i.titulo, 
+        i.status,
+        i.horas,
+        c.nome_categoria,
+        g.nome nome_genero,
+        day(i.criado_em) dia_criacao,
+        month(i.criado_em) mes_criacao
+    from item i 
+    join categoria c on i.categoria_id = c.id_categoria
+    join genero g on g.id = i.genero_id
+        where i.usuario_id = ${usuarioId}
+            and i.status = 'concluido';
+    `;
+
+    return database.executar(instrucaoSQL);
+}
+
+
+
 module.exports = {
     buscarGeneros,
     cadastrarItem,
     buscarItensWishlist,
-    buscarItemSelecionado
+    buscarItensTimeline,
+    buscarItemSelecionado,
 };

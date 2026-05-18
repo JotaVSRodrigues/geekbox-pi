@@ -85,7 +85,7 @@ function carregarItens() {
     const usuarioId = sessionStorage.getItem("ID_USUARIO");
 
     
-    fetch(`/itens/buscar-wishlist/${usuarioId}`)
+    fetch(`/itens/buscar-timeline/${usuarioId}`)
     .then((resposta) => { return resposta.json() })
     .then((data) => {
        
