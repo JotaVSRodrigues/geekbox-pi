@@ -1,10 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-var itemController = require("../controllers/itemController");
+var metaController = require("../controllers/metaController");
 
-router.get("/buscar-item/:itemId", function(req, res) {
-    itemController.buscarItemSelecionado(req, res);
+router.post("/cadastrar-meta", function(req, res) {
+    metaController.cadastrarMeta(req, res);
 })
 
 module.exports = router;

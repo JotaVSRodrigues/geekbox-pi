@@ -69,6 +69,3 @@ function registerItem() {
 
 }
 
-function registeMeta() {
-    
-}

@@ -1,14 +1,13 @@
-var itemModel = require("../models/itemModel");
+var metaModel = require("../models/metaModel");
 
-function cadastrarItem(req, res) {
+function cadastrarMeta(req, res) {
     const usuarioId = req.body.usuarioIdServer;
     const categoriaId = req.body.categoriaIdServer;
-    const titulo = req.body.tituloServer;
-    const status = req.body.statusServer;
-    const horas = req.body.horasServer;
-    const generoId = req.body.generoIdServer;
+    const quantidade = req.body.quantidadeServer;
+    const ano = req.body.anoServer;
+   
 
-    itemModel.cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId)
+    metaModel.cadastrarMeta(usuarioId, categoriaId, quantidade, ano)
         .then(function(resposta) {
             res.status(200).json(resposta)
         }).catch(function(erro) {
@@ -19,8 +18,5 @@ function cadastrarItem(req, res) {
 }
 
 module.exports = {
-    buscarGeneros,
-    cadastrarItem,
-    buscarItensWishlist,
-    buscarItemSelecionado
+    cadastrarMeta
 };

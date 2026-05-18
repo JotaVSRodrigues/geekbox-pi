@@ -1,10 +1,10 @@
 var database = require("../database/config");
 
-function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId) {
+function cadastrarMeta(usuarioId, categoriaId, quantidade, ano) {
 
     var instrucaoSQL = `
-        insert into item (usuario_id, categoria_id, titulo, status, horas, genero_id) values
-        (${usuarioId}, ${categoriaId}, '${titulo}', '${status}', ${horas}, ${generoId});
+        insert into meta (usuario_id, categoria_id, quantidade, ano) values
+		(${usuarioId}, ${categoriaId}, ${quantidade}, ${ano});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);
@@ -12,8 +12,5 @@ function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId) 
 }
 
 module.exports = {
-    buscarGeneros,
-    cadastrarItem,
-    buscarItensWishlist,
-    buscarItemSelecionado
+    cadastrarMeta
 };
