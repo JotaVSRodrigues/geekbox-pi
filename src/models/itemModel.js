@@ -80,6 +80,15 @@ function buscarItensTimeline(usuarioId) {
     return database.executar(instrucaoSQL);
 }
 
+function updateResenha(resenha, itemId) {
+    var instrucaoSQL = `
+        update item 
+        set resenha = '${resenha}'
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL);
+}
 
 
 module.exports = {
@@ -88,4 +97,5 @@ module.exports = {
     buscarItensWishlist,
     buscarItensTimeline,
     buscarItemSelecionado,
+    updateResenha
 };

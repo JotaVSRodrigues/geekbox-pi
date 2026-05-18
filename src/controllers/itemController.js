@@ -65,10 +65,25 @@ function buscarItemSelecionado(req, res) {
         })
 }
 
+function updateResenha(req, res) {
+    const resenha = req.params.resenhaServer;
+    const itemId = req.params.itemId;
+    console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
+
+    itemModel.updateResenha(resenha, itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
+
 module.exports = {
     buscarGeneros,
     cadastrarItem,
     buscarItensWishlist,
     buscarItensTimeline,
-    buscarItemSelecionado
+    buscarItemSelecionado,
+    updateResenha
 };
