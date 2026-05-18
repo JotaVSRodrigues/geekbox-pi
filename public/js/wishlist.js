@@ -120,8 +120,6 @@ function carregarItens() {
 
             const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 
-
-
             document.getElementById("new_item" + qtdItems).innerHTML = `
                 <div class="item" onclick="getItem(${item.id})">
                     <div class="information">
@@ -175,6 +173,29 @@ function getItem(itemId) {
 
         const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
         
+        let campoResenha = data[0].resenha == null ?  
+            `<div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Escreva sua resenha aqui - Vazio.</h3>
+                <div class="wishlist-content-text">
+                    <textarea name="" id="textarea_resenha"></textarea>
+
+                    <div class="btn-cadastro-div">
+                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+                    </div>
+                </div>
+            </div>`
+            :
+            `<div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Escreva sua resenha aqui - Nao vazio.</h3>
+                <div class="wishlist-content-text">
+                    <textarea name="" id="textarea_resenha"></textarea>
+
+                    <div class="btn-cadastro-div">
+                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+                    </div>
+                </div>
+            </div>`;
+
         divCard.innerHTML =
             `
             <div class="content-selected-header anim-scale-in anim-d1">
@@ -196,16 +217,7 @@ function getItem(itemId) {
                 </div>
             </div>
 
-            <div class="select-card-resenha anim-fade-up anim-d3"> 
-                <h3>Escreva sua resenha aqui.</h3>
-                <div class="wishlist-content-text">
-                    <textarea name="" id="textarea_resenha"></textarea>
-
-                    <div class="btn-cadastro-div">
-                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
-                    </div>
-                </div>
-            </div>
+            ${campoResenha}
             `;
 
     })

@@ -49,7 +49,8 @@ function buscarItemSelecionado(itemId) {
         g.nome nome_genero, 
         day(i.criado_em) dia_criacao, 
         month(i.criado_em) mes_criacao, 
-        year(i.criado_em) ano_criacao
+        year(i.criado_em) ano_criacao,
+        i.resenha
     from item i 
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
@@ -69,7 +70,7 @@ function buscarItensTimeline(usuarioId) {
         c.nome_categoria,
         g.nome nome_genero,
         day(i.criado_em) dia_criacao,
-        month(i.criado_em) mes_criacao
+        month(i.criado_em) mes_criacao    
     from item i 
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
