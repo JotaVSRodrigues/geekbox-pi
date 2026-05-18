@@ -7,11 +7,11 @@ function buscarGeneros() {
     return database.executar(instrucao);
 }
 
-function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId) {
+function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId, urlImagem) {
 
     var instrucaoSQL = `
-        insert into item (usuario_id, categoria_id, titulo, status, horas, genero_id) values
-        (${usuarioId}, ${categoriaId}, '${titulo}', '${status}', ${horas}, ${generoId});
+        insert into item (usuario_id, categoria_id, titulo, status, horas, genero_id, url_imagem) values
+        (${usuarioId}, ${categoriaId}, '${titulo}', '${status}', ${horas}, ${generoId}, '${urlImagem}');
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);

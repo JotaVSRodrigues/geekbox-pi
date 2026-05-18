@@ -47,7 +47,8 @@ function registerItem() {
             categoriaIdServer: idCategoria,
             statusServer: status,
             horasServer: horasTotais,
-            generoIdServer: idGenero
+            generoIdServer: idGenero,
+            urlImagemServer: urlImagem
         }),
     }).then(function (resposta) {
         console.log("resposta: ", resposta);

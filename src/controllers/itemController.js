@@ -17,8 +17,9 @@ function cadastrarItem(req, res) {
     const status = req.body.statusServer;
     const horas = req.body.horasServer;
     const generoId = req.body.generoIdServer;
+    const urlImagem = req.body.urlImagemServer;
 
-    itemModel.cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId)
+    itemModel.cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId, urlImagem)
         .then(function(resposta) {
             res.status(200).json(resposta)
         }).catch(function(erro) {
