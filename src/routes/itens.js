@@ -23,7 +23,7 @@ router.get("/buscar-item/:itemId", function(req, res) {
     itemController.buscarItemSelecionado(req, res);
 })
 
-router.put("/atualizar-resenha/:itemId", function(req, res) {
+router.put("/atualizar-resenha", function(req, res) {
     itemController.updateResenha(req, res);
 })
 

@@ -66,8 +66,8 @@ function buscarItemSelecionado(req, res) {
 }
 
 function updateResenha(req, res) {
-    const resenha = req.params.resenhaServer;
-    const itemId = req.params.itemId;
+    const resenha = req.body.resenhaServer;
+    const itemId = req.body.itemIdServer;
     console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
 
     itemModel.updateResenha(resenha, itemId)

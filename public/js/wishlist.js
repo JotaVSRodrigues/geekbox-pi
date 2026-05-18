@@ -199,10 +199,10 @@ function getItem(itemId) {
             <div class="select-card-resenha anim-fade-up anim-d3"> 
                 <h3>Escreva sua resenha aqui.</h3>
                 <div class="wishlist-content-text">
-                    <textarea name="" id="textarea-resenha"></textarea>
+                    <textarea name="" id="textarea_resenha"></textarea>
 
                     <div class="btn-cadastro-div">
-                        <button class="btn-cadastro">Salvar Resenha</button>
+                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
                     </div>
                 </div>
             </div>
@@ -211,3 +211,36 @@ function getItem(itemId) {
     })
 }
 
+function updateResenha(itemId) {
+    let resenhaText = textarea_resenha.value
+
+    if (!resenhaText || resenhaText.trim().length === 0) {
+        alert("Preencha a resenha para salvar.")
+        return false
+    }
+
+     fetch(`/itens/atualizar-resenha`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify({
+            itemIdServer: itemId,
+            resenhaServer: resenhaText,
+        }),
+    }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if(resposta.ok) {
+            alert("Update de resenha realizado com sucesso");
+
+            // setTimeout(() => {
+            //     window.location.href = "../index.html";
+            // }, "2000");
+        } else {
+            throw "Houve um erro ao realizar o update de resenha!";
+        }
+    }).catch (function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
+}
