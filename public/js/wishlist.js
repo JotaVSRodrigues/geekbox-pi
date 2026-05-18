@@ -211,20 +211,3 @@ function getItem(itemId) {
     })
 }
 
-function criarMeta() {
-    modalMeta
-}
-    // fetch("/itens/cadastrar-item", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         usuarioIdServer: usuarioId,
-    //         tituloServer: titulo,
-    //         categoriaIdServer: idCategoria,
-    //         statusServer: status,
-    //         horasServer: horasTotais,
-    //         generoIdServer: idGenero
-    //     }),
-    // })
