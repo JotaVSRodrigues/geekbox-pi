@@ -33,9 +33,9 @@ router.get("/kpi-taxa-conclusao/:id", function (req, res) {
     estatisticaController.kpiTaxaConclusao(req, res);
 });
 
-// router.get("/grafico/frequencia-consumo", function (req, res) {
-//     estatisticaController.buscarFrequenciaConsumo(req, res);
-// });
+router.get("/grafico/frequencia-consumo", function (req, res) {
+    estatisticaController.frequenciaDeConsumo(req, res);
+});
 
 module.exports = router;
 

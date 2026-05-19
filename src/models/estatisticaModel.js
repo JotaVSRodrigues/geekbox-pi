@@ -112,6 +112,20 @@ function kpiTaxaConclusao(usuarioId) {
     return database.executar(instrucao);
 }
 
+function frequenciaDeConsumo(usuarioId) {
+    var instrucao = `
+    select date(concluido_em) as dia,
+	count(*) as total
+    from item
+	where usuario_id = ${usuarioId}
+		and year(concluido_em) = year(now())
+    group by dia
+    order by dia;
+    `;
+
+    return database.executar(instrucao); 
+}
+
 module.exports = {
     consumoMensal,
     horasPorCategoria,
@@ -119,5 +133,6 @@ module.exports = {
     kpiConcluidos,
     kpiHorasTotais,
     kpiHorasSemanais,
-    kpiTaxaConclusao
+    kpiTaxaConclusao,
+    frequenciaDeConsumo
 };

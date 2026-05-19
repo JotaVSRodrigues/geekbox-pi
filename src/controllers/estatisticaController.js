@@ -93,6 +93,18 @@ function kpiTaxaConclusao(req, res) {
         })
 }
 
+function frequenciaDeConsumo(req, res) {
+    var usuarioId = req.params.id;
+
+    estatisticaModel.frequenciaDeConsumo(usuarioId)
+        .then(function(resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro.sqlMessage);
+        })
+}
+
 module.exports = {
     consumoMensal, 
     horasPorCategoria,
@@ -100,5 +112,6 @@ module.exports = {
     kpiConcluidos,
     kpiHorasTotais,
     kpiHorasSemanais,
-    kpiTaxaConclusao
+    kpiTaxaConclusao,
+    frequenciaDeConsumo
 };

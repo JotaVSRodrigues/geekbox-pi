@@ -63,6 +63,8 @@ function carregarKpis() {
             console.log("QTD HORAS TOTAIS:", data[0].total_horas)
 
             document.getElementById("kpi-horas").innerText = data[0].total_horas;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
 
     fetch(`/estatisticas/kpi-horas-semanais/${usuarioId}`)
@@ -72,6 +74,8 @@ function carregarKpis() {
             console.log("QTD HORAS SEMANAIS:", data[0].total_horas)
 
             document.getElementById("kpi-semanal").innerText = data[0].horas_semanais;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
 
     fetch(`/estatisticas/kpi-taxa-conclusao/${usuarioId}`)
@@ -81,6 +85,8 @@ function carregarKpis() {
             console.log(`TAXA CONCLUSAO DO USUÁRIO ${usuarioId} ${data[0].taxa_concluido}`)
 
             document.getElementById("kpi-conclusao").innerText = data[0].taxa_concluido;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
 }
 
