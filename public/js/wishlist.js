@@ -186,13 +186,16 @@ function getItem(itemId) {
             </div>`
             :
             `<div class="select-card-resenha anim-fade-up anim-d3"> 
-                <h3>Escreva sua resenha aqui - Nao vazio.</h3>
+                <h3>Sua resenha.</h3>
                 <div class="wishlist-content-text">
-                    <textarea name="" id="textarea_resenha"></textarea>
-
-                    <div class="btn-cadastro-div">
-                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+                    <p>${data[0].resenha}
+                    
+                    </p>
+                    <div class="btn-editar-resenha">
+                        <img class="edit-resenha-btn" onclick="" src="../assets/images/icons/Edit - 192x192.png" alt="">
+                        <span>Editar resenha</span>
                     </div>
+
                 </div>
             </div>`;
 
