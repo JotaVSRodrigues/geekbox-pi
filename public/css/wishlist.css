@@ -291,3 +291,7 @@ textarea {
     align-items: center;
 }
 
+.selected-image img {
+    /* max-width: 280px; */
+    max-height: 250px;
+}

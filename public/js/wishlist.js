@@ -175,7 +175,7 @@ function getItem(itemId) {
         
         let campoResenha = data[0].resenha == null ?  
             `<div class="select-card-resenha anim-fade-up anim-d3"> 
-                <h3>Escreva sua resenha aqui - Vazio.</h3>
+                <h3>Escreva sua resenha aqui.</h3>
                 <div class="wishlist-content-text">
                     <textarea name="" id="textarea_resenha"></textarea>
 
@@ -191,8 +191,8 @@ function getItem(itemId) {
                     <p>${data[0].resenha}
                     
                     </p>
-                    <div class="btn-editar-resenha">
-                        <img class="edit-resenha-btn" onclick="" src="../assets/images/icons/Edit - 192x192.png" alt="">
+                    <div class="btn-editar-resenha" onclick="editarResenha(${data}, ${itemId})">
+                        <img class="edit-resenha-btn" src="../assets/images/icons/Edit - 192x192.png" alt="">
                         <span>Editar resenha</span>
                     </div>
 
@@ -258,4 +258,38 @@ function updateResenha(itemId) {
     });
 
     return false;
+}
+
+function editarResenha(data, itemId) {
+    let campoResenha = `<div class="select-card-resenha anim-fade-up anim-d3"> 
+        <h3>Escreva sua resenha aqui - Vazio.</h3>
+        <div class="wishlist-content-text">
+            <textarea name="" id="textarea_resenha"></textarea>
+
+            <div class="btn-cadastro-div">
+                <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+            </div>
+        </div>
+    </div>`
+
+    divCard.innerHTML = `
+        <div class="content-selected-header anim-scale-in anim-d1">
+                <div class="selected-image anim-fade-up anim-d3">
+                    <img id="poster-image-wishlist" src="${data[0].url_imagem}" alt="">
+                </div>
+                
+                <div class="selected-card-information anim-fade-up anim-d3">
+                    <h2>${data[0].titulo}</h2>
+                    <div class="card-information">
+                        <span>Categoria: ${data[0].nome_categoria}</span>
+                        <span>Gênero: ${data[0].nome_genero}</span>
+                        <span>Duração: ${horaFormatada}</span>
+                        <span>Status: ${statusFormatado}</pan>
+                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
+                        <br>
+                        <span>Nota: 4.6/5</span>
+                    </div>
+                </div>
+            </div>
+            ${campoResenha}`
 }
