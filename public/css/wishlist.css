@@ -177,7 +177,7 @@
 
 
 .wishlist-content-text textarea {
-    font-size: 1.1em;
+    font-size: 1.0em;
 
     height: 20vh;
     width: 100%;
@@ -185,12 +185,12 @@
     background-color: transparent;
     border: 1px solid white;
     border-radius: 6px;
-    padding: 8px;
+    padding: 10px;
     resize: none;
 }
 
 textarea {
-    font-family: DM_Mono, sans-serif;
+    font-family: Syne, DM_Mono, sans-serif;
     outline: none;
     font-size: 0.8em;
     font-weight: 100;

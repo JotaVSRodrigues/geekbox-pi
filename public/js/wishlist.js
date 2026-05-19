@@ -193,7 +193,7 @@ function getItem(itemId) {
                     <p>${data[0].resenha}
                     
                     </p>
-                    <div class="btn-editar-resenha" onclick="editarResenha()">
+                    <div class="btn-editar-resenha" onclick="editarResenha(${itemId})">
                         <img class="edit-resenha-btn" src="../assets/images/icons/Edit - 192x192.png" alt="">
                         <span>Editar resenha</span>
                     </div>
@@ -248,10 +248,10 @@ function updateResenha(itemId) {
 
         if(resposta.ok) {
             alert("Update de resenha realizado com sucesso");
-
-            // setTimeout(() => {
-            //     window.location.href = "../index.html";
-            // }, "2000");
+            
+            setTimeout(() => {
+                getItem(itemId);
+            }, "2000");
         } else {
             throw "Houve um erro ao realizar o update de resenha!";
         }
@@ -262,7 +262,7 @@ function updateResenha(itemId) {
     return false;
 }
 
-function editarResenha(resenha ,itemId) {
+function editarResenha(itemId) {
     const container = document.querySelector(".select-card-resenha");
 
     container.innerHTML = `
@@ -271,7 +271,7 @@ function editarResenha(resenha ,itemId) {
             <textarea id="textarea_resenha">${itemAtual.resenha}</textarea>
 
             <div class="btn-cadastro-div">
-                <button onclick="updateResenha(${itemAtual.id})" class="btn-cadastro">Salvar Resenha</button>
+                <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
             </div>
         </div>
     `;
