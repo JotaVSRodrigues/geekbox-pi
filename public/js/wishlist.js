@@ -3,6 +3,7 @@ const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
 const divCard = document.getElementById("div-content-selected");
+let itemAtual = null
 let genres = [];
 
 async function carregarGeneros() {
@@ -162,6 +163,7 @@ function getItem(itemId) {
     .then((data) => {
         console.log("FETCH DO GETITEM() FUNCIONANDO. DADOS=> ", data)
         
+        itemAtual = data[0]
         let num = data[0].horas;
         let numInteiro = Math.trunc(num);
         let parteDecimal = ((num % 1).toFixed(2) * 60)
@@ -191,7 +193,7 @@ function getItem(itemId) {
                     <p>${data[0].resenha}
                     
                     </p>
-                    <div class="btn-editar-resenha" onclick="editarResenha(${data}, ${itemId})">
+                    <div class="btn-editar-resenha" onclick="editarResenha()">
                         <img class="edit-resenha-btn" src="../assets/images/icons/Edit - 192x192.png" alt="">
                         <span>Editar resenha</span>
                     </div>
@@ -260,36 +262,18 @@ function updateResenha(itemId) {
     return false;
 }
 
-function editarResenha(data, itemId) {
-    let campoResenha = `<div class="select-card-resenha anim-fade-up anim-d3"> 
-        <h3>Escreva sua resenha aqui - Vazio.</h3>
+function editarResenha(resenha ,itemId) {
+    const container = document.querySelector(".select-card-resenha");
+
+    container.innerHTML = `
+        <h3>Editar resenha.</h3>
         <div class="wishlist-content-text">
-            <textarea name="" id="textarea_resenha"></textarea>
+            <textarea id="textarea_resenha">${itemAtual.resenha}</textarea>
 
             <div class="btn-cadastro-div">
-                <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+                <button onclick="updateResenha(${itemAtual.id})" class="btn-cadastro">Salvar Resenha</button>
             </div>
         </div>
-    </div>`
+    `;
 
-    divCard.innerHTML = `
-        <div class="content-selected-header anim-scale-in anim-d1">
-                <div class="selected-image anim-fade-up anim-d3">
-                    <img id="poster-image-wishlist" src="${data[0].url_imagem}" alt="">
-                </div>
-                
-                <div class="selected-card-information anim-fade-up anim-d3">
-                    <h2>${data[0].titulo}</h2>
-                    <div class="card-information">
-                        <span>Categoria: ${data[0].nome_categoria}</span>
-                        <span>Gênero: ${data[0].nome_genero}</span>
-                        <span>Duração: ${horaFormatada}</span>
-                        <span>Status: ${statusFormatado}</pan>
-                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
-                        <br>
-                        <span>Nota: 4.6/5</span>
-                    </div>
-                </div>
-            </div>
-            ${campoResenha}`
 }
