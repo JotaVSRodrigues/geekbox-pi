@@ -259,10 +259,6 @@ textarea {
     background-color: #1E1E1E;
 }
 
-.item:active {
-    background-color: #1E1E1E;
-}
-
 .information {
     
 }
@@ -305,4 +301,16 @@ textarea {
 .selected-image img {
     /* max-width: 280px; */
     max-height: 250px;
+}
+
+.funnel-div {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.funnel-div img {
+    height: 16px;
+    width: auto;
+    
 }

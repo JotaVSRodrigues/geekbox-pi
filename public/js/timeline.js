@@ -164,6 +164,7 @@ function getItem(itemId) {
     .then((data) => {
         console.log("FETCH DO GETITEM() FUNCIONANDO. DADOS=> ", data)
         
+        itemAtual = data[0]
         let num = data[0].horas;
         let numInteiro = Math.trunc(num);
         let parteDecimal = ((num % 1).toFixed(2) * 60)
@@ -175,6 +176,32 @@ function getItem(itemId) {
 
         const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
         
+        let campoResenha = data[0].resenha == null ?  
+            `<div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Escreva sua resenha aqui.</h3>
+                <div class="wishlist-content-text">
+                    <textarea name="" id="textarea_resenha"></textarea>
+
+                    <div class="btn-cadastro-div">
+                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+                    </div>
+                </div>
+            </div>`
+            :
+            `<div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Sua resenha.</h3>
+                <div class="wishlist-content-text">
+                    <p>${data[0].resenha}
+                    
+                    </p>
+                    <div class="btn-editar-resenha" onclick="editarResenha(${itemId})">
+                        <img class="edit-resenha-btn" src="../assets/images/icons/Edit - 192x192.png" alt="">
+                        <span>Editar resenha</span>
+                    </div>
+
+                </div>
+            </div>`;
+
         divCard.innerHTML =
             `
             <div class="content-selected-header anim-scale-in anim-d1">
@@ -196,35 +223,58 @@ function getItem(itemId) {
                 </div>
             </div>
 
-            <div class="select-card-resenha anim-fade-up anim-d3"> 
-                <h3>Escreva sua resenha aqui.</h3>
-                <div class="wishlist-content-text">
-                    <textarea name="" id="textarea-resenha"></textarea>
-
-                    <div class="btn-cadastro-div">
-                        <button class="btn-cadastro">Salvar Resenha</button>
-                    </div>
-                </div>
-            </div>
+            ${campoResenha}
             `;
 
     })
 }
 
-function criarMeta() {
-    modalMeta
+function updateResenha(itemId) {
+    let resenhaText = textarea_resenha.value
+
+    if (!resenhaText || resenhaText.trim().length === 0) {
+        alert("Preencha a resenha para salvar.")
+        return false
+    }
+
+     fetch(`/itens/atualizar-resenha`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify({
+            itemIdServer: itemId,
+            resenhaServer: resenhaText,
+        }),
+    }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if(resposta.ok) {
+            alert("Update de resenha realizado com sucesso");
+            
+            setTimeout(() => {
+                getItem(itemId);
+            }, "1000");
+        } else {
+            throw "Houve um erro ao realizar o update de resenha!";
+        }
+    }).catch (function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
 }
-    // fetch("/itens/cadastrar-item", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         usuarioIdServer: usuarioId,
-    //         tituloServer: titulo,
-    //         categoriaIdServer: idCategoria,
-    //         statusServer: status,
-    //         horasServer: horasTotais,
-    //         generoIdServer: idGenero
-    //     }),
-    // })
+
+function editarResenha(itemId) {
+    const container = document.querySelector(".select-card-resenha");
+
+    container.innerHTML = `
+        <h3>Editar resenha.</h3>
+        <div class="wishlist-content-text">
+            <textarea id="textarea_resenha">${itemAtual.resenha}</textarea>
+
+            <div class="btn-cadastro-div">
+                <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+            </div>
+        </div>
+    `;
+
+}

@@ -40,6 +40,16 @@
     justify-content: center;
 }
 
+.modal-container-filtro {
+    width: 100vw;
+    position: fixed;
+    top: 30vh;
+    display: none;
+    z-index: 999;
+    justify-content: center;
+}
+
+
 .modal {
     display: flex;
     flex-direction: column;
@@ -128,3 +138,22 @@
     gap: 180px;
     margin-bottom: 24px;
 }
+
+.filter-div {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    gap: 8px;
+}
+
+
+
+.btn-checkbox {
+    height: 16px;
+    width: 16px;
+    background-color: #4D4D4D;
+}
+

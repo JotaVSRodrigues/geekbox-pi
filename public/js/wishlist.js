@@ -2,6 +2,7 @@ let qtdItems = 0;
 const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
+const modalFiltro = document.querySelector('.modal-container-filtro')
 const divCard = document.getElementById("div-content-selected");
 let itemAtual = null
 let genres = [];
@@ -251,7 +252,7 @@ function updateResenha(itemId) {
             
             setTimeout(() => {
                 getItem(itemId);
-            }, "2000");
+            }, "1000");
         } else {
             throw "Houve um erro ao realizar o update de resenha!";
         }

@@ -152,6 +152,66 @@
             </div>
         </div>
 
+        <div class="modal-container-filtro">
+            <div class="modal">
+                <div class="close-modal">
+                    <button onclick="closeItemCard(modalFiltro)">
+                        <img src="../assets/images/icons/x-icon.png" alt="">
+                    </button>
+                </div>
+                <div class="modal-header">
+                    <div>
+                        <h2>
+                            <span>Filtre seus </span>
+                            <span id="highlight-span">itens.</span>
+                        </h2>
+                    </div>
+                    <div>
+                        <p>
+                            <span>Jogos, livros, filmes, séries,</span>
+                            <span>animes, mangás e músicas</span>
+                            <span>— rastreados, organizados</span>
+                            <span>e visualizados <span id="highlight-span">num só lugar.</span></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="label-box" id="label-box-modal">
+                    <div class="responsive-labels">
+  
+                        <select name="Categoria" id="select_categoria-filtro" required="required">
+                            <option value="" disabled selected hidden >Categoria</option>
+                            <option value="1">Jogo</option>
+                            <option value="2">Livro</option>
+                            <option value="3">Filme</option>
+                            <option value="4">Série</option>
+                            <option value="5">Anime</option>
+                            <option value="6">Mangá</option>
+                            <option value="7">Música</option>
+                        </select>
+                        <select name="Status" id="select_status-filtro" required="required">
+                            <option value="" disabled selected hidden >Status</option>
+                            <option value="wishlist">Wishlist</option>
+                            <option value="em_progresso">Em Progresso</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="pausado">Pausado</option>
+                            <option value="abandonado">Abandonado</option>
+                        </select>
+                        <div class="filter-div">
+                            <label for="">Limpar Filtros:</label>
+                            <button class="btn-checkbox"></button>
+                        </div>
+                    </div>
+        
+                </div>
+
+                <div class="btn-cadastro-div">
+                    <button onclick="saveFilter()" class="btn-cadastro">Salvar Filtro</button>
+                </div>
+            </div>
+        </div>
+
+      
     <!-- AQUI ACABA AS DIVS DOS MODALS -->
         <!-- closeItemCard()
         createItemCard() -->
@@ -198,6 +258,12 @@
                             <div class="btn-cadastro-div anim-fade-up anim-d3">
                                 <button onclick="createItemCard(modalItem)" class="btn-cadastro  btn-wishlist">+ Novo
                                     item</button>
+                            </div>
+
+                            <div class="btn-cadastro-div anim-fade-up anim-d3">
+                                <button onclick="createItemCard(modalFiltro)" class="btn-cadastro">
+                                    <div class="funnel-div"><img src="../assets/images/icons/funnel-icon.png" alt=""> Filtrar</div>
+                                </button>
                             </div>
 
                         </div>
