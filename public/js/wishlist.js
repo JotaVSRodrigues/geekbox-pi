@@ -17,6 +17,18 @@ async function carregarGeneros() {
     genres = await resposta.json();
 }
 
+const inputBusca = document.getElementById("ipt_search_bar")
+
+if (inputBusca) {
+    inputBusca.addEventListener('input', (event) => {
+        termoBusca = inputBusca.value.toLowerCase().trim()
+        console.log(termoBusca)
+        const categoria = document.getElementById('select_categoria_filtro').value
+        const status = document.getElementById('select_status_filtro').value
+        aplicarFiltros(categoria, status)
+    })
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
     carregarGeneros();
@@ -40,17 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 genreSelect.appendChild(option);
             });
     });
-
-    const inputBusca = document.getElementById("ipt_search_bar")
-    if (inputBusca) {
-        inputBusca.addEventListener('input', () => {
-            termoBusca = inputBusca.value.toLowerCase().trim()
-
-            const categoria = document.getElementById('select_categoria_filtro').value
-            const status = document.getElementById('select_status_filtro').value
-            aplicarFiltros(categoria, status)
-        })
-    }
 });
 
 form.addEventListener('submit', (event) => {
@@ -128,7 +129,8 @@ function aplicarFiltros(categoria, status) {
     const filtrados = allItens.filter((item) => {
         const passCategoria = !categoria || categoria === '' || item.nome_categoria === categoria
         const passStatus = !status || status === '' || item.status === status
-        const passBusca = termoBusca === '' || item.titulo.toLowerCase().includes(termoBusca)
+        const passBusca = termoBusca === '' || (item.titulo && item.titulo.toLowerCase().includes(termoBusca));
+
         return passCategoria && passStatus && passBusca
     });
 
@@ -155,7 +157,7 @@ function renderizarItens(data) {
 
     fieldList.innerHTML = ''
     qtdItems = 0
-    updateDateSubtitle
+    updateDateSubtitle()
 
     data.forEach((item) => {
         const newItem = document.createElement("div");
