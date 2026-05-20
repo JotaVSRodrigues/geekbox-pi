@@ -31,7 +31,7 @@ function cadastrarItem(req, res) {
 
 function buscarItensWishlist(req, res) {
     const usuarioId = req.params.id;
-    // const categoriaId = req.params.categoria
+    const categoriaId = req.params.categoria
     // const status = req.params.status
     // , categoriaId, status
     console.log(usuarioId)

@@ -200,4 +200,34 @@ select:open::picker-icon {
     transform: rotate(90deg);
 }
 
+.search-bar input {
+    background-image: url('../assets/images/icons/search-icon.png');
+    background-repeat: no-repeat;
+    background-position: 290px center;
+    background-size: 20px;
+    padding: 35px;
+    margin-right: 15px;
 
+    background-color: #1C1C22;
+    padding: 8px 12px;
+    border: 1px solid #282830;
+    border-radius: 10px;
+    height: 44px;
+    width: 320px;
+    margin: 10px 0 20px 0;
+    transition: border 0.1s ease-in;
+
+    font-family: Syne, sans-serif;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.search-bar:hover input {
+    border: 1px solid #ffffff;
+}
+
+.btn-filtro-div {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}

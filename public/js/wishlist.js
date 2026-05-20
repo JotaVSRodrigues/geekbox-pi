@@ -4,6 +4,11 @@ const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
 const modalFiltro = document.querySelector('.modal-container-filtro')
 const divCard = document.getElementById("div-content-selected");
+const form = document.getElementById("filter-form");
+
+let allItens = []
+let termoBusca = ""
+
 let itemAtual = null
 let genres = [];
 
@@ -16,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
     carregarGeneros();
     carregarItens();
+    renderizarItens();
 
     const categorySelect = document.getElementById("select_categoria");
     const genreSelect = document.getElementById("select_genero");
@@ -34,6 +40,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 genreSelect.appendChild(option);
             });
     });
+
+    const inputBusca = document.getElementById("ipt_search_bar")
+    if (inputBusca) {
+        inputBusca.addEventListener('input', () => {
+            termoBusca = inputBusca.value.toLowerCase().trim()
+
+            const categoria = document.getElementById('select_categoria_filtro').value
+            const status = document.getElementById('select_status_filtro').value
+            aplicarFiltros(categoria, status)
+        })
+    }
+});
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const categoria = document.getElementById('select_categoria_filtro').value;
+    const status    = document.getElementById('select_status_filtro').value;
+    aplicarFiltros(categoria, status);
 });
 
 function calculateMonth() {
@@ -91,68 +115,100 @@ function carregarItens() {
     .then((resposta) => { return resposta.json() })
     .then((data) => {
        
+        allItens = data
+
         console.log(data);
         updateDateSubtitle();
-        
-        
-        /* titulo, status, horas, categoria, genero, cadastrado_em */
-        
-        
-        data.forEach((item) => {
-            const newItem = document.createElement("div");
-            newItem.setAttribute("id", "new_item" + qtdItems);
-            newItem.classList.add("item-anim");
-        
-            const firstItem = fieldList.querySelector(".item");
-        
-            if (firstItem) {
-                fieldList.insertBefore(newItem, firstItem.parentNode);
-            } else {
-                fieldList.appendChild(newItem);
-            }
+        renderizarItens(data);
+    })
+}
 
-            let num = item.horas;
-            let numInteiro = Math.trunc(num);
-            let parteDecimal = ((num % 1).toFixed(2) * 60)
-            let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
-        
-            let statusFormatado = item.status.toUpperCase().replace("_", " ")
-            let generoFormatado = item.nome_genero.toLowerCase()
+function aplicarFiltros(categoria, status) {
+
+    const filtrados = allItens.filter((item) => {
+        const passCategoria = !categoria || categoria === '' || item.nome_categoria === categoria
+        const passStatus = !status || status === '' || item.status === status
+        const passBusca = termoBusca === '' || item.titulo.toLowerCase().includes(termoBusca)
+        return passCategoria && passStatus && passBusca
+    });
+
+    renderizarItens(filtrados)
+}
+
+function limparFiltro () {
+    document.getElementById("select_categoria_filtro").value = ''
+    document.getElementById("select_status_filtro").value = ''
+    termoBusca = ''
+
+    const inputBusca = document.getElementById('ipt_search_bar').value = ''
+    
+    setTimeout(() => {
+        closeItemCard(modalFiltro)
+    }, "1000");
+    
+
+    renderizarItens(allItens)
+}
+
+function renderizarItens(data) {
 
 
-            const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+    fieldList.innerHTML = ''
+    qtdItems = 0
+    updateDateSubtitle
 
-            document.getElementById("new_item" + qtdItems).innerHTML = `
-                <div class="item" onclick="getItem(${item.id})">
-                    <div class="information">
-                        <h4 class="item-header">${item.titulo}</h4>
-                        <div class="information-subtitle">
-                            <span id="span-concluido">${statusFormatado}</span>
-                            <span>· ${horaFormatada} ·</span>
-                            <span> ${item.nome_categoria} ·</span>
-                            <span> ${generoFormatado} </span>
-                        </div>
-                    </div>
-                    <div class="right-information">
-                        <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
-                        <button class="elipse-btn">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
+    data.forEach((item) => {
+        const newItem = document.createElement("div");
+        newItem.setAttribute("id", "new_item" + qtdItems);
+        newItem.classList.add("item-anim");
+    
+        const firstItem = fieldList.querySelector(".item");
+    
+        if (firstItem) {
+            fieldList.insertBefore(newItem, firstItem.parentNode);
+        } else {
+            fieldList.appendChild(newItem);
+        }
+
+        let num = item.horas;
+        let numInteiro = Math.trunc(num);
+        let parteDecimal = ((num % 1).toFixed(2) * 60)
+        let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
+    
+        let statusFormatado = item.status.toUpperCase().replace("_", " ")
+        let generoFormatado = item.nome_genero.toLowerCase()
+
+
+        const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+        document.getElementById("new_item" + qtdItems).innerHTML = `
+            <div class="item" onclick="getItem(${item.id})">
+                <div class="information">
+                    <h4 class="item-header">${item.titulo}</h4>
+                    <div class="information-subtitle">
+                        <span id="span-concluido">${statusFormatado}</span>
+                        <span>· ${horaFormatada} ·</span>
+                        <span> ${item.nome_categoria} ·</span>
+                        <span> ${generoFormatado} </span>
                     </div>
                 </div>
-            `;
+                <div class="right-information">
+                    <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
+                    <button class="elipse-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        `;
 
-            requestAnimationFrame(() => {
-                newItem.classList.add("show");
-            });
+        requestAnimationFrame(() => {
+            newItem.classList.add("show");
+        });
 
-            qtdItems++; 
-        })
+        qtdItems++; 
     })
-        
-
 }
 
 function getItem(itemId) {
