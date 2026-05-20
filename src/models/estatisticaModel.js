@@ -119,6 +119,7 @@ function frequenciaDeConsumo(usuarioId) {
     from item
 	where usuario_id = ${usuarioId}
 		and year(concluido_em) = year(now())
+        and status = 'concluido'
     group by dia
     order by dia;
     `;
