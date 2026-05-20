@@ -112,6 +112,11 @@
     font-weight: 800;
     font-size: 0.9em;
     color: #4D4D4D;
+    margin-bottom: 24px;
+}
+
+.chart-heatmap {
+    margin-bottom: 24px;
 }
 
 
@@ -121,4 +126,74 @@
 
 #consumo-anual {
     width: 130vw;
+}
+
+#grafico-heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #1C1C22;
+    cursor: default;
+}
+
+.dash-card-header-freq {
+    margin-bottom: 16px;
+}
+
+.subtitle-heatmap {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 12px;
+}
+
+.subtitle-heatmap .cell:nth-child(2) {
+    background-color: #1C1C22;
+}
+
+.subtitle-heatmap .cell:nth-child(3) {
+    background-color: rgba(162, 99, 0, 0.45);
+}
+
+.subtitle-heatmap .cell:nth-child(4) {
+    background-color: rgba(162, 99, 0, 0.65);
+}
+
+.subtitle-heatmap .cell:nth-child(5) {
+    background-color: rgba(162, 99, 0, 0.85);
+}
+
+.subtitle-heatmap .cell:nth-child(6) {
+    background-color: rgba(162, 99, 0, 1);
+}
+
+.subtitle-heatmap span {
+    font-family: DM_Mono, Syne, sans-serif;
+    color: #4D4D4D;
+}
+
+.hm-tooltip {
+    position: fixed;
+    background-color: #1c1c22;
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: 'DM_Mono', monospace;
+    font-size: 11px;
+    color: #e8e6de;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+    z-index: 999;
+    white-space: nowrap;
+}
+
+.hm-tooltip.visible {
+    opacity: 1;
 }

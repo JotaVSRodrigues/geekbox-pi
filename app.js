@@ -17,6 +17,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var estatisticaRouter = require("./src/routes/estatisticas");
 var itemRouter = require("./src/routes/itens");
+var metaRouter = require("./src/routes/metas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/estatisticas", estatisticaRouter);
 app.use("/itens", itemRouter);
+app.use("/metas", metaRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

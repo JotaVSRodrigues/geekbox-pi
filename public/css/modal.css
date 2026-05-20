@@ -106,3 +106,25 @@
 .responsive-labels #ipt_titulo {
     width: 180%;
 }
+
+.modal-header-meta h2 {
+    display: block;
+    font-size: 2.8em;
+    line-height: 0.8;
+    font-family: 'DM_Serif_Display', sans-serif;
+}
+
+.modal-header-meta p {
+    font-size: 1.2em;
+    display: block;
+    line-height: 1.0;
+    text-align: right;
+}
+
+.modal-header-meta {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 180px;
+    margin-bottom: 24px;
+}

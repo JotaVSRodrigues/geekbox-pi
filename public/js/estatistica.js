@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carregarDonut();
     carregarLinhas();
     carregarMetas();
+    carregarHeatmap();
 });
 
 function carregarKpis() {
@@ -63,6 +64,8 @@ function carregarKpis() {
             console.log("QTD HORAS TOTAIS:", data[0].total_horas)
 
             document.getElementById("kpi-horas").innerText = data[0].total_horas;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
 
     fetch(`/estatisticas/kpi-horas-semanais/${usuarioId}`)
@@ -72,6 +75,8 @@ function carregarKpis() {
             console.log("QTD HORAS SEMANAIS:", data[0].total_horas)
 
             document.getElementById("kpi-semanal").innerText = data[0].horas_semanais;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
 
     fetch(`/estatisticas/kpi-taxa-conclusao/${usuarioId}`)
@@ -81,6 +86,8 @@ function carregarKpis() {
             console.log(`TAXA CONCLUSAO DO USUÁRIO ${usuarioId} ${data[0].taxa_concluido}`)
 
             document.getElementById("kpi-conclusao").innerText = data[0].taxa_concluido;
+        }).catch(function(erro) {
+            console.error("Erro:", erro)
         });
 }
 
@@ -284,3 +291,78 @@ function carregarMetas() {
             console.error("Erro ao carregar horas por categoria:", erro)
         });
 }
+
+function carregarHeatmap() {
+    fetch(`/estatisticas/frequencia-consumo/${usuarioId}`)
+        .then((resposta) => { return resposta.json() })
+        .then((data) => {
+            let mapa = {};
+
+            for (let i = 0; i < data.length; i++) {
+                let dia = new Date(data[i].dia).toISOString().split('T')[0];
+                mapa[dia] = data[i].total;
+            }
+
+            const container = document.getElementById("grafico-heatmap");
+            container.innerHTML = '';
+
+            let tooltip = document.createElement('div');
+            tooltip.classList.add("hm-tooltip");
+            document.body.appendChild(tooltip)
+
+            let hoje = new Date();
+            let inicio = new Date(hoje.getFullYear(), 0, 1); // pega o dia 1 de janeiro
+
+            // percorre todos os dias do ano até hoje
+            for (let d = new Date(inicio); d <= hoje; d.setDate(d.getDate() + 1)) {
+                let chave = d.toISOString().split('T')[0];
+                let total = mapa[chave] || 0;
+
+                let cell = document.createElement('div');
+                cell.classList.add("cell")
+                cell.title = chave + ': ' + total + ' item(s)';
+
+                // cell.style.width = '11px';
+                // cell.style.height = '11px';
+                // cell.style.borderRadius = '2px';
+
+                if (total === 0) {
+                    cell.style.background = '#1C1C22';
+                    cell.style.opacity = '1';
+                } else {
+                    cell.style.background = '#A26300';
+
+                    let opacidade = Math.min(0.25 + total * 0.2, 1);
+                    cell.style.opacity = String(opacidade)
+                }
+
+                let dataFormatada = new Date(chave + 'T00:00:00')
+                    .toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+
+                let textoTooltip = total === 0
+                    ? dataFormatada + ' · nenhuma atividade'
+                    : dataFormatada + ' · ' + total + (total === 1 ? ' item concluído' : ' itens concluídos');
+
+                // eventos do tooltip
+                cell.addEventListener('mouseenter', function(e) {
+                    tooltip.textContent = textoTooltip;
+                    tooltip.classList.add('visible');
+                });
+
+                cell.addEventListener('mousemove', function(e) {
+                    tooltip.style.left = (e.clientX + 12) + 'px';
+                    tooltip.style.top  = (e.clientY - 28) + 'px';
+                });
+
+                cell.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+
+                container.appendChild(cell);
+            }
+        })
+        .catch(function(erro) {
+            console.error("Erro ao carregar heatmap:", erro);
+        });
+}   
+

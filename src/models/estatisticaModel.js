@@ -101,15 +101,30 @@ function kpiTaxaConclusao(usuarioId) {
             select count(*)
             from item
             where usuario_id = ${usuarioId}
-                and status = 'concluido'
+                and status != 'concluido'
             group by year(now()) ) * 100), 0), '%') taxa_concluido
         from item 
         where usuario_id = ${usuarioId}
-            and status != 'concluido'
+            and status = 'concluido'
         group by year(now());
     `;
 
     return database.executar(instrucao);
+}
+
+function frequenciaDeConsumo(usuarioId) {
+    var instrucao = `
+    select date(concluido_em) as dia,
+	count(*) as total
+    from item
+	where usuario_id = ${usuarioId}
+		and year(concluido_em) = year(now())
+        and status = 'concluido'
+    group by dia
+    order by dia;
+    `;
+
+    return database.executar(instrucao); 
 }
 
 module.exports = {
@@ -119,5 +134,6 @@ module.exports = {
     kpiConcluidos,
     kpiHorasTotais,
     kpiHorasSemanais,
-    kpiTaxaConclusao
+    kpiTaxaConclusao,
+    frequenciaDeConsumo
 };

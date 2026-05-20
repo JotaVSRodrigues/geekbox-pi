@@ -36,7 +36,7 @@
                         <img src="../assets/images/icons/x-icon.png" alt="">
                     </button>
                 </div>
-                <div class="modal-header">
+                <div class="modal-header-meta">
                     <div>
                         <h2>
                             <span>Cadastre uma</span>
@@ -45,31 +45,37 @@
                     </div>
                     <div>
                         <p>
-                            <span>Jogos, livros, filmes, séries,</span>
-                            <span>animes, mangás e músicas</span>
-                            <span>— rastreados, organizados</span>
-                            <span>e visualizados <span id="highlight-span">num só lugar.</span></span>
+                            <span>Defina uma quantidade, categoria e</span>
+                            <span>data de conclusão. E pronto!</span>
+                            <span>Você terá uma meta de consumo.</span>
+                            <span>Tudo organizado e monitorado <span id="highlight-span">num só lugar.</span></span>
                         </p>
                     </div>
                 </div>
 
                 <div class="label-box" id="label-box-modal">
                     <div class="responsive-labels">
-                        <input id="" type="text" placeholder="Título. Ex: Senhor dos Anéis... ">
-                        <input id="" type="text" placeholder="Categoria. Ex: filme, jogo, anime, livro...">
+                        
+                        <input id="ipt_quantidade" type="number" name="horas" min="0" placeholder="Quantidade">
+                        <select name="Categoria" id="select_categoria_meta" required="required">
+                            <option value="" disabled selected hidden >Categoria</option>
+                            <option value="1">Jogo</option>
+                            <option value="2">Livro</option>
+                            <option value="3">Filme</option>
+                            <option value="4">Série</option>
+                            <option value="5">Anime</option>
+                            <option value="6">Mangá</option>
+                            <option value="7">Música</option>
+                        </select>
                     </div>
                     <div class="responsive-labels">
-                        <input id="" type="text" placeholder="Status">
-                        <input id="" type="text" placeholder="Horas estimadas">
-                        <input id="" type="text" placeholder="Gênero">
-                    </div>
-                    <div class="responsive-labels">
-                        <input id="" type="text" placeholder="Url da imagem de capa">
+                        <label for="ano">Selecione o ano da meta:</label>
+                        <input id="ipt_ano_meta" type="number" placeholder="Ano de conclusão da meta" min="2026" max="2099" step="1" value="2026">
                     </div>
                 </div>
 
                 <div class="btn-cadastro-div">
-                    <button onclick="addItem()" class="btn-cadastro">Cadastrar item</button>
+                    <button onclick="registerMeta()" class="btn-cadastro">Cadastrar Meta</button>
                 </div>
             </div>
         </div>
@@ -147,7 +153,6 @@
         </div>
 
     <!-- AQUI ACABA AS DIVS DOS MODALS -->
-
         <!-- closeItemCard()
         createItemCard() -->
         <div class="container">
@@ -166,8 +171,7 @@
 
                 <div class="navigation-buttons">
                     <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../html/timeline.html">Timeline</a></li>
+                        <li><a href="../index.html">Timeline</a></li>
                         <li><a href="../html/wishlist.html">Wishlist</a></li>
                         <li><a href="../html/dashboard.html">Estatísticas</a></li>
                     </ul>
@@ -176,16 +180,11 @@
 
             <div class="content-container">
                 <div class="content-wishlist anim-scale-in anim-d1">
-                    <div class="card-selected anim-fade-up anim-d2">
-                        <div class="content-selected">
-                            <h2>Devoradores de Estrelas</h2>
-                            <img id="poster-image-wishlist" src="../assets/images/poster/project-hail-mary-poster.jpg"
-                                alt="">
-                            <div class="card-information">
-                                <span>Categoria: Filme</span>
-                                <span>Horas: 2h45min</span>
-                                <span>Nota: 4.6/5</span>
-                                <span>Abr 24 2026</span>
+                    
+                    <div class="card-selected anim-fade-up anim-d2 dash-card">
+                        <div class="content-selected" id="div-content-selected">
+                            <div class="no-content">
+                                <p>Selecione algum item</p>
                             </div>
                         </div>
                     </div>
@@ -202,8 +201,10 @@
                             </div>
 
                         </div>
-                        <div id="field-list" class="list">
-
+                        <div class="field-list-container">
+                            <div id="field-list" class="list">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -214,6 +215,7 @@
     <script src="../js/sessao.js"></script>
     <script src="../js/wishlist.js"></script>
     <script src="../js/cadastroItem.js"></script>
+    <script src="../js/cadastroMeta.js"></script>
 </body>
 
 </html>

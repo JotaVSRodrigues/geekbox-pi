@@ -17,6 +17,10 @@ router.get("/metas-por-ano/:id", function (req, res) {
     estatisticaController.metasVsConcluidos(req, res);
 });
 
+router.get("/frequencia-consumo/:id", function (req, res) {
+    estatisticaController.frequenciaDeConsumo(req, res);
+});
+
 router.get("/kpi-concluidos/:id", function (req, res) {
     estatisticaController.kpiConcluidos(req, res);
 });
@@ -33,9 +37,6 @@ router.get("/kpi-taxa-conclusao/:id", function (req, res) {
     estatisticaController.kpiTaxaConclusao(req, res);
 });
 
-// router.get("/grafico/frequencia-consumo", function (req, res) {
-//     estatisticaController.buscarFrequenciaConsumo(req, res);
-// });
 
 module.exports = router;
 

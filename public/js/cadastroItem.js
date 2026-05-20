@@ -47,7 +47,8 @@ function registerItem() {
             categoriaIdServer: idCategoria,
             statusServer: status,
             horasServer: horasTotais,
-            generoIdServer: idGenero
+            generoIdServer: idGenero,
+            urlImagemServer: urlImagem
         }),
     }).then(function (resposta) {
         console.log("resposta: ", resposta);
@@ -56,7 +57,7 @@ function registerItem() {
             alert("Cadastro de item realizado com sucesso");
 
             setTimeout(() => {
-                addItem();
+                carregarItens();
             }, "600");
         } else {
             throw "Houve um erro ao realizar o cadastro de item!";
@@ -67,3 +68,4 @@ function registerItem() {
     });
 
 }
+
