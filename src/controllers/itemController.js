@@ -81,6 +81,16 @@ function updateResenha(req, res) {
         })
 }
 
+function deleteItem(req, res) {
+    const itemId = req.params.itemId;
+
+    itemModel.deleteItem(itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
 
 module.exports = {
     buscarGeneros,
@@ -88,5 +98,6 @@ module.exports = {
     buscarItensWishlist,
     buscarItensTimeline,
     buscarItemSelecionado,
-    updateResenha
+    updateResenha,
+    deleteItem
 };

@@ -8,6 +8,21 @@
     gap: 16px;
 }
 
+#kpi-1 {
+    border-top: 2px solid #A26300;
+}
+
+#kpi-2 {
+    border-top: 2px solid #1D9E75;
+}
+
+#kpi-3 {
+    border-top: 2px solid #D4537E;
+}
+
+#kpi-4 {
+    border-top: 2px solid #5E56C4;
+}
 
 .dash-card {
     padding: 8px 12px;

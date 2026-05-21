@@ -91,6 +91,15 @@ function updateResenha(resenha, itemId) {
     return database.executar(instrucaoSQL);
 }
 
+function deleteItem(itemId) {
+    var instrucaoSQL = `
+        delete from item
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL)
+}
+
 
 module.exports = {
     buscarGeneros,
@@ -98,5 +107,6 @@ module.exports = {
     buscarItensWishlist,
     buscarItensTimeline,
     buscarItemSelecionado,
-    updateResenha
+    updateResenha,
+    deleteItem
 };
