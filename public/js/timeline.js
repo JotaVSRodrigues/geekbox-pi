@@ -212,12 +212,11 @@ function getItem(itemId) {
                 <div class="selected-card-information anim-fade-up anim-d3">
                     <h2>${data[0].titulo}</h2>
                     <div class="card-information">
-                        <span>Categoria: ${data[0].nome_categoria}</span>
-                        <span>Gênero: ${data[0].nome_genero}</span>
-                        <span>Duração: ${horaFormatada}</span>
-                        <span>Status: ${statusFormatado}</pan>
-                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
-                        <br>
+                        <span>Categoria: ${data[0].nome_categoria}</span> 
+                        <span>Gênero: ${data[0].nome_genero}</span> 
+                        <span>Duração: ${horaFormatada}</span> 
+                        <span>Status: ${statusFormatado}</span> 
+                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span> <br>
                         <span>Nota: 4.6/5</span>
                     </div>
                 </div>

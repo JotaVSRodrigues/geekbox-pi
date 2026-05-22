@@ -44,7 +44,7 @@
 }
 
 .list::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #1C1C22;
 }
 
 .content-wishlist {
@@ -256,7 +256,7 @@ textarea {
 }
 
 .item:hover {
-    background-color: #1E1E1E;
+    background-color: #1C1C22;
 }
 
 .information {
