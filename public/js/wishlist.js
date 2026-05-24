@@ -260,6 +260,55 @@ function getItem(itemId) {
                 </div>
             </div>`;
 
+
+        const statusOptions = [
+            {
+                'status': 'wishlist',
+                'statusFormatado': 'Wishlist'
+            },
+            {
+                'status': 'em_progresso',
+                'statusFormatado': 'Em Progresso'
+            },
+            {
+                'status': 'concluido',
+                'statusFormatado': 'Concluído'
+            },
+            {
+                'status': 'pausado',
+                'statusFormatado': 'Pausado'
+            },
+            {
+                'status': 'abandonado',
+                'statusFormatado': 'Abandonado'
+            },
+        ]
+            
+        const statusOptions2 = ['wishlist', 'em_progresso', 'concluido', 'pausado', 'abandonado'];
+        let statusNow = {}
+
+        statusOptions.forEach((element) => {
+            if (element.status === data[0].status) {
+                statusNow = element
+                statusOptions.splice(statusOptions.indexOf(element), 1)
+            }
+        })
+
+        let campoStatus = `
+        <div class="status-row">
+            <span>Status: </span>
+            <div class="div-card-select">    
+                <select name="" id="">
+                    <option value="${statusNow.status}">${statusNow.statusFormatado}</option>
+                    <option value="${statusOptions[0].status}">${statusOptions[0].statusFormatado}</option>
+                    <option value="${statusOptions[1].status}">${statusOptions[1].statusFormatado}</option>
+                    <option value="${statusOptions[2].status}">${statusOptions[2].statusFormatado}</option>
+                    <option value="${statusOptions[3].status}">${statusOptions[3].statusFormatado}</option>
+                </select>
+            </div>
+        </div>
+        `
+
         divCard.innerHTML =
             `
             <div class="content-selected-header anim-scale-in anim-d1">
@@ -273,7 +322,7 @@ function getItem(itemId) {
                         <span>Categoria: ${data[0].nome_categoria}</span>
                         <span>Gênero: ${data[0].nome_genero}</span>
                         <span>Duração: ${horaFormatada}</span>
-                        <span>Status: ${statusFormatado}</span>
+                        ${campoStatus}
                         <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
                         <br>
                         <span>Nota: 4.6/5</span>
@@ -348,6 +397,7 @@ function openMiniModal(itemId, btn) {
     miniModal.innerHTML = `
         <div class="mini-modal-content">
             <p>Deseja excluir este item?</p>
+
             <button onclick="excluirItem(${itemId})" class="btn-excluir">Excluir</button>
             <button onclick="fecharMiniModal()" class="btn-cancelar">Cancelar</button>
         </div>

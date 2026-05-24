@@ -314,3 +314,32 @@ textarea {
     width: auto;
     
 }
+
+.div-card-select select {
+    appearance: base-select;
+    font-size: 0.9em;
+    padding: 0.25rem 0.6rem;
+    border: 0.5px solid #4D4D4D;
+    border-radius: 0.6rem;
+    background-color: #222;
+    color: #FFFFFF;
+    line-height: 1.4;
+    height: auto; /* remova o height: 8px que quebrava o layout */
+    cursor: pointer;
+}
+
+.div-card-select select::picker-icon {
+    color: #4D4D4D;
+    transition: transform 0.4s ease;
+    margin-right: 6px;
+}
+
+.div-card-select select:open::picker-icon {
+    transform: rotate(90deg);
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
