@@ -81,6 +81,19 @@ function updateResenha(req, res) {
         })
 }
 
+function updateStatus(req, res) {
+    const status = req.body.statusServer;
+    const itemId = req.body.itemIdServer;
+    console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
+
+    itemModel.updateStatus(status, itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
 function deleteItem(req, res) {
     const itemId = req.params.itemId;
 
@@ -99,5 +112,6 @@ module.exports = {
     buscarItensTimeline,
     buscarItemSelecionado,
     updateResenha,
+    updateStatus,
     deleteItem
 };

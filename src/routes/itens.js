@@ -27,6 +27,10 @@ router.put("/atualizar-resenha", function(req, res) {
     itemController.updateResenha(req, res);
 })
 
+router.put("/atualizar-status", function(req, res) {
+    itemController.updateStatus(req, res);
+})
+
 router.delete("/excluir/:itemId", function(req, res) {
     itemController.deleteItem(req, res);
 })

@@ -135,7 +135,7 @@ function carregarItens() {
                     </div>
                     <div class="right-information">
                         <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
-                        <button class="elipse-btn">
+                        <button class="elipse-btn" onclick="openMiniModal(${item.id}, this)">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -276,4 +276,51 @@ function editarResenha(itemId) {
         </div>
     `;
 
+}
+
+
+function openMiniModal(itemId, btn) {
+    // Remove modal antigo se existir
+    const existingModal = document.querySelector('.mini-modal');
+    if (existingModal) existingModal.remove();
+
+    // Cria novo modal
+    const miniModal = document.createElement('div');
+    miniModal.classList.add('mini-modal');
+    miniModal.innerHTML = `
+        <div class="mini-modal-content">
+            <p>Deseja excluir este item?</p>
+
+            <button onclick="excluirItem(${itemId})" class="btn-excluir">Excluir</button>
+            <button onclick="fecharMiniModal()" class="btn-cancelar">Cancelar</button>
+        </div>
+    `;
+
+    // Insere logo abaixo do botão clicado
+    btn.parentNode.appendChild(miniModal);
+    requestAnimationFrame(() => {
+        miniModal.classList.add('show')
+    })
+}
+
+function fecharMiniModal() {
+    const miniModal = document.querySelector('.mini-modal');
+
+    if (miniModal) {
+        miniModal.classList.add('closing')
+        setTimeout(() => {
+            miniModal.remove();
+        }, 600)
+    }
+}
+
+function excluirItem(itemId) {
+    fetch(`/itens/excluir/${itemId}`, { method: 'DELETE' })
+        .then(res => res.json())
+        .then(data => {
+            console.log("Item excluído:", data);
+            fecharMiniModal();
+            carregarItens(); // atualiza lista
+        })
+        .catch(e => console.error("Erro ao excluir:", e));
 }

@@ -298,7 +298,7 @@ function getItem(itemId) {
         <div class="status-row">
             <span>Status: </span>
             <div class="div-card-select">    
-                <select name="" id="">
+                <select name="" id="select_status_item" onchange="updateStatus(${itemId})">
                     <option value="${statusNow.status}">${statusNow.statusFormatado}</option>
                     <option value="${statusOptions[0].status}">${statusOptions[0].statusFormatado}</option>
                     <option value="${statusOptions[1].status}">${statusOptions[1].statusFormatado}</option>
@@ -334,6 +334,28 @@ function getItem(itemId) {
             `;
 
     })
+}
+
+function updateStatus(itemId) {
+    let inputValue = select_status_item.value
+    console.log(inputValue)
+
+    fetch(`/itens/atualizar-status`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify({
+            itemIdServer: itemId,
+            statusServer: inputValue,
+        }),
+    }).then((resposta) => {
+        setTimeout(() => {
+            getItem(itemId);
+        }, "1000");
+    }).catch ((error) => {
+        console.error("erro ao fazer update de status: ", error);
+    });
+
+    return false;
 }
 
 function updateResenha(itemId) {

@@ -91,6 +91,16 @@ function updateResenha(resenha, itemId) {
     return database.executar(instrucaoSQL);
 }
 
+function updateStatus(status, itemId) {
+    var instrucaoSQL = `
+        update item 
+        set status = '${status}'
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL);
+}
+
 function deleteItem(itemId) {
     var instrucaoSQL = `
         delete from item
@@ -108,5 +118,6 @@ module.exports = {
     buscarItensTimeline,
     buscarItemSelecionado,
     updateResenha,
+    updateStatus,
     deleteItem
 };
