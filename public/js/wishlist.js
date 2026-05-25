@@ -325,7 +325,17 @@ function getItem(itemId) {
                         ${campoStatus}
                         <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
                         <br>
-                        <span>Nota: 4.6/5</span>
+                        <div class="status-row">
+                            <span>Nota: </span>
+
+                            <ul class="avaliacao">
+                                <li class="star-icon" data-avaliacao="1"></li>
+                                <li class="star-icon" data-avaliacao="2"></li>
+                                <li class="star-icon" data-avaliacao="3"></li>
+                                <li class="star-icon" data-avaliacao="4"></li>
+                                <li class="star-icon" data-avaliacao="5"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -333,5 +343,10 @@ function getItem(itemId) {
             ${campoResenha}
             `;
 
+            aplicarClassificacaoSalva(data[0].classificacao);
+            document.querySelector('.avaliacao').addEventListener('click', function(e) {
+                if (!e.target.classList.contains('star-icon')) return;
+                changeClassificacao(e, itemId);
+            });
     })
 }

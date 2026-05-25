@@ -1,17 +1,50 @@
-let stars = document.querySelectorAll('.star-icon');
-                  
-document.addEventListener('click', function(e){
-  let classStar = e.target.classList;
-  if(!classStar.contains('ativo')){
-    stars.forEach(function(star){
-      star.classList.remove('ativo');
-    });
-    classStar.add('ativo');
-    console.log(e.target.getAttribute('data-avaliacao'));
+let classificacao = document.querySelector('.avaliacao');
 
-    fetch()
-  }
-});
+function aplicarClassificacaoSalva(classificacaoSalva) {
+    if (!classificacaoSalva) return;
+
+    let stars = document.querySelectorAll('.star-icon');
+
+    stars.forEach((star) => {
+        let valor = parseFloat(star.getAttribute('data-avaliacao'));
+
+        if (valor <= parseFloat(classificacaoSalva)) {
+            star.classList.add('ativo');
+        } else {
+            star.classList.remove('ativo');
+        }
+    });
+}
+
+function changeClassificacao(e, itemId) {
+    let stars = document.querySelectorAll('.star-icon');
+    let dataAvaliacao = e.target.getAttribute('data-avaliacao');
+
+    stars.forEach(function(star) {
+        let valor = parseFloat(star.getAttribute('data-avaliacao'));
+        if (valor <= parseFloat(dataAvaliacao)) {
+            star.classList.add('ativo');
+        } else {
+            star.classList.remove('ativo');
+        }
+    });
+
+    console.log(dataAvaliacao);
+
+    fetch(`/itens/atualizar-classificacao`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify({
+            itemIdServer: itemId,
+            classificacaoServer: dataAvaliacao,
+        }),
+    }).catch((error) => {
+        console.error("erro ao fazer update de status: ", error);
+    });
+
+    return false;
+}
+
 
 
 function updateStatus(itemId) {

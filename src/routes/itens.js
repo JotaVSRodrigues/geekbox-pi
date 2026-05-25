@@ -31,6 +31,10 @@ router.put("/atualizar-status", function(req, res) {
     itemController.updateStatus(req, res);
 })
 
+router.put("/atualizar-classificacao", function(req, res) {
+    itemController.updateClassificacao(req, res);
+})
+
 router.delete("/excluir/:itemId", function(req, res) {
     itemController.deleteItem(req, res);
 })

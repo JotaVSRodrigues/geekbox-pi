@@ -94,6 +94,19 @@ function updateStatus(req, res) {
         })
 }
 
+function updateClassificacao(req, res) {
+    const classificacao = req.body.classificacaoServer;
+    const itemId = req.body.itemIdServer;
+    console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
+
+    itemModel.updateClassificacao(classificacao, itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
 function deleteItem(req, res) {
     const itemId = req.params.itemId;
 
@@ -113,5 +126,6 @@ module.exports = {
     buscarItemSelecionado,
     updateResenha,
     updateStatus,
+    updateClassificacao,
     deleteItem
 };
