@@ -31,6 +31,9 @@ function cadastrarItem(req, res) {
 
 function buscarItensWishlist(req, res) {
     const usuarioId = req.params.id;
+    const categoriaId = req.params.categoria
+    // const status = req.params.status
+    // , categoriaId, status
     console.log(usuarioId)
 
     itemModel.buscarItensWishlist(usuarioId)
@@ -78,6 +81,42 @@ function updateResenha(req, res) {
         })
 }
 
+function updateStatus(req, res) {
+    const status = req.body.statusServer;
+    const itemId = req.body.itemIdServer;
+    console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
+
+    itemModel.updateStatus(status, itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
+function updateClassificacao(req, res) {
+    const classificacao = req.body.classificacaoServer;
+    const itemId = req.body.itemIdServer;
+    console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
+
+    itemModel.updateClassificacao(classificacao, itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
+function deleteItem(req, res) {
+    const itemId = req.params.itemId;
+
+    itemModel.deleteItem(itemId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
 
 module.exports = {
     buscarGeneros,
@@ -85,5 +124,8 @@ module.exports = {
     buscarItensWishlist,
     buscarItensTimeline,
     buscarItemSelecionado,
-    updateResenha
+    updateResenha,
+    updateStatus,
+    updateClassificacao,
+    deleteItem
 };

@@ -54,6 +54,6 @@ CREATE TABLE item_genero (
   item_id   INT NOT NULL,
   genero_id INT NOT NULL,
   PRIMARY KEY (item_id, genero_id),
-  FOREIGN KEY (item_id)   REFERENCES item(id)   ON DELETE CASCADE,
-  FOREIGN KEY (genero_id) REFERENCES genero(id) ON DELETE CASCADE
+  FOREIGN KEY (item_id)   REFERENCES item(id),
+  FOREIGN KEY (genero_id) REFERENCES genero(id)
 );

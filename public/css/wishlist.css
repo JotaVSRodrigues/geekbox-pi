@@ -44,7 +44,7 @@
 }
 
 .list::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #1C1C22;
 }
 
 .content-wishlist {
@@ -218,7 +218,7 @@ textarea {
 }
 
 .month-date {
-    margin: 24px 0;
+    margin: 28px 0 28px 10px;
 }
 
 .month-date span {
@@ -256,11 +256,7 @@ textarea {
 }
 
 .item:hover {
-    background-color: #1E1E1E;
-}
-
-.item:active {
-    background-color: #1E1E1E;
+    background-color: #1C1C22;
 }
 
 .information {
@@ -305,4 +301,45 @@ textarea {
 .selected-image img {
     /* max-width: 280px; */
     max-height: 250px;
+}
+
+.funnel-div {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.funnel-div img {
+    height: 16px;
+    width: auto;
+    
+}
+
+.div-card-select select {
+    appearance: base-select;
+    font-size: 0.9em;
+    padding: 0.25rem 0.6rem;
+    border: 0.5px solid #4D4D4D;
+    border-radius: 0.6rem;
+    background-color: #222;
+    color: #FFFFFF;
+    line-height: 1.4;
+    height: auto; /* remova o height: 8px que quebrava o layout */
+    cursor: pointer;
+}
+
+.div-card-select select::picker-icon {
+    color: #4D4D4D;
+    transition: transform 0.4s ease;
+    margin-right: 6px;
+}
+
+.div-card-select select:open::picker-icon {
+    transform: rotate(90deg);
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }

@@ -135,7 +135,7 @@ function carregarItens() {
                     </div>
                     <div class="right-information">
                         <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
-                        <button class="elipse-btn">
+                        <button class="elipse-btn" onclick="openMiniModal(${item.id}, this)">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -164,6 +164,7 @@ function getItem(itemId) {
     .then((data) => {
         console.log("FETCH DO GETITEM() FUNCIONANDO. DADOS=> ", data)
         
+        itemAtual = data[0]
         let num = data[0].horas;
         let numInteiro = Math.trunc(num);
         let parteDecimal = ((num % 1).toFixed(2) * 60)
@@ -175,6 +176,32 @@ function getItem(itemId) {
 
         const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
         
+        let campoResenha = data[0].resenha == null ?  
+            `<div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Escreva sua resenha aqui.</h3>
+                <div class="wishlist-content-text">
+                    <textarea name="" id="textarea_resenha"></textarea>
+
+                    <div class="btn-cadastro-div">
+                        <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
+                    </div>
+                </div>
+            </div>`
+            :
+            `<div class="select-card-resenha anim-fade-up anim-d3"> 
+                <h3>Sua resenha.</h3>
+                <div class="wishlist-content-text">
+                    <p>${data[0].resenha}
+                    
+                    </p>
+                    <div class="btn-editar-resenha" onclick="editarResenha(${itemId})">
+                        <img class="edit-resenha-btn" src="../assets/images/icons/Edit - 192x192.png" alt="">
+                        <span>Editar resenha</span>
+                    </div>
+
+                </div>
+            </div>`;
+
         divCard.innerHTML =
             `
             <div class="content-selected-header anim-scale-in anim-d1">
@@ -185,46 +212,34 @@ function getItem(itemId) {
                 <div class="selected-card-information anim-fade-up anim-d3">
                     <h2>${data[0].titulo}</h2>
                     <div class="card-information">
-                        <span>Categoria: ${data[0].nome_categoria}</span>
-                        <span>Gênero: ${data[0].nome_genero}</span>
-                        <span>Duração: ${horaFormatada}</span>
-                        <span>Status: ${statusFormatado}</pan>
-                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
-                        <br>
-                        <span>Nota: 4.6/5</span>
+                        <span>Categoria: ${data[0].nome_categoria}</span> 
+                        <span>Gênero: ${data[0].nome_genero}</span> 
+                        <span>Duração: ${horaFormatada}</span> 
+                        <span>Status: ${statusFormatado}</span> 
+                        <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span> <br>
+                        <div class="status-row">
+                            <span>Nota: </span>
+
+                            <ul class="avaliacao">
+                                <li class="star-icon" data-avaliacao="1"></li>
+                                <li class="star-icon" data-avaliacao="2"></li>
+                                <li class="star-icon" data-avaliacao="3"></li>
+                                <li class="star-icon" data-avaliacao="4"></li>
+                                <li class="star-icon" data-avaliacao="5"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="select-card-resenha anim-fade-up anim-d3"> 
-                <h3>Escreva sua resenha aqui.</h3>
-                <div class="wishlist-content-text">
-                    <textarea name="" id="textarea-resenha"></textarea>
-
-                    <div class="btn-cadastro-div">
-                        <button class="btn-cadastro">Salvar Resenha</button>
-                    </div>
-                </div>
-            </div>
+            ${campoResenha}
             `;
 
+            console.log(data[0].classificacao)
+            aplicarClassificacaoSalva(data[0].classificacao);
+            document.querySelector('.avaliacao').addEventListener('click', function(e) {
+                if (!e.target.classList.contains('star-icon')) return;
+                changeClassificacao(e, itemId);
+            });
     })
 }
-
-function criarMeta() {
-    modalMeta
-}
-    // fetch("/itens/cadastrar-item", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         usuarioIdServer: usuarioId,
-    //         tituloServer: titulo,
-    //         categoriaIdServer: idCategoria,
-    //         statusServer: status,
-    //         horasServer: horasTotais,
-    //         generoIdServer: idGenero
-    //     }),
-    // })

@@ -28,12 +28,14 @@ function buscarItensWishlist(usuarioId) {
         c.nome_categoria,
         g.nome nome_genero,
         day(i.criado_em) dia_criacao,
-        month(i.criado_em) mes_criacao
+        month(i.criado_em) mes_criacao,
+        year(i.criado_em) ano_criacao
     from item i 
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
         where i.usuario_id = ${usuarioId}
-            and i.status != 'concluido';
+            and i.status != 'concluido'
+    order by ano_criacao desc, mes_criacao desc, dia_criacao desc;
     `;
 
     return database.executar(instrucaoSQL);
@@ -45,6 +47,7 @@ function buscarItemSelecionado(itemId) {
 		i.url_imagem, 
         i.status,
         i.horas,
+        i.classificacao,
         c.nome_categoria, 
         g.nome nome_genero, 
         day(i.criado_em) dia_criacao, 
@@ -70,12 +73,14 @@ function buscarItensTimeline(usuarioId) {
         c.nome_categoria,
         g.nome nome_genero,
         day(i.criado_em) dia_criacao,
-        month(i.criado_em) mes_criacao    
+        month(i.criado_em) mes_criacao,
+        year(i.criado_em) ano_criacao    
     from item i 
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
         where i.usuario_id = ${usuarioId}
-            and i.status = 'concluido';
+            and i.status = 'concluido'
+    order by ano_criacao desc, mes_criacao desc, dia_criacao desc;
     `;
 
     return database.executar(instrucaoSQL);
@@ -91,6 +96,36 @@ function updateResenha(resenha, itemId) {
     return database.executar(instrucaoSQL);
 }
 
+function updateStatus(status, itemId) {
+    var instrucaoSQL = `
+        update item 
+        set status = '${status}'
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL);
+}
+
+function updateClassificacao(classificacao, itemId) {
+    var instrucaoSQL = `
+        update item 
+        set classificacao = '${classificacao}'
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL);
+}
+
+
+function deleteItem(itemId) {
+    var instrucaoSQL = `
+        delete from item
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL)
+}
+
 
 module.exports = {
     buscarGeneros,
@@ -98,5 +133,8 @@ module.exports = {
     buscarItensWishlist,
     buscarItensTimeline,
     buscarItemSelecionado,
-    updateResenha
+    updateResenha,
+    updateStatus,
+    updateClassificacao,
+    deleteItem
 };

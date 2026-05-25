@@ -2,7 +2,13 @@ let qtdItems = 0;
 const fieldList = document.getElementById("field-list");
 const modalItem = document.querySelector('.modal-container-item');
 const modalMeta = document.querySelector('.modal-container-meta');
+const modalFiltro = document.querySelector('.modal-container-filtro')
 const divCard = document.getElementById("div-content-selected");
+const form = document.getElementById("filter-form");
+
+let allItens = []
+let termoBusca = ""
+
 let itemAtual = null
 let genres = [];
 
@@ -11,10 +17,23 @@ async function carregarGeneros() {
     genres = await resposta.json();
 }
 
+const inputBusca = document.getElementById("ipt_search_bar")
+
+if (inputBusca) {
+    inputBusca.addEventListener('input', (event) => {
+        termoBusca = inputBusca.value.toLowerCase().trim()
+        console.log(termoBusca)
+        const categoria = document.getElementById('select_categoria_filtro').value
+        const status = document.getElementById('select_status_filtro').value
+        aplicarFiltros(categoria, status)
+    })
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     updateDateSubtitle();
     carregarGeneros();
     carregarItens();
+    renderizarItens();
 
     const categorySelect = document.getElementById("select_categoria");
     const genreSelect = document.getElementById("select_genero");
@@ -33,6 +52,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 genreSelect.appendChild(option);
             });
     });
+});
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const categoria = document.getElementById('select_categoria_filtro').value;
+    const status    = document.getElementById('select_status_filtro').value;
+    aplicarFiltros(categoria, status);
 });
 
 function calculateMonth() {
@@ -90,68 +116,101 @@ function carregarItens() {
     .then((resposta) => { return resposta.json() })
     .then((data) => {
        
+        allItens = data
+
         console.log(data);
         updateDateSubtitle();
-        
-        
-        /* titulo, status, horas, categoria, genero, cadastrado_em */
-        
-        
-        data.forEach((item) => {
-            const newItem = document.createElement("div");
-            newItem.setAttribute("id", "new_item" + qtdItems);
-            newItem.classList.add("item-anim");
-        
-            const firstItem = fieldList.querySelector(".item");
-        
-            if (firstItem) {
-                fieldList.insertBefore(newItem, firstItem.parentNode);
-            } else {
-                fieldList.appendChild(newItem);
-            }
+        renderizarItens(data);
+    })
+}
 
-            let num = item.horas;
-            let numInteiro = Math.trunc(num);
-            let parteDecimal = ((num % 1).toFixed(2) * 60)
-            let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
-        
-            let statusFormatado = item.status.toUpperCase().replace("_", " ")
-            let generoFormatado = item.nome_genero.toLowerCase()
+function aplicarFiltros(categoria, status) {
+
+    const filtrados = allItens.filter((item) => {
+        const passCategoria = !categoria || categoria === '' || item.nome_categoria === categoria
+        const passStatus = !status || status === '' || item.status === status
+        const passBusca = termoBusca === '' || (item.titulo && item.titulo.toLowerCase().includes(termoBusca));
+
+        return passCategoria && passStatus && passBusca
+    });
+
+    renderizarItens(filtrados)
+}
+
+function limparFiltro () {
+    document.getElementById("select_categoria_filtro").value = ''
+    document.getElementById("select_status_filtro").value = ''
+    termoBusca = ''
+
+    const inputBusca = document.getElementById('ipt_search_bar').value = ''
+    
+    setTimeout(() => {
+        closeItemCard(modalFiltro)
+    }, "1000");
+    
+
+    renderizarItens(allItens)
+}
+
+function renderizarItens(data) {
 
 
-            const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+    fieldList.innerHTML = ''
+    qtdItems = 0
+    updateDateSubtitle()
 
-            document.getElementById("new_item" + qtdItems).innerHTML = `
-                <div class="item" onclick="getItem(${item.id})">
-                    <div class="information">
-                        <h4 class="item-header">${item.titulo}</h4>
-                        <div class="information-subtitle">
-                            <span id="span-concluido">${statusFormatado}</span>
-                            <span>· ${horaFormatada} ·</span>
-                            <span> ${item.nome_categoria} ·</span>
-                            <span> ${generoFormatado} </span>
-                        </div>
-                    </div>
-                    <div class="right-information">
-                        <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
-                        <button class="elipse-btn">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
+    data.forEach((item) => {
+        const newItem = document.createElement("div");
+        newItem.setAttribute("id", "new_item" + qtdItems);
+        newItem.classList.add("item-anim");
+    
+        const firstItem = fieldList.querySelector(".item");
+    
+        if (firstItem) {
+            fieldList.insertBefore(newItem, firstItem.parentNode);
+        } else {
+            fieldList.appendChild(newItem);
+        }
+
+        let num = item.horas;
+        let numInteiro = Math.trunc(num);
+        let parteDecimal = ((num % 1).toFixed(2) * 60)
+        let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
+    
+        let statusFormatado = item.status.toUpperCase().replace("_", " ")
+        let generoFormatado = item.nome_genero.toLowerCase()
+
+
+        const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+
+        document.getElementById("new_item" + qtdItems).innerHTML = `
+            <div class="item" onclick="getItem(${item.id})">
+                <div class="information">
+                    <h4 class="item-header">${item.titulo}</h4>
+                    <div class="information-subtitle">
+                        <span id="span-concluido">${statusFormatado}</span>
+                        <span>· ${horaFormatada} ·</span>
+                        <span> ${item.nome_categoria} ·</span>
+                        <span> ${generoFormatado} </span>
                     </div>
                 </div>
-            `;
+                <div class="right-information">
+                    <span class="right-information-date">${item.dia_criacao} de ${meses[item.mes_criacao - 1]}</span>
+                    <button class="elipse-btn" onclick="openMiniModal(${item.id}, this)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        `;
 
-            requestAnimationFrame(() => {
-                newItem.classList.add("show");
-            });
+        requestAnimationFrame(() => {
+            newItem.classList.add("show");
+        });
 
-            qtdItems++; 
-        })
+        qtdItems++; 
     })
-        
-
 }
 
 function getItem(itemId) {
@@ -201,6 +260,55 @@ function getItem(itemId) {
                 </div>
             </div>`;
 
+
+        const statusOptions = [
+            {
+                'status': 'wishlist',
+                'statusFormatado': 'Wishlist'
+            },
+            {
+                'status': 'em_progresso',
+                'statusFormatado': 'Em Progresso'
+            },
+            {
+                'status': 'concluido',
+                'statusFormatado': 'Concluído'
+            },
+            {
+                'status': 'pausado',
+                'statusFormatado': 'Pausado'
+            },
+            {
+                'status': 'abandonado',
+                'statusFormatado': 'Abandonado'
+            },
+        ]
+            
+        const statusOptions2 = ['wishlist', 'em_progresso', 'concluido', 'pausado', 'abandonado'];
+        let statusNow = {}
+
+        statusOptions.forEach((element) => {
+            if (element.status === data[0].status) {
+                statusNow = element
+                statusOptions.splice(statusOptions.indexOf(element), 1)
+            }
+        })
+
+        let campoStatus = `
+        <div class="status-row">
+            <span>Status: </span>
+            <div class="div-card-select">    
+                <select name="" id="select_status_item" onchange="updateStatus(${itemId})">
+                    <option value="${statusNow.status}">${statusNow.statusFormatado}</option>
+                    <option value="${statusOptions[0].status}">${statusOptions[0].statusFormatado}</option>
+                    <option value="${statusOptions[1].status}">${statusOptions[1].statusFormatado}</option>
+                    <option value="${statusOptions[2].status}">${statusOptions[2].statusFormatado}</option>
+                    <option value="${statusOptions[3].status}">${statusOptions[3].statusFormatado}</option>
+                </select>
+            </div>
+        </div>
+        `
+
         divCard.innerHTML =
             `
             <div class="content-selected-header anim-scale-in anim-d1">
@@ -214,10 +322,20 @@ function getItem(itemId) {
                         <span>Categoria: ${data[0].nome_categoria}</span>
                         <span>Gênero: ${data[0].nome_genero}</span>
                         <span>Duração: ${horaFormatada}</span>
-                        <span>Status: ${statusFormatado}</pan>
+                        ${campoStatus}
                         <span>Cadastro: ${data[0].dia_criacao} de ${meses[data[0].mes_criacao -1]}, ${data[0].ano_criacao}</span>
                         <br>
-                        <span>Nota: 4.6/5</span>
+                        <div class="status-row">
+                            <span>Nota: </span>
+
+                            <ul class="avaliacao">
+                                <li class="star-icon" data-avaliacao="1"></li>
+                                <li class="star-icon" data-avaliacao="2"></li>
+                                <li class="star-icon" data-avaliacao="3"></li>
+                                <li class="star-icon" data-avaliacao="4"></li>
+                                <li class="star-icon" data-avaliacao="5"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,55 +343,10 @@ function getItem(itemId) {
             ${campoResenha}
             `;
 
+            aplicarClassificacaoSalva(data[0].classificacao);
+            document.querySelector('.avaliacao').addEventListener('click', function(e) {
+                if (!e.target.classList.contains('star-icon')) return;
+                changeClassificacao(e, itemId);
+            });
     })
-}
-
-function updateResenha(itemId) {
-    let resenhaText = textarea_resenha.value
-
-    if (!resenhaText || resenhaText.trim().length === 0) {
-        alert("Preencha a resenha para salvar.")
-        return false
-    }
-
-     fetch(`/itens/atualizar-resenha`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json", },
-        body: JSON.stringify({
-            itemIdServer: itemId,
-            resenhaServer: resenhaText,
-        }),
-    }).then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if(resposta.ok) {
-            alert("Update de resenha realizado com sucesso");
-            
-            setTimeout(() => {
-                getItem(itemId);
-            }, "2000");
-        } else {
-            throw "Houve um erro ao realizar o update de resenha!";
-        }
-    }).catch (function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
-
-    return false;
-}
-
-function editarResenha(itemId) {
-    const container = document.querySelector(".select-card-resenha");
-
-    container.innerHTML = `
-        <h3>Editar resenha.</h3>
-        <div class="wishlist-content-text">
-            <textarea id="textarea_resenha">${itemAtual.resenha}</textarea>
-
-            <div class="btn-cadastro-div">
-                <button onclick="updateResenha(${itemId})" class="btn-cadastro">Salvar Resenha</button>
-            </div>
-        </div>
-    `;
-
 }
