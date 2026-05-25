@@ -59,9 +59,7 @@ function updateStatus(itemId) {
             statusServer: inputValue,
         }),
     }).then((resposta) => {
-        setTimeout(() => {
-            getItem(itemId);
-        }, "1000");
+        getItem(itemId)
     }).catch ((error) => {
         console.error("erro ao fazer update de status: ", error);
     });
