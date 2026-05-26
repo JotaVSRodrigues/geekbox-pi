@@ -5,34 +5,6 @@ const modalMeta = document.querySelector('.modal-container-meta');
 const divCard = document.getElementById("div-content-selected");
 let genres = [];
 
-async function carregarGeneros() {
-    const resposta = await fetch(`/itens/buscar-generos`);
-    genres = await resposta.json();
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    updateDateSubtitle();
-    carregarGeneros();
-    carregarItens();
-
-    const categorySelect = document.getElementById("select_categoria");
-    const genreSelect = document.getElementById("select_genero");
-
-    categorySelect.addEventListener("change", () => {
-        const selectedCategory = categorySelect.value;
-
-        genreSelect.innerHTML = '<option value="" disabled selected hidden>Gênero</option>';
-
-        genres
-            .filter(genre => genre.id_categoria == selectedCategory)
-            .forEach(genre => {
-                const option = document.createElement("option");
-                option.value = genre.id;
-                option.textContent = genre.nome;
-                genreSelect.appendChild(option);
-            });
-    });
-});
 
 function calculateMonth() {
     const date = new Date();
