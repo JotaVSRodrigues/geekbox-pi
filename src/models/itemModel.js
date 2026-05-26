@@ -34,8 +34,7 @@ function buscarItensWishlist(usuarioId) {
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
         where i.usuario_id = ${usuarioId}
-            and i.status != 'concluido'
-    order by ano_criacao desc, mes_criacao desc, dia_criacao desc;
+            and i.status != 'concluido';
     `;
 
     return database.executar(instrucaoSQL);
@@ -79,8 +78,7 @@ function buscarItensTimeline(usuarioId) {
     join categoria c on i.categoria_id = c.id_categoria
     join genero g on g.id = i.genero_id
         where i.usuario_id = ${usuarioId}
-            and i.status = 'concluido'
-    order by ano_criacao desc, mes_criacao desc, dia_criacao desc;
+            and i.status = 'concluido';
     `;
 
     return database.executar(instrucaoSQL);
