@@ -35,23 +35,24 @@ document.addEventListener("DOMContentLoaded", function() {
     carregarItens();
     renderizarItens();
 
-    const categorySelect = document.getElementById("select_categoria");
-    const genreSelect = document.getElementById("select_genero");
+});
 
-    categorySelect.addEventListener("change", () => {
-        const selectedCategory = categorySelect.value;
+const categorySelect = document.getElementById("select_categoria");
+const genreSelect = document.getElementById("select_genero");
 
-        genreSelect.innerHTML = '<option value="" disabled selected hidden>Gênero</option>';
+categorySelect.addEventListener("change", () => {
+    const selectedCategory = categorySelect.value;
 
-        genres
-            .filter(genre => genre.id_categoria == selectedCategory)
-            .forEach(genre => {
-                const option = document.createElement("option");
-                option.value = genre.id;
-                option.textContent = genre.nome;
-                genreSelect.appendChild(option);
-            });
-    });
+    genreSelect.innerHTML = '<option value="" disabled selected hidden>Gênero</option>';
+
+    genres
+        .filter(genre => genre.id_categoria == selectedCategory)
+        .forEach(genre => {
+            const option = document.createElement("option");
+            option.value = genre.id;
+            option.textContent = genre.nome;
+            genreSelect.appendChild(option);
+        });
 });
 
 form.addEventListener('submit', (event) => {
