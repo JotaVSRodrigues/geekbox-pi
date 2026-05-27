@@ -12,10 +12,6 @@ let termoBusca = ""
 let itemAtual = null
 let genres = [];
 
-async function carregarGeneros() {
-    const resposta = await fetch(`/itens/buscar-generos`);
-    genres = await resposta.json();
-}
 
 const inputBusca = document.getElementById("ipt_search_bar")
 
@@ -27,6 +23,11 @@ if (inputBusca) {
         const status = document.getElementById('select_status_filtro').value
         aplicarFiltros(categoria, status)
     })
+}
+
+async function carregarGeneros() {
+    const resposta = await fetch(`/itens/buscar-generos`);
+    genres = await resposta.json();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -43,6 +44,7 @@ const genreSelect = document.getElementById("select_genero");
 categorySelect.addEventListener("change", () => {
     const selectedCategory = categorySelect.value;
 
+    console.log("Estou carregando!")
     genreSelect.innerHTML = '<option value="" disabled selected hidden>Gênero</option>';
 
     genres
@@ -54,6 +56,7 @@ categorySelect.addEventListener("change", () => {
             genreSelect.appendChild(option);
         });
 });
+
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
