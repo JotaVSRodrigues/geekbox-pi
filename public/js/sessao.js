@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const horas = new Date();
     const horaAtual = horas.getHours();
+  
     let mensagem = "";
     
     if (horaAtual < 12) {
@@ -24,6 +25,25 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (elementoNome) {
         elementoNome.innerText = "visitante!";
     }
+    
+
+    const diaSemana = horas.getDay();
+    const diaMes = horas.getDate();
+    const mesAtual = horas.getMonth();
+    const anoAtual = horas.getFullYear();
+
+    const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]    
+    const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+    
+    let welcomeSubtitle = `${dias[diaSemana]}, ${diaMes} ${meses[mesAtual]} ${anoAtual}`
+    
+    const welcomeSub = document.getElementById("welcome-subtitle")
+    welcomeSub.innerHTML = welcomeSubtitle
+    
+    // fetch()
+
+    // Segunda, 22 Abr 2026  ·  Semana 17
+
 });
 
 // function validarSessao() {
