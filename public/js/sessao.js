@@ -38,18 +38,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
     
     
+    let welcomeSubtitle = `${dias[diaSemana-1]}, ${diaMes} ${meses[mesAtual]} ${anoAtual} `
 
+    const welcomeSub = document.getElementById("welcome-subtitle")
+    welcomeSub.innerHTML = welcomeSubtitle
+
+    const welcomeSubSemana = document.getElementById("h4-span")
+    
     fetch(`/usuarios/buscar-semanas/${usuarioId}`)
     .then((resposta) => { return resposta.json() })
     .then((data) => {
-
+        
         console.log(data, "dados do novo select")
         let semana = data[0].semanas
-
-        let welcomeSubtitle = `${dias[diaSemana-1]}, ${diaMes} ${meses[mesAtual]} ${anoAtual} · Semana ${semana}`
-    
-        const welcomeSub = document.getElementById("welcome-subtitle")
-        welcomeSub.innerHTML = welcomeSubtitle
+        
+        welcomeSubSemana.innerHTML = `· Semana ${semana}`
         }    
     )
 

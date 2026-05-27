@@ -87,7 +87,10 @@ h2 {
 }
 
 h4 {
+    font-family: DM_Mono, sans-serif;
+    font-weight: lighter    ;
     font-size: 1.1em;
+
 }
 
 li {
@@ -106,7 +109,6 @@ a {
 }
 
 #h4-span {
-    font-weight: bold;
     color: #A26300;
 }
 
