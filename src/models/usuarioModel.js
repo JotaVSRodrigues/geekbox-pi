@@ -25,7 +25,18 @@ function cadastrar(nome, email, senha, telefone) {
     return database.executar(instrucaoSQL);
  }
 
+function buscarSemanas(usuarioId) {
+    let instrucaoSQL = `
+    select 
+        timestampdiff(week, criado_em, curdate()) semanas
+    from usuario
+    where id = ${usuarioId};
+    `
+    return database.executar(instrucaoSQL);
+}
+ 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    buscarSemanas
 }

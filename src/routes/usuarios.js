@@ -11,6 +11,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get("/buscar-semanas/:id", (req, res) => {
+    usuarioController.buscarSemanas(req, res)
+})
+
 
 module.exports = router;
 
