@@ -236,3 +236,44 @@ textarea {
     color: #A26300;
 }
 
+.em-progresso-title h4 {
+    font-family: Syne, DM_Mono, sans-serif;
+    color: #4D4D4D;
+}
+
+.sugestao-ia {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 8px;
+}
+
+.sugestao-ia h3 {
+    font-family: DM_Serif_Display, Syne, sans-serif;
+    font-size: 1.8em;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.dica-ia {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.dica-ia img {
+    height: 42px;
+}
+
+.dica-ia p {
+    font-size: 1.3em;
+    font-weight: 700;
+
+}
+
+.dica-ia span {
+    color: #A26300;
+    font-style: italic;
+}
