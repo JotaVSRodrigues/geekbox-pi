@@ -101,7 +101,6 @@ function kpiTaxaConclusao(usuarioId) {
             select count(*)
             from item
             where usuario_id = ${usuarioId}
-                and status != 'concluido'
             group by year(now()) ) * 100), 0), '%') taxa_concluido
         from item 
         where usuario_id = ${usuarioId}

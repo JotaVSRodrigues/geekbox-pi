@@ -63,7 +63,19 @@ function cadastrar(req, res) {
     }
 }
 
+function buscarSemanas(req, res) {
+    let usuarioId = req.params.id
+
+    usuarioModel.buscarSemanas(usuarioId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
 module.exports = {
     autenticar, 
-    cadastrar
+    cadastrar,
+    buscarSemanas
 }

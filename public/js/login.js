@@ -49,7 +49,7 @@ function loginUser() {
                 sessionStorage.TELEFONE_USUARIO = json.telefone;
 
                 setTimeout(function() {
-                    window.location.href = "../index.html";
+                    window.location.href = "../html/home.html";
                 }, 1000); // apenas para exibir o loading
             });
         } else {

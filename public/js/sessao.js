@@ -1,8 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+
+    const usuarioId = sessionStorage.getItem("ID_USUARIO");
+
     const horas = new Date();
     const horaAtual = horas.getHours();
+  
     let mensagem = "";
     
     if (horaAtual < 12) {
@@ -24,25 +27,34 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (elementoNome) {
         elementoNome.innerText = "visitante!";
     }
+    
+
+    const diaSemana = horas.getDay();
+    const diaMes = horas.getDate();
+    const mesAtual = horas.getMonth();
+    const anoAtual = horas.getFullYear();
+
+    const dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]    
+    const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+    
+    
+    let welcomeSubtitle = `${dias[diaSemana-1]}, ${diaMes} ${meses[mesAtual]} ${anoAtual} `
+
+    const welcomeSub = document.getElementById("welcome-subtitle")
+    welcomeSub.innerHTML = welcomeSubtitle
+
+    const welcomeSubSemana = document.getElementById("h4-span")
+    
+    fetch(`/usuarios/buscar-semanas/${usuarioId}`)
+    .then((resposta) => { return resposta.json() })
+    .then((data) => {
+        
+        console.log(data, "dados do novo select")
+        let semana = data[0].semanas
+        
+        welcomeSubSemana.innerHTML = `· Semana ${semana}`
+        }    
+    )
+
 });
-
-// function validarSessao() {
-//     var nome = sessionStorage.NOME_USUARIO;
-//     var email = sessionStorage.EMAIL_USUARIO;
-//     var telefone = sessionStorage.TELEFONE_USUARIO;
-
-//     // mostrar nome do usuário na tela
-//     // var b_usuario = document.getElementById("b_usuario");
-
-//     if (email != null && nome != null) {
-//         // b_usuario.innerHTML = nome; 
-//     } else {
-//         window.location.href = "../login.html";
-//     }
-// }
-
-// function limparSessao() {
-//     sessionStorage.clear();
-//     window.location.href = "../login.html";
-// }
 
