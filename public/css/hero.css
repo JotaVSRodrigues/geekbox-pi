@@ -3,7 +3,7 @@
 .navbar-div {
     width: 100%;
     height: 8vh;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #4D4D4D;
 
     /* display: flex;
     flex-direction: row;
@@ -245,7 +245,7 @@ textarea {
     display: flex;
     flex-direction: column;
 
-    margin-bottom: 8px;
+    margin-bottom: 42px;
 }
 
 .sugestao-ia h3 {
@@ -261,6 +261,8 @@ textarea {
     gap: 4px;
     justify-content: flex-start;
     align-items: flex-end;
+
+
 }
 
 .dica-ia img {
@@ -276,4 +278,72 @@ textarea {
 .dica-ia span {
     color: #A26300;
     font-style: italic;
+}
+
+.texto-ia p {
+    margin-top: 8px;
+    font-size: 1.1em;
+}
+
+.home-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.home-card-title h3 {
+    font-size: 1.6em;
+    font-family: DM_Serif_Display, Syne, sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+
+.home-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: 8px 12px;
+    border: 1px solid #1C1C22;
+    border-radius: 10px;
+    background-color: #141418;
+}
+
+.home-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.home-items-content {
+    font-family: 'DM_Serif_Display', sans-serif;
+    font-size: 3.5em;
+    font-weight: 200;
+    margin: 0;
+    line-height: 0.7;
+}
+
+
+.citacao-barra {
+  border-left: 5px solid #1C1C22;
+  padding: 15px 20px; 
+  margin: 20px 0 20px 8px; 
+}
+
+.citacao-barra p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #4D4D4D;
+  margin: 0 0 10px 0;
+}
+
+.citacao-barra cite {
+  font-size: 0.9rem;
+  color: #666;
+  display: block;
+  text-align: right;
 }
