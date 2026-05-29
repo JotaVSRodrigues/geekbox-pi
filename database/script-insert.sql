@@ -1,71 +1,124 @@
--- USUARIOS
-INSERT INTO usuario (nome, email, senha_hash, telefone, avatar_url) VALUES
-('João Silva', 'joao@email.com', '$2b$10$hashdojoao', '11999990001', 'avatars/joao.jpg'),
-('Maria Souza', 'maria@email.com', '$2b$10$hashdamaria', '11999990002', NULL);
+INSERT INTO categoria (id_categoria, nome_categoria) VALUES
+(1, 'jogo'),
+(2, 'livro'),
+(3, 'filme'),
+(4, 'serie'),
+(5, 'anime'),
+(6, 'manga'),
+(7, 'musica');
 
--- CATEGORIAS
-INSERT INTO categoria (nome_categoria) VALUES
-('jogo'),
-('livro'),
-('filme'),
-('serie'),
-('anime'),
-('manga'),
-('musica');
+INSERT INTO genero (id, nome, id_categoria) VALUES
+(9, 'RPG', 1),
+(10, 'MMORPG', 1),
+(11, 'FPS', 1),
+(12, 'Battle Royale', 1),
+(13, 'Sandbox', 1),
+(14, 'Survival', 1),
+(15, 'Roguelike', 1),
+(16, 'Metroidvania', 1),
+(17, 'Soulslike', 1),
+(18, 'MOBA', 1),
+(19, 'Terror', 1),
+(20, 'Estratégia', 1),
+(21, 'Simulação', 1),
+(22, 'Corrida', 1),
+(23, 'Hack and Slash', 1),
+(24, 'Visual Novel', 1),
+(25, 'Puzzle', 1),
 
--- GENEROS (com categoria associada)
-INSERT INTO genero (nome, id_categoria) VALUES
-('Ficção Científica', 2), -- livro
-('Fantasia',          2),
-('RPG',               1), -- jogo
-('Ação',              1),
-('Drama',             3), -- filme
-('Thriller',          3),
-('Shounen',           5), -- anime
-('Seinen',            6); -- manga
+(26, 'Fantasia', 2),
+(27, 'Ficção Científica', 2),
+(28, 'Distopia', 2),
+(29, 'Romance', 2),
+(30, 'Suspense', 2),
+(31, 'Mistério', 2),
+(32, 'Terror', 2),
+(33, 'Drama', 2),
+(34, 'Aventura', 2),
+(35, 'Biografia', 2),
+(36, 'Filosofia', 2),
+(37, 'Psicologia', 2),
+(38, 'Programação', 2),
+(39, 'Cyberpunk', 2),
+(40, 'Dark Fantasy', 2),
 
--- ITENS
-INSERT INTO item (usuario_id, categoria_id, titulo, status, classificacao, horas, iniciado_em, concluido_em) VALUES
-(1, 1, 'Hollow Knight',         'concluido',    5, 52.0, '2026-01-10', '2026-02-01'),
-(1, 1, 'Disco Elysium',         'em_progresso', 0, 18.5, '2026-03-20', NULL),
-(1, 1, 'Sekiro',                'wishlist',      0, NULL,  NULL,        NULL),
-(1, 2, 'Fundação',              'concluido',    4, NULL,  '2026-01-05', '2026-01-28'),
-(1, 2, 'O Fim da Eternidade',   'wishlist',      0, NULL,  NULL,        NULL),
-(1, 3, 'Dune: Part Two',        'concluido',    4, 2.8,  '2026-03-28', '2026-03-28'),
-(1, 4, 'The Expanse',           'wishlist',      0, NULL,  NULL,        NULL),
-(1, 5, 'Frieren',               'concluido',    5, 14.0, '2026-02-10', '2026-04-15'),
-(1, 5, 'Vinland Saga S2',       'wishlist',      0, NULL,  NULL,        NULL),
-(1, 6, 'Berserk',               'em_progresso', 0, NULL,  '2026-02-01', NULL),
-(1, 7, 'OK Computer',           'concluido',    5, 0.9,  '2026-01-12', '2026-01-12'),
-(2, 3, 'Blade Runner 2049',     'concluido',    5, 2.7,  '2026-02-05', '2026-02-05'),
-(2, 2, 'Hyperion',              'em_progresso', 0, NULL,  '2026-03-01', NULL);
+(41, 'Ação', 3),
+(42, 'Comédia', 3),
+(43, 'Drama', 3),
+(44, 'Thriller', 3),
+(45, 'Terror', 3),
+(46, 'Suspense', 3),
+(47, 'Ficção Científica', 3),
+(48, 'Animação', 3),
+(49, 'Documentário', 3),
+(50, 'Crime', 3),
+(51, 'Mistério', 3),
+(52, 'Psicológico', 3),
+(53, 'Super-herói', 3),
+(54, 'Pós-Apocalíptico', 3),
 
--- RESENHAS (nos itens que têm classificacao > 0 e o usuário escreveu)
-UPDATE item SET resenha = 'Um dos melhores metroidvanias já feitos. A trilha sonora e o level design são impecáveis.' WHERE id = 1;
-UPDATE item SET resenha = 'Adaptação fiel e visualmente deslumbrante. Villeneuve confirma seu talento.' WHERE id = 6;
-UPDATE item SET resenha = 'Frieren subverte o gênero de forma inteligente e emocionante. Obra rara.' WHERE id = 8;
-UPDATE item SET resenha = 'In Rainbows continua sendo superior, mas OK Computer é essencial.' WHERE id = 11;
+(55, 'Drama', 4),
+(56, 'Comédia', 4),
+(57, 'Thriller', 4),
+(58, 'Crime', 4),
+(59, 'Investigação', 4),
+(60, 'Sci-Fi', 4),
+(61, 'Fantasia', 4),
+(62, 'Mistério', 4),
+(63, 'Documentário', 4),
+(64, 'Terror', 4),
+(65, 'Psicológico', 4),
+(66, 'Teen', 4),
+(67, 'Sitcom', 4),
 
--- ITEM_GENERO
-INSERT INTO item_genero (item_id, genero_id) VALUES
-(1,  3), -- Hollow Knight: RPG
-(1,  4), -- Hollow Knight: Ação
-(2,  3), -- Disco Elysium: RPG
-(4,  1), -- Fundação: Ficção Científica
-(5,  1), -- O Fim da Eternidade: Ficção Científica
-(6,  5), -- Dune Part Two: Drama
-(8,  7), -- Frieren: Shounen
-(10, 8), -- Berserk: Seinen
-(12, 5), -- Blade Runner: Drama
-(13, 1); -- Hyperion: Ficção Científica
+(68, 'Shounen', 5),
+(69, 'Seinen', 5),
+(70, 'Shoujo', 5),
+(71, 'Josei', 5),
+(72, 'Isekai', 5),
+(73, 'Slice of Life', 5),
+(74, 'Mecha', 5),
+(75, 'Ecchi', 5),
+(76, 'Gore', 5),
+(77, 'Romance Escolar', 5),
+(78, 'Drama Escolar', 5),
+(79, 'Fantasia', 5),
+(80, 'Aventura', 5),
+(81, 'Esporte', 5),
+(82, 'Sobrenatural', 5),
+(83, 'Iyashikei', 5),
 
--- METAS (João, ano 2026)
-INSERT INTO meta (usuario_id, categoria_id, quantidade, ano) VALUES
-(1, 1, 24, 2026), -- jogos
-(1, 2, 15, 2026), -- livros
-(1, 3, 20, 2026), -- filmes
-(1, 4, 8,  2026), -- series
-(1, 5, 12, 2026), -- animes
-(1, 6, 10, 2026), -- mangas
-(1, 7, 30, 2026); -- musicas
+(84, 'Shounen', 6),
+(85, 'Seinen', 6),
+(86, 'Shoujo', 6),
+(87, 'Josei', 6),
+(88, 'Slice of Life', 6),
+(89, 'Isekai', 6),
+(90, 'Ação', 6),
+(91, 'Fantasia', 6),
+(92, 'Romance', 6),
+(93, 'Terror', 6),
+(94, 'Mistério', 6),
+(95, 'Cyberpunk', 6),
+(96, 'Drama', 6),
 
+(97, 'Rock', 7),
+(98, 'Metal', 7),
+(99, 'Pop', 7),
+(100, 'Indie', 7),
+(101, 'MPB', 7),
+(102, 'Jazz', 7),
+(103, 'Lo-fi', 7),
+(104, 'Hip Hop', 7),
+(105, 'Trap', 7),
+(106, 'Rap', 7),
+(107, 'K-Pop', 7),
+(108, 'J-Pop', 7),
+(109, 'Synthwave', 7),
+(110, 'Eletrônica', 7),
+(111, 'Clássica', 7),
+(112, 'R&B', 7),
+(113, 'Blues', 7);
+
+ALTER TABLE categoria AUTO_INCREMENT = 8;
+ALTER TABLE genero AUTO_INCREMENT = 114;
