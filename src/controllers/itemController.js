@@ -118,6 +118,30 @@ function deleteItem(req, res) {
         })
 }
 
+function buscarItensHomeProgresso(req, res) {
+    const usuarioId = req.params.id
+    console.log(usuarioId)
+
+    itemModel.buscarItensHomeProgresso(usuarioId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
+function buscarItensHomeConcluido(req, res) {
+    const usuarioId = req.params.id;
+    console.log(usuarioId)
+
+    itemModel.buscarItensHomeConcluido(usuarioId)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            res.status(500).json(erro.sqlMessage)
+        })
+}
+
 module.exports = {
     buscarGeneros,
     cadastrarItem,
@@ -127,5 +151,7 @@ module.exports = {
     updateResenha,
     updateStatus,
     updateClassificacao,
-    deleteItem
+    deleteItem,
+    buscarItensHomeProgresso,
+    buscarItensHomeConcluido
 };

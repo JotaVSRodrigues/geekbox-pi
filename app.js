@@ -1,49 +1,4 @@
-/**
- * CONFIGS DO BOBIA
- */
 
-const { GoogleGenAI } = require("@google/genai");
-
-const PORTA_SERVIDOR = process.env.PORTA;
-const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
-
-// rota para receber perguntas e gerar respostas
-app.post("/perguntar", async (req, res) => {
-    const pergunta = req.body.pergunta;
-
-    try {
-        const resultado = await gerarResposta(pergunta);
-        res.json({ resultado });
-    } catch (error) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
-    }
-
-});
-
-
-// função para gerar respostas usando o gemini
-async function gerarResposta(mensagem) {
-
-    try {
-        // gerando conteúdo com base na pergunta
-        const modeloIA = chatIA.models.generateContent({
-            model: "gemini-2.5-flash",
-            contents: `Em um paragráfo responda: ${mensagem}`
-
-        });
-        const resposta = (await modeloIA).text;
-        const tokens = (await modeloIA).usageMetadata;
-
-        console.log(resposta);
-        console.log("Uso de Tokens:", tokens);
-
-        return resposta;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
-// ======================
 
 
 
@@ -67,6 +22,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var estatisticaRouter = require("./src/routes/estatisticas");
 var itemRouter = require("./src/routes/itens");
 var metaRouter = require("./src/routes/metas");
+var bobIARouter = require("./src/routes/bobAIRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -79,6 +35,8 @@ app.use("/usuarios", usuarioRouter);
 app.use("/estatisticas", estatisticaRouter);
 app.use("/itens", itemRouter);
 app.use("/metas", metaRouter);
+app.use("/bobIA", bobIARouter)
+
 
 app.listen(PORTA_APP, function () {
     console.log(`

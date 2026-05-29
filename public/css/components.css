@@ -17,8 +17,8 @@
 
 .btn-cadastro {
     background-color: #A26300;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    color: #e6e6e6;
+    border: 2px solid #e6e6e6;
     border-radius: 6px;
     padding: 10px 36px;
     cursor: pointer;
@@ -45,7 +45,7 @@
 
 .button-login:hover {
     background-color: #A26300;
-    color: #FFFFFF;
+    color: #e6e6e6;
     border: 1px solid #A26300;
 }
 
@@ -92,7 +92,7 @@
     transform: scale(1.1);
 
     background-color: #4D4D4D;
-    color: #FFFFFF;
+    color: #e6e6e6;
 }
 
 #icon-image img {
@@ -120,7 +120,7 @@
 .elipse-btn span {
     width: 4px;
     height: 4px;
-    background-color: #FFFFFF;
+    background-color: #e6e6e6;
     border-radius: 50%;
 }
 
@@ -142,10 +142,10 @@
     width: 100%;
     margin-bottom: 14px;
 
-    border: 2px solid white;
+    border: 2px solid #e6e6e6;
     border-radius: 6px;
 
-    color: #FFFFFF;
+    color: #e6e6e6;
 }
 
 .label-box select {
@@ -155,10 +155,10 @@
     width: 100%;
     margin-bottom: 14px;
 
-    border: 2px solid white;
+    border: 2px solid #e6e6e6;
     border-radius: 6px;
 
-    color: #FFFFFF;
+    color: #e6e6e6;
 }
 
 ::placeholder {
@@ -186,7 +186,7 @@ select, select::picker(select) {
     border-radius: 1rem;
     background-color: #222;
     line-height: 1.6;
-    color: #FFFFFF;
+    color: #e6e6e6;
 }
 
 select::picker-icon {
@@ -218,12 +218,12 @@ select:open::picker-icon {
     transition: border 0.1s ease-in;
 
     font-family: Syne, sans-serif;
-    color: #FFFFFF;
+    color: #e6e6e6;
     font-size: 1.1em;
 }
 
 .search-bar:hover input {
-    border: 1px solid #ffffff;
+    border: 1px solid #e6e6e6;
 }
 
 .btn-filtro-div {
