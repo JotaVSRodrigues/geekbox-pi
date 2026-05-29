@@ -236,11 +236,27 @@ textarea {
     color: #A26300;
 }
 
+.em-progresso-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
 .em-progresso-title h4 {
-    font-family: Syne, DM_Mono, sans-serif;
-    font-size: 1.2em;
-    color: #4D4D4D;
-    margin-bottom: 8px;
+    font-family: 'DM_Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #5c5a55;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+}
+
+.em-progresso-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
 }
 
 .sugestao-ia {

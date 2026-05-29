@@ -1,11 +1,8 @@
 .field-list-container {
     overflow: hidden;
-    position: relative; /* necessário para os pseudo-elementos */
+    position: relative; 
 }
 
-
-
-/* gradiente embaixo */
 .field-list-container::after {
     content: "";
     position: absolute;
@@ -18,7 +15,6 @@
     z-index: 10;
 }
 
-/* remove o ::after do .list */
 .list::after {
     display: none;
 }
@@ -138,9 +134,6 @@
     justify-content: space-between; 
 }
 
-.select-card-resenha {
-
-}
 
 .select-card-resenha h3 {
     font-family: DM_Serif_Display, Syne, sans-serif ;
@@ -257,10 +250,6 @@ textarea {
 
 .item:hover {
     background-color: #1C1C22;
-}
-
-.information {
-    
 }
 
 .item-header {
