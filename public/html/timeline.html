@@ -36,8 +36,11 @@
                         <img src="../assets/images/icons/spider-man-icon.png" alt="Foto de Perfil">
                     </div>
                     <div class="title">
-                        <h1><span id="mensagem-hora"></span><span id="h1-span">João!</span></h1>
 
+                        
+                        
+                        <h1><span id="mensagem-hora"></span><span id="h1-span">João!</span></h1>
+                        
                         <h4>
                             <span id="welcome-subtitle"></span>
                             <span id="h4-span"></span>
@@ -56,29 +59,25 @@
             </div>
 
             <div class="content-container">
-                <div class="sugestao-ia">
-                    <div class="dica-ia anim-scale-in anim-d1">
-                        <img src="../assets/images/icons/robot.png" alt="">
-                        <p><span>Dica do dia do NerdyIA</span></p>
+                <div class="content-wishlist anim-scale-in anim-d1">
+                    
+                    <div class="card-selected anim-fade-up anim-d2 dash-card">
+                        <div class="content-selected" id="div-content-selected">
+                            <div class="no-content">
+                                <p>Selecione algum item</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <blockquote class="citacao-barra anim-fade-in anim-d2">
-                    <p id="resposta-bobia"></p>
-                </blockquote>
 
-                <div class="home-items">
-                    <div class="em-progresso-title anim-fade-up anim-d2">
-                        <h4>EM PROGRESSO</h4>
+                    <div class="items-list anim-scale-in anim-d1">
+                        <div class="field-list-container">
+                            <div id="field-list" class="list">
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="progresso-items anim-fade-up anim-d3"></div>
-
-                    <div class="em-progresso-title anim-fade-up anim-d2">
-                        <h4>RECENTEMENTE CONCLUÍDOS</h4>
-                    </div>
-                    <div class="concluido-items anim-fade-up anim-d3"></div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -86,7 +85,6 @@
     <script src="../js/timeline.js"></script>
     <script src="../js/cadastroItem.js"></script>
     <script src="../js/updateItem.js"></script>
-    <script src="../js/home.js"></script>
 </body>
 
 </html>

@@ -161,7 +161,7 @@
     position: absolute;
     background: #1C1C22;
     border: 1px solid #31313b;
-    color: #fff;
+    color: #e6e6e6;
     padding: 10px;
     border-radius: 8px;
     z-index: 10;
@@ -189,7 +189,7 @@
 
 .btn-excluir {
     background: #e74c3c;
-    color: #fff;
+    color: #e6e6e6;
     border: none;
     padding: 6px;
     border-radius: 4px;
@@ -198,7 +198,7 @@
 
 .btn-cancelar {
     background: #555;
-    color: #fff;
+    color: #e6e6e6;
     border: none;
     padding: 6px;
     border-radius: 4px;
@@ -207,7 +207,7 @@
 
 .btn-mudar-status {
     background: #555;
-    color: #fff;
+    color: #e6e6e6;
     border: none;
     padding: 6px;
     border-radius: 4px;

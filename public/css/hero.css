@@ -3,7 +3,7 @@
 .navbar-div {
     width: 100%;
     height: 8vh;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #4D4D4D;
 
     /* display: flex;
     flex-direction: row;
@@ -87,7 +87,10 @@ h2 {
 }
 
 h4 {
+    font-family: DM_Mono, sans-serif;
+    font-weight: lighter    ;
     font-size: 1.1em;
+
 }
 
 li {
@@ -98,7 +101,7 @@ li {
 a {
     list-style-type: none;
     text-decoration: none;
-    color: white;
+    color: #e6e6e6;
 }
 
 #h1-span {
@@ -106,7 +109,6 @@ a {
 }
 
 #h4-span {
-    font-weight: bold;
     color: #A26300;
 }
 
@@ -117,7 +119,7 @@ a {
 }
 
 .main-content {
-    border: 2px solid #FFFFFF;
+    border: 2px solid #e6e6e6;
     border-radius: 8px;
     padding: 30px;
     display: flex;
@@ -137,7 +139,7 @@ a {
 
 #poster-image {
     height: 500px;
-    border: 2px solid white;
+    border: 2px solid #e6e6e6;
     border-radius: 12px;
 }
 
@@ -184,7 +186,7 @@ a {
     margin-top: 5px;
     margin-bottom: 15px;
 
-    border: 2px solid white;
+    border: 2px solid #e6e6e6;
     border-radius: 60px;
 
     
@@ -234,3 +236,180 @@ textarea {
     color: #A26300;
 }
 
+.em-progresso-title h4 {
+    font-family: Syne, DM_Mono, sans-serif;
+    font-size: 1.2em;
+    color: #4D4D4D;
+    margin-bottom: 8px;
+}
+
+.sugestao-ia {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 42px;
+}
+
+.sugestao-ia h3 {
+    font-family: DM_Serif_Display, Syne, sans-serif;
+    font-size: 1.8em;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.dica-ia {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+
+}
+
+.dica-ia img {
+    height: 42px;
+}
+
+.dica-ia p {
+    font-size: 1.3em;
+    font-weight: 700;
+
+}
+
+.dica-ia span {
+    color: #A26300;
+    font-style: italic;
+}
+
+.texto-ia p {
+    margin-top: 8px;
+    font-size: 1.1em;
+}
+
+
+.citacao-barra {
+  border-left: 5px solid #1C1C22;
+  padding: 15px 20px; 
+  margin: 20px 0 20px 8px; 
+}
+
+.citacao-barra p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #e6e6e6;
+  margin: 0 0 10px 0;
+}
+
+.citacao-barra cite {
+  font-size: 0.9rem;
+  color: #666;
+  display: block;
+  text-align: right;
+}
+
+
+
+
+.progresso-items,
+.concluido-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.home-card {
+    position: relative;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.07);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.18s;
+    background: #141418;
+}
+
+.home-card:hover {
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+}
+
+.home-card-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.18;
+    transition: opacity 0.3s;
+}
+
+.home-card:hover .home-card-cover {
+    opacity: 0.26;
+}
+
+.home-card-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(20, 20, 24, 0.6) 40%,
+        #141418 75%
+    );
+}
+
+.home-card-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+}
+
+.home-card-body {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.home-card-categoria {
+    font-family: 'DM_Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #5c5a55;
+}
+
+.home-card-titulo {
+    font-family: 'DM_Serif_Display', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: #e8e6de;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.home-card-meta {
+    font-family: 'DM_Mono', monospace;
+    font-size: 14px;
+    color: #5c5a55;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sem-itens {
+    font-family: 'DM_Mono', monospace;
+    font-size: 14px;
+    color: #5c5a55;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 12px 0;
+}

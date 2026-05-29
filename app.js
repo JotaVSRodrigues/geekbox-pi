@@ -1,3 +1,4 @@
+
 // var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
 
@@ -18,6 +19,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var estatisticaRouter = require("./src/routes/estatisticas");
 var itemRouter = require("./src/routes/itens");
 var metaRouter = require("./src/routes/metas");
+var bobIARouter = require("./src/routes/bobAIRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +32,8 @@ app.use("/usuarios", usuarioRouter);
 app.use("/estatisticas", estatisticaRouter);
 app.use("/itens", itemRouter);
 app.use("/metas", metaRouter);
+app.use("/bobIA", bobIARouter)
+
 
 app.listen(PORTA_APP, function () {
     console.log(`

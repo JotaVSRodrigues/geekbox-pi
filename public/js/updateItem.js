@@ -60,6 +60,8 @@ function updateStatus(itemId) {
         }),
     }).then((resposta) => {
         getItem(itemId)
+
+        if(inputValue === 'concluido') carregarItens()
     }).catch ((error) => {
         console.error("erro ao fazer update de status: ", error);
     });
