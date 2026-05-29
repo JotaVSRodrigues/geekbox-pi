@@ -1,7 +1,7 @@
-var database = require("../database/config");
+const database = require("../database/config");
 
 function buscarGeneros() {
-    var instrucao = `
+    let instrucao = `
         select * from genero;
     `;
     return database.executar(instrucao);
@@ -9,7 +9,7 @@ function buscarGeneros() {
 
 function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId, urlImagem) {
 
-    var instrucaoSQL = `
+    let instrucaoSQL = `
         insert into item (usuario_id, categoria_id, titulo, status, horas, genero_id, url_imagem) values
         (${usuarioId}, ${categoriaId}, '${titulo}', '${status}', ${horas}, ${generoId}, '${urlImagem}');
     `;
@@ -19,7 +19,7 @@ function cadastrarItem(usuarioId, categoriaId, titulo, status, horas, generoId, 
 }
 
 function buscarItensWishlist(usuarioId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
     select 
         i.id,
         i.titulo, 
@@ -41,7 +41,7 @@ function buscarItensWishlist(usuarioId) {
 }
 
 function buscarItemSelecionado(itemId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
     select i.titulo, 
 		i.url_imagem, 
         i.status,
@@ -63,7 +63,7 @@ function buscarItemSelecionado(itemId) {
 }
 
 function buscarItensTimeline(usuarioId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
     select 
         i.id,
         i.titulo, 
@@ -85,7 +85,7 @@ function buscarItensTimeline(usuarioId) {
 }
 
 function updateResenha(resenha, itemId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
         update item 
         set resenha = '${resenha}'
         where id = ${itemId};
@@ -95,7 +95,7 @@ function updateResenha(resenha, itemId) {
 }
 
 function updateStatus(status, itemId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
         update item 
         set status = '${status}'
         where id = ${itemId};
@@ -105,7 +105,7 @@ function updateStatus(status, itemId) {
 }
 
 function updateClassificacao(classificacao, itemId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
         update item 
         set classificacao = '${classificacao}'
         where id = ${itemId};
@@ -116,7 +116,7 @@ function updateClassificacao(classificacao, itemId) {
 
 
 function deleteItem(itemId) {
-    var instrucaoSQL = `
+    let instrucaoSQL = `
         delete from item
         where id = ${itemId};
     `;
@@ -124,6 +124,56 @@ function deleteItem(itemId) {
     return database.executar(instrucaoSQL)
 }
 
+
+function buscarItensHomeProgresso(usuarioId) {
+    let instrucaoSQL = `
+        select 
+            i.id,
+            i.titulo, 
+            i.status,
+            i.horas,
+            c.nome_categoria,
+            g.nome nome_genero,
+            day(i.criado_em) dia_criacao,
+            month(i.criado_em) mes_criacao,
+            year(i.criado_em) ano_criacao,
+            i.url_imagem 
+        from item i 
+        join categoria c on i.categoria_id = c.id_categoria
+        join genero g on g.id = i.genero_id
+            where i.usuario_id = ${usuarioId}
+            and i.status = 'em_progresso'
+        order by atualizado_em desc
+        limit 3;
+    `;
+    
+    return database.executar(instrucaoSQL)
+}
+
+function buscarItensHomeConcluido(usuarioId) {
+    let instrucaoSQL = `
+        select 
+            i.id,
+            i.titulo, 
+            i.status,
+            i.horas,
+            c.nome_categoria,
+            g.nome nome_genero,
+            day(i.criado_em) dia_criacao,
+            month(i.criado_em) mes_criacao,
+            year(i.criado_em) ano_criacao,
+            i.url_imagem
+        from item i 
+        join categoria c on i.categoria_id = c.id_categoria
+        join genero g on g.id = i.genero_id
+            where i.usuario_id = ${usuarioId}
+            and i.status = 'concluido'
+        order by atualizado_em desc
+        limit 3;
+    `;
+    
+    return database.executar(instrucaoSQL)
+}
 
 module.exports = {
     buscarGeneros,
@@ -134,5 +184,7 @@ module.exports = {
     updateResenha,
     updateStatus,
     updateClassificacao,
-    deleteItem
+    deleteItem,
+    buscarItensHomeProgresso,
+    buscarItensHomeConcluido
 };

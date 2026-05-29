@@ -39,5 +39,13 @@ router.delete("/excluir/:itemId", function(req, res) {
     itemController.deleteItem(req, res);
 })
 
+router.get("/buscar-item-progresso/:id", function(req, res) {
+    itemController.buscarItensHomeProgresso(req, res);
+})
+
+router.get("/buscar-item-concluido/:id", function(req, res) {
+    itemController.buscarItensHomeConcluido(req, res);
+})
+
 module.exports = router;
 
