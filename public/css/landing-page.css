@@ -1,0 +1,172 @@
+
+section {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    padding: 12vh 24vw;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    height: 10vh;
+    width: 100%;
+    /* margin: 0 24px; */
+
+    /* font-family: Dm_;
+    font-weight: 400; */
+}
+
+ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h2 {
+    font-family: DM_Serif_Display, Syne, sans-serif;
+    font-weight: 200;
+}
+
+#italic-span {
+    font-style: italic;
+    color: #A26300;
+}
+
+.nav-div {
+    width: 100%;
+    height: fit-content;
+    width: 100%;
+
+    padding: 0 42px;
+}
+
+.nav-items {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    font-weight: 600;
+}
+
+.nav-items ul a {
+    transition: 0.2s ease-in-out;
+    color: #a7a7a7;
+}
+
+.nav-items ul a:hover {
+    transform: scale(1.1);
+    color: #ffffff;
+}
+
+.btn-login {
+    background-color: #A26300;
+    color: #e6e6e6;
+    border: 2px solid #e6e6e6;
+    border-radius: 6px;
+    padding: 10px 36px;
+    cursor: pointer;
+    transition: 0.3s ease, background-color 0.3s ease;
+
+    font-family: 'Syne', sans-serif;
+    font-weight: 750;
+}
+
+.btn-login:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.navbar-logo img {
+    margin-top: 10px;
+    height: 24px;
+
+    user-select: none;
+}
+
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+
+    margin-right: 400px;
+    font-family: DM_Serif_Display, Syne, sans-serif;
+}
+
+.hero-title h1 {
+    font-weight: 100;
+    font-size: 4.8em;
+    line-height: 1.1;
+
+}
+
+.hero-title img {
+    height: 180px;
+    width: 180px;
+}
+
+.side-image {
+    position: absolute;
+    top: 40;
+    right: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.card {
+    padding: 8px 12px;  
+    border: 1px solid #1C1C22;
+    border-radius: 10px;
+    background-color: #141418;
+}
+
+.card-image {
+    height: 280px;
+    width: 340px;
+}
+
+.container-text {
+    /* position: absolute; */
+}
+
+.container-text h1 {
+    font-size: 8em;
+    opacity: 20%;
+}
+
+.container-header {
+    position: absolute;
+    z-index: 1;
+}
+
+.content h2 {
+    font-size: 4em;
+    line-height: 1.1;
+}
+
+.content p {
+    font-size: 1.2em;
+}
+
+.card-container {
+    position: relative;
+    overflow: hidden;
+    min-height: ;
+}

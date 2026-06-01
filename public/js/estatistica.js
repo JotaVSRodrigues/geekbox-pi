@@ -61,7 +61,13 @@ function carregarKpis() {
         .then(function(resposta) { return resposta.json(); })
         .then(function(data) {
             console.log("DATA KPI 2:", data)
-            console.log("QTD HORAS TOTAIS:", data[0].total_horas)
+
+            let num = data[0].total_horas
+            let numInteiro = Math.trunc(num);
+            let parteDecimal = ((num % 1).toFixed(2) * 60)
+            let horaFormatada = `${numInteiro/10}h${parteDecimal}min`
+
+            // console.log("QTD HORAS TOTAIS:", data[0].total_horas)
 
             document.getElementById("kpi-horas").innerText = data[0].total_horas;
         }).catch(function(erro) {

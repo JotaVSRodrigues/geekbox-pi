@@ -1,42 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeekBox</title>
+    <link rel="stylesheet" href="../css/landing-page.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/hero.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/wishlist.css">
-    <link rel="stylesheet" href="../css/modal.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="shortcut icon" href="../assets/images/logo/Vector.png" type="image/x-icon">
 </head>
-
 <body>
-    <div class="navbar-div">
-        <nav class="navbar">
+    <div class="nav-div">
+        <nav>
             <div class="navbar-logo">
-                <img src="../assets/images/logo/logo-geekbox.png" alt="Logo Geekie Box">
+                <img src="../assets/images/landing-page/Vector (4).png" alt="logo-image">
             </div>
             <div>
-                <li><a href="../html/cadastro.html" class="button-login">Login</a></li>
+                <ul class="nav-items">
+                    <li><a href="hero-section">home</a></li>
+                    <li><a href="first-section">sobre o projeto</a></li>
+                    <li><a href="third-section">dashboard</a></li>
+                </ul>
+            </div>
+            <div>
+                <a href="../html/login.html" class="button-login"><button class="btn-login">Login</button></a>
             </div>
         </nav>
     </div>
-
-    <section>
-
-        <div class="container">
+    <section class="hero-section">
+        <div class="hero-title">
+            <h1>
+                <span>Tudo que você</span>
+                <span>consome, em um</span>
+                <span id="italic-span">único lugar.</span>
+            </h1>
+            <img src="..//assets/images/landing-page/Vector (5).png" alt="logo-img-home">
         </div>
-            
+        <div class="side-image">
+            <img src="../assets/images/landing-page/cards-images.png" alt="side-image-home">
+        </div>
     </section>
+    <hr>
+    <section class="first-section">
+        <div class="container">
+            <div class="container-text">
+                <div class="container-header">
+                    <h1>01</h1>
+                    <span>— seus itens aqui</span>
+                </div>
+                <div class="content">
+                    <h2>
+                        <span>Cadastre e</span>
+                        <span>acompanhe seus</span>
+                        <span>entretenimentos.</span>
+                    </h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil beatae quibusdam sapiente ad nam repellat dignissimos deleniti minus ea! Dolorem, vero nam. Culpa molestias vel dolor unde explicabo doloremque?
+                    Ut vero voluptatum tempore magnam esse, qui nemo atque consequatur tempora eius totam recusandae cupiditate nesciunt quaerat sed assumenda velit perferendis. Rerum esse, quaerat placeat neque necessitatibus nemo dicta dolorum.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class=card-container">
+                    <img src="../public/assets/images/landing-page/darthvader.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="second-section">
+        <div>
+            <div class="card cards-image">
+                <div class=over-image">
+    
+                </div>
+            </div>
+            <h1>01</h1>
+            <span>— seus itens aqui</span>
+            <h2>
+                <span>Cadastre e</span>
+                <span>acompanhe seus</span>
+                <span>entretenimentos.</span>
+            </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil beatae quibusdam sapiente ad nam repellat dignissimos deleniti minus ea! Dolorem, vero nam. Culpa molestias vel dolor unde explicabo doloremque?
+            Ut vero voluptatum tempore magnam esse, qui nemo atque consequatur tempora eius totam recusandae cupiditate nesciunt quaerat sed assumenda velit perferendis. Rerum esse, quaerat placeat neque necessitatibus nemo dicta dolorum.</p>
+        </div>
+    </section>
+    <hr>
+    <section class="third-section">
+        <div>
+            <h1>Sua Dashboard!</h1>
+            <img src="../public/assets/images/landing-page/dashboard-print.png" alt="">
+        </div>
+    </section>
+    <hr>
+    <section class="forth-section">
+        <div>
+            
+        </div>
+       
+    </section>
+    <hr>
+    <footer>
 
-    <script src="../js/sessao.js"></script>
-    <script src="../js/timeline.js"></script>
-    <script src="../js/cadastroItem.js"></script>
-    <script src="../js/updateItem.js"></script>
+    </footer>
 </body>
-
 </html>
