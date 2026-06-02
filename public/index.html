@@ -1,104 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeekBox</title>
-    <link rel="stylesheet" href="../css/landing-page.css">
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeekBox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- usando link pra não ter q importar o style princiapl dnv -->
+  <link rel="stylesheet" href="../public/css/landing-page.css">
 </head>
 <body>
-    <div class="nav-div">
-        <nav>
-            <div class="navbar-logo">
-                <img src="../assets/images/landing-page/Vector (4).png" alt="logo-image">
-            </div>
-            <div>
-                <ul class="nav-items">
-                    <li><a href="hero-section">home</a></li>
-                    <li><a href="first-section">sobre o projeto</a></li>
-                    <li><a href="third-section">dashboard</a></li>
-                </ul>
-            </div>
-            <div>
-                <a href="../html/login.html" class="button-login"><button class="btn-login">Login</button></a>
-            </div>
-        </nav>
-    </div>
-    <section class="hero-section">
-        <div class="hero-title">
-            <h1>
-                <span>Tudo que você</span>
-                <span>consome, em um</span>
-                <span id="italic-span">único lugar.</span>
-            </h1>
-            <img src="..//assets/images/landing-page/Vector (5).png" alt="logo-img-home">
-        </div>
-        <div class="side-image">
-            <img src="../assets/images/landing-page/cards-images.png" alt="side-image-home">
-        </div>
-    </section>
-    <hr>
-    <section class="first-section">
-        <div class="container">
-            <div class="container-text">
-                <div class="container-header">
-                    <h1>01</h1>
-                    <span>— seus itens aqui</span>
-                </div>
-                <div class="content">
-                    <h2>
-                        <span>Cadastre e</span>
-                        <span>acompanhe seus</span>
-                        <span>entretenimentos.</span>
-                    </h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil beatae quibusdam sapiente ad nam repellat dignissimos deleniti minus ea! Dolorem, vero nam. Culpa molestias vel dolor unde explicabo doloremque?
-                    Ut vero voluptatum tempore magnam esse, qui nemo atque consequatur tempora eius totam recusandae cupiditate nesciunt quaerat sed assumenda velit perferendis. Rerum esse, quaerat placeat neque necessitatibus nemo dicta dolorum.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class=card-container">
-                    <img src="../public/assets/images/landing-page/darthvader.png" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-    <hr>
-    <section class="second-section">
-        <div>
-            <div class="card cards-image">
-                <div class=over-image">
-    
-                </div>
-            </div>
-            <h1>01</h1>
-            <span>— seus itens aqui</span>
-            <h2>
-                <span>Cadastre e</span>
-                <span>acompanhe seus</span>
-                <span>entretenimentos.</span>
-            </h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil beatae quibusdam sapiente ad nam repellat dignissimos deleniti minus ea! Dolorem, vero nam. Culpa molestias vel dolor unde explicabo doloremque?
-            Ut vero voluptatum tempore magnam esse, qui nemo atque consequatur tempora eius totam recusandae cupiditate nesciunt quaerat sed assumenda velit perferendis. Rerum esse, quaerat placeat neque necessitatibus nemo dicta dolorum.</p>
-        </div>
-    </section>
-    <hr>
-    <section class="third-section">
-        <div>
-            <h1>Sua Dashboard!</h1>
-            <img src="../public/assets/images/landing-page/dashboard-print.png" alt="">
-        </div>
-    </section>
-    <hr>
-    <section class="forth-section">
-        <div>
-            
-        </div>
-       
-    </section>
-    <hr>
-    <footer>
 
-    </footer>
+  <div class="nav-div">
+    <nav>
+      <div class="navbar-logo">
+        <img src="../public/assets/images/landing-page/Vector (4).png" alt="GeekBox">
+      </div>
+      <ul class="nav-items">
+        <li><a href="#hero-section">home</a></li>
+        <li><a href="#first-section">sobre o projeto</a></li>
+        <li><a href="#third-section">dashboard</a></li>
+      </ul>
+      <a href="../html/login.html">
+        <button class="btn-login">Login</button>
+      </a>
+    </nav>
+  </div>
+
+  <section class="hero-section" id="hero-section">
+    <div class="hero-title">
+      <h1>
+        <span>Tudo que você</span>
+        <span>consome, em um</span>
+        <span id="italic-span">único lugar.</span>
+      </h1>
+      <img src="../public/assets/images/landing-page/Vector (5).png" alt="">
+    </div>
+    <div class="side-image">
+      <img src="../public/assets/images/landing-page/cards-images.png" alt="">
+    </div>
+  </section>
+
+
+
+  <section class="first-section" id="first-section">
+    <div class="container">
+      <div class="container-text">
+        <div class="container-header">
+          <h1 class="bg-number">01</h1>
+          <div class="header-tag">
+            <span class="tag-line"></span>
+            <span class="tag-text">seus itens aqui</span>
+          </div>
+        </div>
+        <div class="content">
+          <h2>
+            <span>Cadastre e</span>
+            <span>acompanhe seus</span>
+            <span>entretenimentos.</span>
+          </h2>
+          <p>Mussum Ipsum, cacilds vidis litro abertis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Quem num gosta di mé, boa gentis num é. Cevadis im ampola pa arma uma pindureta. Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.</p>
+        </div>
+      </div>
+      <div class="card-wrapper">
+        <div class="card">
+          <img src="../public/assets/images/landing-page/darthvader.png" alt="" class="card-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="second-section" id="second-section">
+    <div class="container container-reverse">
+      <div class="card-wrapper">
+        <div class="card">
+          <img src="./assets/images/landing-page/steve-minecraft.png" alt="" class="card-img card-img-left">
+        </div>
+      </div>
+      <div class="container-text">
+        <div class="container-header">
+          <h1 class="bg-number">02</h1>
+          <div class="header-tag">
+            <span class="tag-line"></span>
+            <span class="tag-text">sua dashboard interativa</span>
+          </div>
+        </div>
+        <div class="content">
+          <h2>
+            <span>Analise suas</span>
+            <span>métricas.</span>
+          </h2>
+          <p>Mussum Ipsum, cacilds vidis litro abertis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Quem num gosta di mé, boa gentis num é. Cevadis im ampola pa arma uma pindureta. Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="third-section" id="third-section">
+    <h2 class="dashboard-title"><em>Sua</em> <span>Dashboard!</span></h2>
+    <img src="../public/assets/images/landing-page/dashboard-print.png" alt="Dashboard" class="dashboard-img">
+  </section>
+
+
+
+  <section class="forth-section" id="forth-section">
+    <div class="cta-box">
+      <h2 class="cta-title">Comece a usar <span>HOJE!</span></h2>
+      <p>Nunca mais perca de vista o que te entretem no dia a dia.</p>
+      <a href="../html/login.html" class="cta-btn">Acessar GeekBox</a>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../public/assets/images/landing-page/Vector (4).png" alt="GeekBox">
+        <p>Tudo o que você consome<br>em um só lugar.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Páginas</h4>
+        <ul>
+          <li><a href="#hero-section">home</a></li>
+          <li><a href="#first-section">sobre o projeto</a></li>
+          <li><a href="#third-section">dashboard</a></li>
+          <li><a href="../html/login.html">login</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">Copyright© 2026 • GeekBox</p>
+  </footer>
+
 </body>
 </html>
