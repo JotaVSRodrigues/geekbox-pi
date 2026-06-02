@@ -37,8 +37,6 @@ h2 {
 }
 
 
-/* NAV */
-
 .nav-div {
     position: sticky;
     top: 0;
@@ -100,8 +98,6 @@ nav {
     transform: scale(1.05);
 }
 
-
-/* HERO */
 
 .hero-section {
     min-height: 92vh;
@@ -173,7 +169,6 @@ nav {
 }
 
 
-/* FIRST / SECOND SECTION */
 
 .first-section,
 .second-section {
@@ -284,8 +279,6 @@ nav {
 
 
 
-/* DASHBOARD */
-
 .third-section {
     padding: 80px;
     display: flex;
@@ -312,8 +305,6 @@ nav {
     display: block;
 }
 
-
-/* CTA */
 
 .forth-section {
     padding: 80px;
@@ -365,8 +356,6 @@ nav {
     transform: scale(1.03);
 }
 
-
-/* FOOTER */
 
 footer {
     padding: 48px 80px 32px;
