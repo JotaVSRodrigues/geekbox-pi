@@ -217,6 +217,10 @@ nav {
   position: relative;
 }
 
+.card-wrapper img {
+    /* height: 180%; */
+}
+
 .card {
   position: relative;
   width: 100%;
