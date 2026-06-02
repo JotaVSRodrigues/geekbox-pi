@@ -136,7 +136,6 @@ function openMiniModal(itemId, btn) {
         </div>
     `;
 
-    // Insere logo abaixo do botão clicado
     btn.parentNode.appendChild(miniModal);
     requestAnimationFrame(() => {
         miniModal.classList.add('show')
@@ -160,7 +159,7 @@ function excluirItem(itemId) {
         .then(data => {
             console.log("Item excluído:", data);
             fecharMiniModal();
-            carregarItens(); // atualiza lista
+            carregarItens();
         })
         .catch(e => console.error("Erro ao excluir:", e));
 }

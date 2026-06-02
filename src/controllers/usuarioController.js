@@ -16,14 +16,13 @@ function autenticar(req, res) {
         .then(
             function (resultadoAutenticar) {
                 console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
 
                 if (resultadoAutenticar.length == 1) {
                     console.log(resultadoAutenticar);
                     return res.status(200).json(resultadoAutenticar[0]);
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
-                    // colocar mensagem amigavel para o usuario
                 } else {
                     res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                 }
@@ -51,12 +50,11 @@ function cadastrar(req, res) {
         res.status(400).send("Algum dado está undefined!");
     } else {
         usuarioModel.cadastrar(nome, email, senha, telefone).
-            // ENTÃO
             then(function(resposta) {   
             res.status(200).send("Usuário criado com sucesso");
         }).catch(function(erro) {
             console.error("Erro no Usuario Model", erro)
-            // colocar mensagem amigavel para o usuario (erro de duplicate entry para o email)
+            
 
             res.status(500).json(erro.sqlMessage);
         }) 

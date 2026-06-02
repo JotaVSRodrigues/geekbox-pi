@@ -24,10 +24,10 @@ if (!usuarioId) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("usuarioId:", usuarioId); // id no console
+    console.log("usuarioId:", usuarioId); 
 
     if (!usuarioId) {
-        window.location.href = "../html/login.html"; // redireciona se não tiver sessão
+        window.location.href = "../html/login.html";
         return;
     }
 
@@ -108,7 +108,6 @@ const CORES = {
 };
 
 const MESES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-// funções fetch do gráfico
 
 
 function carregarLinhas() {
@@ -169,7 +168,7 @@ function carregarLinhas() {
                         },
                         y: {
                             grid: { color: 'rgba(255,255,255,0.04)' },
-                            ticks: { color: '#5c5a55', stepSize: 1 /* sempre vai de 1 em 1 */},
+                            ticks: { color: '#5c5a55', stepSize: 1 },
                             beginAtZero: true
                         }
                     }
@@ -281,7 +280,6 @@ function carregarMetas() {
                         x: {
                             grid: { color: 'rgba(255,255,255,0.04)' },
                             ticks: { color: '#5c5a55'}
-                            // stacked: true
                         },
                         y: {
                             grid: { display: false },
@@ -317,29 +315,24 @@ function carregarHeatmap() {
             document.body.appendChild(tooltip)
 
             let hoje = new Date();
-            let inicio = new Date(hoje.getFullYear(), 0, 1); // pega o dia 1 de janeiro
+            let inicio = new Date(hoje.getFullYear(), 0, 1);
 
-            // percorre todos os dias do ano até hoje
             for (let d = new Date(inicio); d <= hoje; d.setDate(d.getDate() + 1)) {
                 let chave = d.toISOString().split('T')[0];
                 let total = mapa[chave] || 0;
 
-                let cell = document.createElement('div');
-                cell.classList.add("cell")
-                cell.title = chave + ': ' + total + ' item(s)';
-
-                // cell.style.width = '11px';
-                // cell.style.height = '11px';
-                // cell.style.borderRadius = '2px';
+                let quadrado = document.createElement('div');
+                quadrado.classList.add("quadrado")
+                quadrado.title = chave + ': ' + total + ' item(s)';
 
                 if (total === 0) {
-                    cell.style.background = '#1C1C22';
-                    cell.style.opacity = '1';
+                    quadrado.style.background = '#1C1C22';
+                    quadrado.style.opacity = '1';
                 } else {
-                    cell.style.background = '#A26300';
+                    quadrado.style.background = '#A26300';
 
                     let opacidade = Math.min(0.25 + total * 0.2, 1);
-                    cell.style.opacity = String(opacidade)
+                    quadrado.style.opacity = String(opacidade)
                 }
 
                 let dataFormatada = new Date(chave + 'T00:00:00')
@@ -349,22 +342,21 @@ function carregarHeatmap() {
                     ? dataFormatada + ' · nenhuma atividade'
                     : dataFormatada + ' · ' + total + (total === 1 ? ' item concluído' : ' itens concluídos');
 
-                // eventos do tooltip
-                cell.addEventListener('mouseenter', function(e) {
+                quadrado.addEventListener('mouseenter', function(e) {
                     tooltip.textContent = textoTooltip;
                     tooltip.classList.add('visible');
                 });
 
-                cell.addEventListener('mousemove', function(e) {
+                quadrado.addEventListener('mousemove', function(e) {
                     tooltip.style.left = (e.clientX + 12) + 'px';
                     tooltip.style.top  = (e.clientY - 28) + 'px';
                 });
 
-                cell.addEventListener('mouseleave', function() {
+                quadrado.addEventListener('mouseleave', function() {
                     tooltip.classList.remove('visible');
                 });
 
-                container.appendChild(cell);
+                container.appendChild(quadrado);
             }
         })
         .catch(function(erro) {
