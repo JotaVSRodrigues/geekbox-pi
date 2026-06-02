@@ -64,6 +64,14 @@ nav {
     transform: rotate(-8deg);
 }
 
+.home-logo {
+    transition: transform 0.3s ease;
+}
+
+.home-logo:hover {
+    transform: rotate(-8deg);
+}
+
 .nav-items {
     display: flex;
     gap: 32px;
@@ -149,7 +157,7 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
-    width: 220px;
+    width: 800px;
     height: 100%;
     background: linear-gradient(to right, #0d0d0f, transparent);
     z-index: 1;
@@ -161,7 +169,7 @@ nav {
     position: absolute;
     top: 0;
     right: 0;
-    width: 80px;
+    width: 1800px;
     height: 100%;
     background: linear-gradient(to left, #0d0d0f, transparent);
     z-index: 1;
