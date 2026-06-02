@@ -37,8 +37,6 @@ h2 {
 }
 
 
-/* NAV */
-
 .nav-div {
   position: sticky;
   top: 0;
@@ -100,8 +98,6 @@ nav {
   transform: scale(1.05);
 }
 
-
-/* HERO */
 
 .hero-section {
   min-height: 92vh;
@@ -172,8 +168,6 @@ nav {
   pointer-events: none;
 }
 
-
-/* FIRST / SECOND SECTION */
 
 .first-section,
 .second-section {
@@ -251,10 +245,8 @@ nav {
 }
 
 
-/* CARD COM OVERFLOW */
-
 .card-wrapper {
-  flex-shrink: 0;
+    flex-shrink: 0;
   width: 460px;
 }
 
@@ -264,8 +256,12 @@ nav {
   height: auto;
 }
 
+.first-img {
+  display: block;
+  width: 160%;
+  height: auto;
+}
 
-/* DASHBOARD */
 
 .third-section {
   padding: 80px;
@@ -294,7 +290,6 @@ nav {
 }
 
 
-/* CTA */
 
 .forth-section {
   padding: 80px;
@@ -346,8 +341,6 @@ nav {
   transform: scale(1.03);
 }
 
-
-/* FOOTER */
 
 footer {
   padding: 48px 80px 32px;
