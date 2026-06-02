@@ -33,6 +33,23 @@
     transform: scale(1.1);
 }
 
+.btn-login {
+    background-color: #A26300;
+    color: #e6e6e6;
+    border: 1.5px solid #e6e6e6;
+    border-radius: 6px;
+    padding: 8px 28px;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.25s, transform 0.2s;
+}
+
+.btn-login:hover {
+    background-color: transparent;
+    transform: scale(1.05);
+}
 .button-login {
     background-color: transparent;
     border-radius: 32px;

@@ -321,18 +321,18 @@ function carregarHeatmap() {
                 let chave = d.toISOString().split('T')[0];
                 let total = mapa[chave] || 0;
 
-                let quadrado = document.createElement('div');
-                quadrado.classList.add("quadrado")
-                quadrado.title = chave + ': ' + total + ' item(s)';
+                let cell = document.createElement('div');
+                cell.classList.add("cell")
+                cell.title = chave + ': ' + total + ' item(s)';
 
                 if (total === 0) {
-                    quadrado.style.background = '#1C1C22';
-                    quadrado.style.opacity = '1';
+                    cell.style.background = '#1C1C22';
+                    cell.style.opacity = '1';
                 } else {
-                    quadrado.style.background = '#A26300';
+                    cell.style.background = '#A26300';
 
                     let opacidade = Math.min(0.25 + total * 0.2, 1);
-                    quadrado.style.opacity = String(opacidade)
+                    cell.style.opacity = String(opacidade)
                 }
 
                 let dataFormatada = new Date(chave + 'T00:00:00')
@@ -342,21 +342,21 @@ function carregarHeatmap() {
                     ? dataFormatada + ' · nenhuma atividade'
                     : dataFormatada + ' · ' + total + (total === 1 ? ' item concluído' : ' itens concluídos');
 
-                quadrado.addEventListener('mouseenter', function(e) {
+                cell.addEventListener('mouseenter', function(e) {
                     tooltip.textContent = textoTooltip;
                     tooltip.classList.add('visible');
                 });
 
-                quadrado.addEventListener('mousemove', function(e) {
+                cell.addEventListener('mousemove', function(e) {
                     tooltip.style.left = (e.clientX + 12) + 'px';
                     tooltip.style.top  = (e.clientY - 28) + 'px';
                 });
 
-                quadrado.addEventListener('mouseleave', function() {
+                cell.addEventListener('mouseleave', function() {
                     tooltip.classList.remove('visible');
                 });
 
-                container.appendChild(quadrado);
+                container.appendChild(cell);
             }
         })
         .catch(function(erro) {
