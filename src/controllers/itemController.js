@@ -84,6 +84,17 @@ function updateResenha(req, res) {
 function updateStatus(req, res) {
     const status = req.body.statusServer;
     const itemId = req.body.itemIdServer;
+
+    if (status === 'concluido') {
+        itemModel.updateStatusConcluido(status, itemId)
+            .then((resposta) => {
+                res.status(200).json(resposta)
+            }).catch((erro) => {
+                res.status(500).json(erro.sqlMessage)
+            })
+
+    return 
+    }
     console.log("ITEM ID NO ITEM CONTROLLER: ", itemId)
 
     itemModel.updateStatus(status, itemId)

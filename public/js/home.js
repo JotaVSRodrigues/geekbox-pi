@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function buscarItensHome() {
-    // faz os dois fetches ao mesmo tempo e espera os dois
+    // faz os dois fetches ao mesmo tempo e espera os dois - dica do Manuel
     Promise.all([
         fetch(`/itens/buscar-item-progresso/${usuarioId}`).then(r => r.json()),
         fetch(`/itens/buscar-item-concluido/${usuarioId}`).then(r => r.json())
@@ -48,7 +48,7 @@ function renderizarCards(data, seletor) {
         const parteDecimal = Math.round((item.horas % 1) * 60);
         const horaFormatada = `${numInteiro}h${parteDecimal}min`;
 
-        const generoFormatado = item.nome_genero    ? item.nome_genero.toLowerCase() : "—";
+        const generoFormatado = item.nome_genero ? item.nome_genero.toLowerCase() : "—";
         const categoriaFormatada = item.nome_categoria ? item.nome_categoria.toUpperCase() : "—";
         const cor = coresCategoria[item.nome_categoria] || '#c9933a';
         const cover = item.url_imagem || '';

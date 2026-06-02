@@ -1,42 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeekBox</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/hero.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/wishlist.css">
-    <link rel="stylesheet" href="../css/modal.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="shortcut icon" href="../assets/images/logo/Vector.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeekBox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/landing-page.css">
 </head>
-
 <body>
-    <div class="navbar-div">
-        <nav class="navbar">
-            <div class="navbar-logo">
-                <img src="../assets/images/logo/logo-geekbox.png" alt="Logo Geekie Box">
-            </div>
-            <div>
-                <li><a href="../html/cadastro.html" class="button-login">Login</a></li>
-            </div>
-        </nav>
+
+  <div class="nav-div">
+    <nav>
+      <div class="navbar-logo">
+        <img src="../public/assets/images/landing-page/Vector (4).png" alt="GeekBox">
+      </div>
+      <ul class="nav-items">
+        <li><a href="#hero-section">home</a></li>
+        <li><a href="#first-section">sobre o projeto</a></li>
+        <li><a href="#third-section">dashboard</a></li>
+      </ul>
+      <a href="/html/login.html">
+        <button class="btn-login">Login</button>
+      </a>
+    </nav>
+  </div>
+
+  <section class="hero-section" id="hero-section">
+    <div class="hero-title">
+      <h1>
+        <span>Tudo que você</span>
+        <span>consome, em um</span>
+        <span id="italic-span">único lugar.</span>
+      </h1>
+      <img src="/assets/images/landing-page/Vector (5).png" alt="">
     </div>
+    <div class="side-image">
+      <img src="/assets/images/landing-page/cards-images.png" alt="">
+    </div>
+  </section>
 
-    <section>
 
-        <div class="container">
+  <section class="first-section" id="first-section">
+    <div class="container">
+      <div class="container-text">
+        <div class="container-header">
+          <h1 class="bg-number">01</h1>
+          <div class="header-tag">
+            <span class="tag-line"></span>
+            <span class="tag-text">seus itens aqui</span>
+          </div>
         </div>
-            
-    </section>
+        <div class="content">
+          <h2>
+            <span>Cadastre e</span>
+            <span>acompanhe seus</span>
+            <span>entretenimentos.</span>
+          </h2>
+          <p>Mussum Ipsum, cacilds vidis litro abertis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Quem num gosta di mé, boa gentis num é. Cevadis im ampola pa arma uma pindureta. Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.</p>
+        </div>
+      </div>
+      <div class="card-wrapper vader-card">
+        <img src="/assets/images/landing-page/Group 19.png" alt="" class="first-img">
+      </div>
+    </div>
+  </section>
 
-    <script src="../js/sessao.js"></script>
-    <script src="../js/timeline.js"></script>
-    <script src="../js/cadastroItem.js"></script>
-    <script src="../js/updateItem.js"></script>
+
+  <section class="second-section" id="second-section">
+    <div class="container">
+      <div class="card-wrapper card-wrapper-left">
+        <img src="/assets/images/landing-page/Group 20.png" alt="" class="card-img">
+      </div>
+      <div class="container-text">
+        <div class="container-header">
+          <h1 class="bg-number">02</h1>
+          <div class="header-tag">
+            <span class="tag-line"></span>
+            <span class="tag-text">sua dashboard interativa</span>
+          </div>
+        </div>
+        <div class="content">
+          <h2>
+            <span>Analise suas</span>
+            <span>métricas.</span>
+          </h2>
+          <p>Mussum Ipsum, cacilds vidis litro abertis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Quem num gosta di mé, boa gentis num é. Cevadis im ampola pa arma uma pindureta. Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="third-section" id="third-section">
+    <h2 class="dashboard-title"><em>Sua</em> <span>Dashboard!</span></h2>
+    <img src="/assets/images/landing-page/dashboard-print.png" alt="Dashboard" class="dashboard-img">
+  </section>
+
+
+  <section class="forth-section" id="forth-section">
+    <div class="cta-box">
+      <h2 class="cta-title">Comece a usar <span>HOJE!</span></h2>
+      <p>Nunca mais perca de vista o que te entretem no dia a dia.</p>
+      <a href="/html/login.html" class="cta-btn">Acessar GeekBox</a>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/images/landing-page/Vector (4).png" alt="GeekBox">
+        <p>Tudo o que você consome<br>em um só lugar.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Páginas</h4>
+        <ul>
+          <li><a href="#hero-section">home</a></li>
+          <li><a href="#first-section">sobre o projeto</a></li>
+          <li><a href="#third-section">dashboard</a></li>
+          <li><a href="../html/login.html">login</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">Copyright© 2026 • GeekBox</p>
+  </footer>
+
 </body>
-
 </html>

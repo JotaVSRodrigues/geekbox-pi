@@ -5,7 +5,6 @@ const router = express.Router();
 
 const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
 
-// rota para receber perguntas e gerar respostas
 router.post("/perguntar", async (req, res) => {
     const pergunta = req.body.pergunta;
 
@@ -19,11 +18,9 @@ router.post("/perguntar", async (req, res) => {
 });
 
 
-// função para gerar respostas usando o gemini
 async function gerarResposta(mensagem) {
 
     try {
-        // gerando conteúdo com base na pergunta
         const modeloIA = chatIA.models.generateContent({
             model: "gemini-2.5-flash",
             contents: `Em um paragráfo responda: ${mensagem}`

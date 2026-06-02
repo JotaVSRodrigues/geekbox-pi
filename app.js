@@ -32,7 +32,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/estatisticas", estatisticaRouter);
 app.use("/itens", itemRouter);
 app.use("/metas", metaRouter);
-app.use("/bobIA", bobIARouter)
+app.use("/bobIA", bobIARouter);
 
 
 app.listen(PORTA_APP, function () {

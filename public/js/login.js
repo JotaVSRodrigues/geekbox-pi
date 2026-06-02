@@ -40,7 +40,6 @@ function loginUser() {
                 console.log("dados recebidos do backend", json);
                 console.log(JSON.stringify(json));
 
-                // limpa sessões anteriores
                 sessionStorage.clear();
                 
                 sessionStorage.ID_USUARIO = json.id;
@@ -50,11 +49,10 @@ function loginUser() {
 
                 setTimeout(function() {
                     window.location.href = "../html/home.html";
-                }, 1000); // apenas para exibir o loading
+                }, 1000);
             });
         } else {
             console.log("Houve um erro ao tentar realizar o login!");
-            // colocar mensagem amigavel para o usuario
 
             resposta.text().then(texto => {
                 console.error(texto);

@@ -5,6 +5,7 @@
 
 
 
+/* gradiente embaixo */
 .field-list-container::after {
     content: "";
     position: absolute;
@@ -254,6 +255,9 @@ textarea {
     background-color: #1C1C22;
 }
 
+.information {
+    
+}
 
 .item-header {
     font-size: 1.2em;

@@ -4,7 +4,6 @@ var router = express.Router();
 var estatisticaController = require("../controllers/estatisticaController");
 
 
-// GRAFICOS
 router.get("/consumo-mensal/:id", function (req, res) {
     estatisticaController.consumoMensal(req, res);
 });

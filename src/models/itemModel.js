@@ -97,7 +97,18 @@ function updateResenha(resenha, itemId) {
 function updateStatus(status, itemId) {
     let instrucaoSQL = `
         update item 
-        set status = '${status}'
+        set status = '${status}'        
+        where id = ${itemId};
+    `;
+
+    return database.executar(instrucaoSQL);
+}
+
+function updateStatusConcluido(status, itemId) {
+    let instrucaoSQL = `
+        update item 
+        set status = '${status}',
+        concluido_em = current_date()
         where id = ${itemId};
     `;
 
@@ -183,6 +194,7 @@ module.exports = {
     buscarItemSelecionado,
     updateResenha,
     updateStatus,
+    updateStatusConcluido,
     updateClassificacao,
     deleteItem,
     buscarItensHomeProgresso,
