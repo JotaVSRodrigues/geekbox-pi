@@ -16,8 +16,7 @@ function registerUser() {
         sobrenomeUser.trim().length === 0 ||
         telefoneUser.trim().length === 0
     ) {
-        alert(" Preencha todos os campos antes de prosseguir");
-        // colocar mensagem amigavel para o usuario (preenchimento de todos os campos)
+        alert("Preencha todos os campos antes de prosseguir");
         return false;
     }
 
@@ -37,9 +36,6 @@ function registerUser() {
         return false;
     }
 
-    // enviando o valor da nova input
-
-    // BUSCA
     fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {

@@ -39,10 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function carregarKpis() {
-    // colocar catch em todos os fetchs ou try catch em tudo (mas acho que nao pode)
+    // dps colocar catch em todos os fetchs ou try catch em tudo (mas acho que nao pode)
 
     fetch(`/estatisticas/kpi-concluidos/${usuarioId}`)
-    // ENTÃO
         .then(function(resposta) { 
             // console.log("RESPOSTA DA KPI 1:", resposta.json()); // --> Erro: TypeError: Failed to execute 'json' on 'Response': body stream already read
             return resposta.json(); })
@@ -321,18 +320,18 @@ function carregarHeatmap() {
                 let chave = d.toISOString().split('T')[0];
                 let total = mapa[chave] || 0;
 
-                let cell = document.createElement('div');
-                cell.classList.add("cell")
-                cell.title = chave + ': ' + total + ' item(s)';
+                let quadrado = document.createElement('div');
+                quadrado.classList.add("quadrado")
+                quadrado.title = chave + ': ' + total + ' item(s)';
 
                 if (total === 0) {
-                    cell.style.background = '#1C1C22';
-                    cell.style.opacity = '1';
+                    quadrado.style.background = '#1C1C22';
+                    quadrado.style.opacity = '1';
                 } else {
-                    cell.style.background = '#A26300';
+                    quadrado.style.background = '#A26300';
 
                     let opacidade = Math.min(0.25 + total * 0.2, 1);
-                    cell.style.opacity = String(opacidade)
+                    quadrado.style.opacity = String(opacidade)
                 }
 
                 let dataFormatada = new Date(chave + 'T00:00:00')
@@ -342,21 +341,21 @@ function carregarHeatmap() {
                     ? dataFormatada + ' · nenhuma atividade'
                     : dataFormatada + ' · ' + total + (total === 1 ? ' item concluído' : ' itens concluídos');
 
-                cell.addEventListener('mouseenter', function(e) {
+                quadrado.addEventListener('mouseenter', function(e) {
                     tooltip.textContent = textoTooltip;
                     tooltip.classList.add('visible');
                 });
 
-                cell.addEventListener('mousemove', function(e) {
+                quadrado.addEventListener('mousemove', function(e) {
                     tooltip.style.left = (e.clientX + 12) + 'px';
                     tooltip.style.top  = (e.clientY - 28) + 'px';
                 });
 
-                cell.addEventListener('mouseleave', function() {
+                quadrado.addEventListener('mouseleave', function() {
                     tooltip.classList.remove('visible');
                 });
 
-                container.appendChild(cell);
+                container.appendChild(quadrado);
             }
         })
         .catch(function(erro) {

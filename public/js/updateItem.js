@@ -120,11 +120,9 @@ function editarResenha(itemId) {
 }
 
 function openMiniModal(itemId, btn) {
-    // Remove modal antigo se existir
     const existingModal = document.querySelector('.mini-modal');
     if (existingModal) existingModal.remove();
 
-    // Cria novo modal
     const miniModal = document.createElement('div');
     miniModal.classList.add('mini-modal');
     miniModal.innerHTML = `

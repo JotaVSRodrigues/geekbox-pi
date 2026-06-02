@@ -149,7 +149,7 @@
     gap: 5px;
 }
 
-.cell {
+.quadrado {
     width: 20px;
     height: 20px;
     border-radius: 3px;
@@ -168,23 +168,23 @@
     margin-top: 12px;
 }
 
-.subtitle-heatmap .cell:nth-child(2) {
+.subtitle-heatmap .quadrado:nth-child(2) {
     background-color: #1C1C22;
 }
 
-.subtitle-heatmap .cell:nth-child(3) {
+.subtitle-heatmap .quadrado:nth-child(3) {
     background-color: rgba(162, 99, 0, 0.45);
 }
 
-.subtitle-heatmap .cell:nth-child(4) {
+.subtitle-heatmap .quadrado:nth-child(4) {
     background-color: rgba(162, 99, 0, 0.65);
 }
 
-.subtitle-heatmap .cell:nth-child(5) {
+.subtitle-heatmap .quadrado:nth-child(5) {
     background-color: rgba(162, 99, 0, 0.85);
 }
 
-.subtitle-heatmap .cell:nth-child(6) {
+.subtitle-heatmap .quadrado:nth-child(6) {
     background-color: rgba(162, 99, 0, 1);
 }
 

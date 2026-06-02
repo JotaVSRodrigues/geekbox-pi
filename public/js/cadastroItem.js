@@ -30,7 +30,6 @@ function registerItem() {
         horasTotais.trim().length === 0     
     ) {
         alert(" Preencha todos os campos para cadastrar o item");
-        // colocar mensagem amigavel para o usuario (preenchimento de todos os campos)
         return false;
     }
 
@@ -58,6 +57,7 @@ function registerItem() {
 
             setTimeout(() => {
                 carregarItens();
+                closeItemCard(modalItem)
             }, "600");
         } else {
             throw "Houve um erro ao realizar o cadastro de item!";
