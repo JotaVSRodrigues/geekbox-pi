@@ -31,7 +31,7 @@ async function carregarGeneros() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    updateDateSubtitle();
+    // updateDateSubtitle();
     carregarGeneros();
     carregarItens();
     renderizarItens();
@@ -78,25 +78,26 @@ function calculateMonth() {
     return months[month];
 }
 
-function updateDateSubtitle() {
-    const date = new Date();
-    const month = calculateMonth();
-    const year = date.getFullYear();
+// resolver bug dps
+// function updateDateSubtitle() {
+//     const date = new Date();
+//     const month = calculateMonth();
+//     const year = date.getFullYear();
 
-    if (document.getElementById("subtitle" + month + year) != null) {
-        return;
-    }
+//     if (document.getElementById("subtitle" + month + year) != null) {
+//         return;
+//     }
 
-    const newSubtitle = document.createElement("div");
-    newSubtitle.setAttribute("id", "subtitle" + month + year);
-    newSubtitle.innerHTML = `
-        <div class="month-date">
-            <span>${month} ${year}</span>
-        </div>
-    `;
+//     const newSubtitle = document.createElement("div");
+//     newSubtitle.setAttribute("id", "subtitle" + month + year);
+//     newSubtitle.innerHTML = `
+//         <div class="month-date">
+//             <span>${month} ${year}</span>
+//         </div>
+//     `;
 
-    fieldList.appendChild(newSubtitle);
-}
+//     fieldList.appendChild(newSubtitle);
+// }
 
 function createItemCard(modal) {
     modal.classList.remove("closing");
@@ -123,7 +124,7 @@ function carregarItens() {
         allItens = data
 
         console.log(data);
-        updateDateSubtitle();
+        // updateDateSubtitle();
         renderizarItens(data);
     })
 }
@@ -161,7 +162,7 @@ function renderizarItens(data) {
 
     fieldList.innerHTML = ''
     qtdItems = 0
-    updateDateSubtitle()
+    // updateDateSubtitle()
 
     data.forEach((item) => {
         const newItem = document.createElement("div");
